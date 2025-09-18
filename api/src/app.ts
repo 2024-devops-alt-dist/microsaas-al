@@ -1,8 +1,18 @@
 import express from 'express';
-import logger from './utils/logger';
-import { pool } from './infrastructure/database/pg/client';
+import { config } from './config/env.js';
+import logger from './utils/logger.js';
+import { pool } from './infrastructure/database/pg/client.js';
+import cors from 'cors';
 
 const app = express();
+
+app.use(
+    cors({
+        origin: config.FRONT_URL,
+        methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
+        credentials: true,
+    }),
+);
 
 app.get('/api/health', async (_req, res) => {
     try {
