@@ -4,10 +4,9 @@ import { pool } from './infrastructure/database/pg/client';
 
 const app = express();
 
-app.get('/api/test', async (_req, res) => {
+app.get('/api/health', async (_req, res) => {
     try {
-        const result = await pool.query('SELECT NOW()');
-        logger.info(result);
+        await pool.query('SELECT 1');
         res.send({
             status: 'ok',
             message: 'API connected to database!',
