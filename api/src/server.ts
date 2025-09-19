@@ -3,7 +3,7 @@ import logger from './utils/logger.js';
 import { pool } from './infrastructure/database/pg/client.js';
 import { config } from './config/env.js';
 
-const PORT = config.PORT;
+const API_PORT = config.API_PORT;
 
 async function startServer() {
     try {
@@ -13,8 +13,8 @@ async function startServer() {
         logger.error('❌ Database connection failed :', err);
     }
 
-    const server = app.listen(PORT, () => {
-        logger.info(`Server running on http://localhost:${PORT}`);
+    const server = app.listen(API_PORT, () => {
+        logger.info(`Server running on http://localhost:${API_PORT}`);
     });
 
     const shutdown = async () => {
