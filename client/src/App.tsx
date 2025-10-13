@@ -2,9 +2,7 @@ import './App.css';
 import HealthPage from './features/health/healthPage';
 
 function App() {
-    return (
-        <HealthPage />
-    );
+    return <HealthPage />;
 }
 
 export default App;
