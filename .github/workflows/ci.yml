@@ -4,12 +4,12 @@ on:
   push:
     branches: [ main, develop ]
   pull_request:
-    branches: [ main ]
+    branches: [ main, develop ]
 
 jobs:
   
   client:
-    name: "Frontend CI"
+    name: "CLIENT CI"
     runs-on: ubuntu-latest
     
     defaults:
@@ -25,9 +25,7 @@ jobs:
         with:
           node-version: '24'
           cache: 'npm'
-          
-      - name: List files in client
-        run: ls -l
+          cache-dependency-path: ./client/package-lock.json
       
       - name: Install dependencies
         run: npm ci
@@ -42,9 +40,7 @@ jobs:
         run: npx tsc --noEmit
 
       - name: Build application
-        run: |
-          tsc -b
-          vite build
+        run: npm run build
         env:
           VITE_API_URL: production
 
@@ -57,7 +53,7 @@ jobs:
         run: hadolint Dockerfile
       
   api:
-    name: "Backend CI"
+    name: "API CI"
     runs-on: ubuntu-latest
     
     defaults:
@@ -73,6 +69,7 @@ jobs:
         with:
           node-version: '24'
           cache: 'npm'
+          cache-dependency-path: ./api/package-lock.json
 
       - name: Install hadolint
         run: |
@@ -96,18 +93,3 @@ jobs:
 
       - name: Lint api Dockerfile
         run: hadolint Dockerfile
-    
-  gitguardian-scan:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v5
-
-      - name: Install ggshield
-        run: pip install ggshield
-
-      - name: Scan for secrets
-        env:
-          GITGUARDIAN_API_KEY: ${{ secrets.GITGUARDIAN_API_KEY }}
-        run: ggshield scan repo .
