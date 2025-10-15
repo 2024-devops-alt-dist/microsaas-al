@@ -2,7 +2,7 @@
 
 ![CI](https://github.com/2024-devops-alt-dist/microsaas-al/actions/workflows/ci.yml/badge.svg)
 
-Fullstack Dockerized App — **Node.js (Express + TypeScript) API**, **React Client**, **PostgreSQL**  
+Progressive web application — **Node.js (Express + TypeScript) API**, **React Client**, **PostgreSQL**  
 Structure monorepo :  
 - `api/` — Backend Express (TypeScript)  
 - `client/` — Frontend React  
@@ -22,7 +22,7 @@ Structure monorepo :
 
 1. Créer un fichier `.env` à la racine du projet, basé sur `.env.template`.
 2. Créer un fichier `.env` dans le dossier api, basé sur `.env.template`.
-3. Créer un fichier `.env` et `.env.production` à dans le dossier client, basé sur `.env.template`.
+3. Créer un fichier `.env` et `.env.production` dans le dossier client, basé sur `.env.template`.
 
 ---
 
@@ -68,7 +68,7 @@ npm run build    # Build de production
 
 - Port interne : 5432
 - Utilisateur par défaut : `postgres`
-- Base de données : `mydb`
+- Base de données : `db`
 - Les variables sont définies dans `docker-compose.yml` et `.env`
 
 ---
