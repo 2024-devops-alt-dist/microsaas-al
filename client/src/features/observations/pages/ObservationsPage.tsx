@@ -1,3 +1,9 @@
+import ObservationList from '../components/ObservationsList/ObservationsList';
+
 export default function ObservationsPage() {
-    return <div>Observations Page</div>;
+    return (
+        <div className="bg-primary">
+            <ObservationList />
+        </div>
+    );
 }
