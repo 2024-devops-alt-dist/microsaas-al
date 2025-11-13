@@ -1,0 +1,112 @@
+[
+    {
+        "id": 1,
+        "imageUrl": "amanita_muscaria.png",
+        "commonName": "Amanite tue-mouches",
+        "genus": "Amanita",
+        "species": "muscaria",
+        "family": "Amanitaceae",
+        "edibility": "poisonous",
+        "habitat": "Forêts de conifères et feuillus",
+        "description": "Champignon célèbre au chapeau rouge vif avec des points blancs. Toxique, hallucinogène."
+    },
+    {
+        "id": 2,
+        "imageUrl": "boletus_edulis.png",
+        "commonName": "Cèpe de Bordeaux",
+        "genus": "Boletus",
+        "species": "edulis",
+        "family": "Boletaceae",
+        "edibility": "edible",
+        "habitat": "Bois de feuillus et conifères",
+        "description": "Très recherché, au chapeau brun et au pied épais. Excellent comestible."
+    },
+    {
+        "id": 3,
+        "imageUrl": "cantharellus_cibarius.png",
+        "commonName": "Girolle",
+        "genus": "Cantharellus",
+        "species": "cibarius",
+        "family": "Cantharellaceae",
+        "edibility": "edible",
+        "habitat": "Forêts humides de feuillus et conifères",
+        "description": "Champignon jaune en forme d'entonnoir, très apprécié en cuisine."
+    },
+    {
+        "id": 4,
+        "imageUrl": "lactarius_deliciosus.png",
+        "commonName": "Lactaire délicieux",
+        "genus": "Lactarius",
+        "species": "deliciosus",
+        "family": "Russulaceae",
+        "edibility": "edible",
+        "habitat": "Forêts de conifères",
+        "description": "Lactaire orangé au latex carotte, comestible après cuisson."
+    },
+    {
+        "id": 5,
+        "imageUrl": "coprinus_comatus.png",
+        "commonName": "Coprin chevelu",
+        "genus": "Coprinus",
+        "species": "comatus",
+        "family": "Agaricaceae",
+        "edibility": "edible",
+        "habitat": "Pelouses, bords de chemins",
+        "description": "Comestible jeune, reconnaissable à son chapeau cylindrique couvert d’écailles."
+    },
+    {
+        "id": 6,
+        "imageUrl": "agaricus_campestris.png",
+        "commonName": "Agaric champêtre",
+        "genus": "Agaricus",
+        "species": "campestris",
+        "family": "Agaricaceae",
+        "edibility": "edible",
+        "habitat": "Prairies, champs",
+        "description": "Champignon blanc à lames roses puis brun foncé. Bon comestible."
+    },
+    {
+        "id": 7,
+        "imageUrl": "russula_vesca.png",
+        "commonName": "Russule comestible",
+        "genus": "Russula",
+        "species": "vesca",
+        "family": "Russulaceae",
+        "edibility": "edible",
+        "habitat": "Forêts feuillues",
+        "description": "Russule à chapeau brun-rougeâtre, chair douce et comestible."
+    },
+    {
+        "id": 8,
+        "imageUrl": "craterellus_tubaeformis.png",
+        "commonName": "Chanterelle en tube",
+        "genus": "Craterellus",
+        "species": "tubaeformis",
+        "family": "Cantharellaceae",
+        "edibility": "edible",
+        "habitat": "Forêts humides",
+        "description": "Champignon en forme de tube, comestible et apprécié."
+    },
+    {
+        "id": 9,
+        "imageUrl": "lepista_nuda.png",
+        "commonName": "Pied bleu",
+        "genus": "Lepista",
+        "species": "nuda",
+        "family": "Tricholomataceae",
+        "edibility": "edible",
+        "habitat": "Bois, lisières",
+        "description": "Champignon violet à chair ferme, bon comestible."
+    },
+    {
+        "id": 10,
+        "imageUrl": "morchella_esculenta.png",
+        "commonName": "Morille commune",
+        "genus": "Morchella",
+        "species": "esculenta",
+        "family": "Morchellaceae",
+        "edibility": "edible",
+        "habitat": "Forêts, vergers au printemps",
+        "description": "Champignon printanier au chapeau alvéolé, très prisé en cuisine."
+    }
+]
