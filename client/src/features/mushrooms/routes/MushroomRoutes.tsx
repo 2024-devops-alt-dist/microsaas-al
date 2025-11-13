@@ -1,10 +1,10 @@
 import { Route, Routes } from 'react-router-dom';
-import ObservationsPage from '../../observations/pages/ObservationsPage';
+import MushroomsPage from '../pages/MushroomsPage';
 
 export default function MushroomRoutes() {
     return (
         <Routes>
-            <Route path="/" element={<ObservationsPage />} />
+            <Route path="/" element={<MushroomsPage />} />
         </Routes>
     );
 }

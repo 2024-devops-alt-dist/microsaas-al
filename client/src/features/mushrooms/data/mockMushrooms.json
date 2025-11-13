@@ -1,7 +1,7 @@
 [
     {
         "id": 1,
-        "imageUrl": "amanita_muscaria.jpg",
+        "imageUrl": "amanita_muscaria.png",
         "commonName": "Amanite tue-mouches",
         "genus": "Amanita",
         "species": "muscaria",
@@ -12,7 +12,7 @@
     },
     {
         "id": 2,
-        "imageUrl": "boletus_edulis.jpg",
+        "imageUrl": "boletus_edulis.png",
         "commonName": "Cèpe de Bordeaux",
         "genus": "Boletus",
         "species": "edulis",
@@ -23,7 +23,7 @@
     },
     {
         "id": 3,
-        "imageUrl": "cantharellus_cibarius.webp",
+        "imageUrl": "cantharellus_cibarius.png",
         "commonName": "Girolle",
         "genus": "Cantharellus",
         "species": "cibarius",
@@ -34,7 +34,7 @@
     },
     {
         "id": 4,
-        "imageUrl": "lactarius_deliciosus.jpg",
+        "imageUrl": "lactarius_deliciosus.png",
         "commonName": "Lactaire délicieux",
         "genus": "Lactarius",
         "species": "deliciosus",
@@ -45,7 +45,7 @@
     },
     {
         "id": 5,
-        "imageUrl": "coprinus_comatus.webp",
+        "imageUrl": "coprinus_comatus.png",
         "commonName": "Coprin chevelu",
         "genus": "Coprinus",
         "species": "comatus",
@@ -56,7 +56,7 @@
     },
     {
         "id": 6,
-        "imageUrl": "agaricus_campestris.jpg",
+        "imageUrl": "agaricus_campestris.png",
         "commonName": "Agaric champêtre",
         "genus": "Agaricus",
         "species": "campestris",
@@ -67,7 +67,7 @@
     },
     {
         "id": 7,
-        "imageUrl": "russula_vesca.jpg",
+        "imageUrl": "russula_vesca.png",
         "commonName": "Russule comestible",
         "genus": "Russula",
         "species": "vesca",
@@ -78,7 +78,7 @@
     },
     {
         "id": 8,
-        "imageUrl": "craterellus_tubaeformis.jpg",
+        "imageUrl": "craterellus_tubaeformis.png",
         "commonName": "Chanterelle en tube",
         "genus": "Craterellus",
         "species": "tubaeformis",
@@ -89,7 +89,7 @@
     },
     {
         "id": 9,
-        "imageUrl": "lepista_nuda.jpg",
+        "imageUrl": "lepista_nuda.png",
         "commonName": "Pied bleu",
         "genus": "Lepista",
         "species": "nuda",
@@ -100,7 +100,7 @@
     },
     {
         "id": 10,
-        "imageUrl": "morchella_esculenta.jpg",
+        "imageUrl": "morchella_esculenta.png",
         "commonName": "Morille commune",
         "genus": "Morchella",
         "species": "esculenta",

@@ -1,6 +1,6 @@
 export interface Mushroom {
     id?: number;
-    imageUrl?: string;
+    imageUrl: string;
     commonName: string;
     genus: string;
     species: string;
