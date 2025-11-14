@@ -4,3 +4,5 @@ dist
 *.local
 *.log
 /src/generated/prisma
+
+/src/infrastructure/prisma/generated/prisma

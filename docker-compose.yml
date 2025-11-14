@@ -2,8 +2,7 @@ services:
   db:
     image: postgres:latest
     volumes:
-      - db-data:/var/lib/postgresql/data
-      - ./db:/docker-entrypoint-initdb.d/
+      - db-data:/var/lib/postgresql
     ports:
       - "${DB_PORT}:5432"
     environment:

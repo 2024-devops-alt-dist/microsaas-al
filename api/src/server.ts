@@ -1,13 +1,13 @@
 import app from './app.js';
 import logger from './utils/logger.js';
 import { config } from './config/env.js';
-import { connectPrisma, disconnectPrisma } from './infrastructure/database/prismaClient.js';
+import { prisma } from './infrastructure/prisma/prisma.js';
 
 const API_PORT = config.API_PORT;
 
 async function startServer() {
     try {
-        await connectPrisma();
+        await prisma.$connect();
         logger.info('✅ Postresql connection successed');
     } catch (err) {
         logger.error('❌ Database connection failed :', err);
@@ -19,7 +19,7 @@ async function startServer() {
 
     const shutdown = async () => {
         logger.info('Shuting down server...');
-        await disconnectPrisma();
+        await prisma.$disconnect();
         server.close(() => {
             logger.info('Server closed');
             process.exit(0);

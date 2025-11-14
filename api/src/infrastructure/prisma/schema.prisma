@@ -1,0 +1,121 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client"
+  output   = "./generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum Role {
+  ADMIN
+  USER
+}
+
+enum ConfidenceLevel {
+  UNKNOWN
+  LOW
+  MEDIUM
+  HIGH
+}
+
+enum Edibility {
+  EDIBLE
+  INEDIBLE
+  POISONOUS
+  DEADLY
+  UNKNOWN
+}
+
+enum Status {
+  DRAFT
+  SUBMITTED
+  APPROVED
+  REJECTED
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  email     String   @unique
+  password  String
+  username  String
+  firstname String
+  lastname  String
+  role      Role     @default(USER)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  observations Observation[]
+  comments     Comment[]
+}
+
+model Mushroom {
+  id          Int       @id @default(autoincrement())
+  commonName  String
+  species     String
+  genus       String
+  family      String
+  edibility   Edibility
+  habitat     String?
+  description String?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  observations Observation[]
+  photos       Photo[]
+}
+
+model Photo {
+  id            Int      @id @default(autoincrement())
+  url           String
+  filename      String
+  mimeType      String
+  size          Int
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  observationId Int?
+  mushroomId    Int?
+
+  observation Observation? @relation(fields: [observationId], references: [id])
+  mushroom    Mushroom?    @relation(fields: [mushroomId], references: [id])
+}
+
+model Observation {
+  id              Int             @id @default(autoincrement())
+  title           String
+  date            DateTime
+  latitude        Decimal?        @db.Decimal(9, 6)
+  longitude       Decimal?        @db.Decimal(9, 6)
+  quantity        Int
+  notes           String?
+  isPublic        Boolean         @default(false)
+  confidenceLevel ConfidenceLevel
+  createdAt       DateTime        @default(now())
+  updatedAt       DateTime        @updatedAt
+  userId          Int
+  mushroomId      Int?
+
+  user     User      @relation(fields: [userId], references: [id])
+  mushroom Mushroom? @relation(fields: [mushroomId], references: [id])
+
+  photos   Photo[]
+  comments Comment[]
+}
+
+model Comment {
+  id            Int         @id @default(autoincrement())
+  content       String
+  status        Status
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+  userId        Int
+  observationId Int
+  user          User        @relation(fields: [userId], references: [id])
+  observation   Observation @relation(fields: [observationId], references: [id])
+}

@@ -1,0 +1,92 @@
+[
+    {
+        "id": 1,
+        "content": "Commentaire 1",
+        "status": "APPROVED",
+        "createdAt": "2025-11-14T10:00:00Z",
+        "updatedAt": "2025-11-14T10:00:00Z",
+        "userId": 1,
+        "observationId": 1
+    },
+    {
+        "id": 2,
+        "content": "Commentaire 2",
+        "status": "DRAFT",
+        "createdAt": "2025-11-14T10:00:00Z",
+        "updatedAt": "2025-11-14T10:00:00Z",
+        "userId": 2,
+        "observationId": 2
+    },
+    {
+        "id": 3,
+        "content": "Commentaire 3",
+        "status": "SUBMITTED",
+        "createdAt": "2025-11-14T10:00:00Z",
+        "updatedAt": "2025-11-14T10:00:00Z",
+        "userId": 3,
+        "observationId": 3
+    },
+    {
+        "id": 4,
+        "content": "Commentaire 4",
+        "status": "REJECTED",
+        "createdAt": "2025-11-14T10:00:00Z",
+        "updatedAt": "2025-11-14T10:00:00Z",
+        "userId": 4,
+        "observationId": 4
+    },
+    {
+        "id": 5,
+        "content": "Commentaire 5",
+        "status": "APPROVED",
+        "createdAt": "2025-11-14T10:00:00Z",
+        "updatedAt": "2025-11-14T10:00:00Z",
+        "userId": 5,
+        "observationId": 5
+    },
+    {
+        "id": 6,
+        "content": "Commentaire 6",
+        "status": "SUBMITTED",
+        "createdAt": "2025-11-14T10:00:00Z",
+        "updatedAt": "2025-11-14T10:00:00Z",
+        "userId": 6,
+        "observationId": 6
+    },
+    {
+        "id": 7,
+        "content": "Commentaire 7",
+        "status": "DRAFT",
+        "createdAt": "2025-11-14T10:00:00Z",
+        "updatedAt": "2025-11-14T10:00:00Z",
+        "userId": 7,
+        "observationId": 7
+    },
+    {
+        "id": 8,
+        "content": "Commentaire 8",
+        "status": "APPROVED",
+        "createdAt": "2025-11-14T10:00:00Z",
+        "updatedAt": "2025-11-14T10:00:00Z",
+        "userId": 8,
+        "observationId": 8
+    },
+    {
+        "id": 9,
+        "content": "Commentaire 9",
+        "status": "REJECTED",
+        "createdAt": "2025-11-14T10:00:00Z",
+        "updatedAt": "2025-11-14T10:00:00Z",
+        "userId": 9,
+        "observationId": 9
+    },
+    {
+        "id": 10,
+        "content": "Commentaire 10",
+        "status": "SUBMITTED",
+        "createdAt": "2025-11-14T10:00:00Z",
+        "updatedAt": "2025-11-14T10:00:00Z",
+        "userId": 10,
+        "observationId": 10
+    }
+]

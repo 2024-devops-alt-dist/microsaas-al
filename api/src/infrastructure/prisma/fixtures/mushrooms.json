@@ -1,0 +1,122 @@
+[
+    {
+        "id": 1,
+        "commonName": "Champignon de Paris",
+        "species": "Agaricus bisporus",
+        "genus": "Agaricus",
+        "family": "Agaricaceae",
+        "edibility": "EDIBLE",
+        "habitat": "Pelouse",
+        "description": "Champignon comestible commun",
+        "createdAt": "2025-11-14T10:00:00Z",
+        "updatedAt": "2025-11-14T10:00:00Z"
+    },
+    {
+        "id": 2,
+        "commonName": "Girolle",
+        "species": "Cantharellus cibarius",
+        "genus": "Cantharellus",
+        "family": "Cantharellaceae",
+        "edibility": "EDIBLE",
+        "habitat": "Forêt",
+        "description": "Champignon jaune, comestible",
+        "createdAt": "2025-11-14T10:00:00Z",
+        "updatedAt": "2025-11-14T10:00:00Z"
+    },
+    {
+        "id": 3,
+        "commonName": "Cèpe de Bordeaux",
+        "species": "Boletus edulis",
+        "genus": "Boletus",
+        "family": "Boletaceae",
+        "edibility": "EDIBLE",
+        "habitat": "Forêt",
+        "description": "Champignon brun, délicieux",
+        "createdAt": "2025-11-14T10:00:00Z",
+        "updatedAt": "2025-11-14T10:00:00Z"
+    },
+    {
+        "id": 4,
+        "commonName": "Amanite tue-mouches",
+        "species": "Amanita muscaria",
+        "genus": "Amanita",
+        "family": "Amanitaceae",
+        "edibility": "POISONOUS",
+        "habitat": "Forêt",
+        "description": "Champignon toxique rouge à points blancs",
+        "createdAt": "2025-11-14T10:00:00Z",
+        "updatedAt": "2025-11-14T10:00:00Z"
+    },
+    {
+        "id": 5,
+        "commonName": "Pleurote",
+        "species": "Pleurotus ostreatus",
+        "genus": "Pleurotus",
+        "family": "Pleurotaceae",
+        "edibility": "EDIBLE",
+        "habitat": "Tronc d'arbre",
+        "description": "Champignon comestible en forme d'huître",
+        "createdAt": "2025-11-14T10:00:00Z",
+        "updatedAt": "2025-11-14T10:00:00Z"
+    },
+    {
+        "id": 6,
+        "commonName": "Morille",
+        "species": "Morchella esculenta",
+        "genus": "Morchella",
+        "family": "Morchellaceae",
+        "edibility": "EDIBLE",
+        "habitat": "Forêt",
+        "description": "Champignon printanier comestible",
+        "createdAt": "2025-11-14T10:00:00Z",
+        "updatedAt": "2025-11-14T10:00:00Z"
+    },
+    {
+        "id": 7,
+        "commonName": "Agaric jaunissant",
+        "species": "Agaricus xanthodermus",
+        "genus": "Agaricus",
+        "family": "Agaricaceae",
+        "edibility": "POISONOUS",
+        "habitat": "Pelouse",
+        "description": "Champignon toxique à odeur phénolique",
+        "createdAt": "2025-11-14T10:00:00Z",
+        "updatedAt": "2025-11-14T10:00:00Z"
+    },
+    {
+        "id": 8,
+        "commonName": "Tricholome équestre",
+        "species": "Tricholoma equestre",
+        "genus": "Tricholoma",
+        "family": "Tricholomataceae",
+        "edibility": "POISONOUS",
+        "habitat": "Forêt",
+        "description": "Autrefois considéré comestible, mais toxique",
+        "createdAt": "2025-11-14T10:00:00Z",
+        "updatedAt": "2025-11-14T10:00:00Z"
+    },
+    {
+        "id": 9,
+        "commonName": "Chanterelle",
+        "species": "Cantharellus tubaeformis",
+        "genus": "Cantharellus",
+        "family": "Cantharellaceae",
+        "edibility": "EDIBLE",
+        "habitat": "Forêt",
+        "description": "Petit champignon comestible brun-jaune",
+        "createdAt": "2025-11-14T10:00:00Z",
+        "updatedAt": "2025-11-14T10:00:00Z"
+    },
+    {
+        "id": 10,
+        "commonName": "Coprin chevelu",
+        "species": "Coprinus comatus",
+        "genus": "Coprinus",
+        "family": "Coprinaceae",
+        "edibility": "EDIBLE",
+        "habitat": "Pelouse",
+        "description": "Champignon comestible lorsqu'il est jeune",
+        "createdAt": "2025-11-14T10:00:00Z",
+        "updatedAt": "2025-11-14T10:00:00Z"
+    }
+]
