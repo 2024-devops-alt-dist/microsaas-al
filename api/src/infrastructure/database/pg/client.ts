@@ -1,5 +1,5 @@
+import { config } from 'api/src/config/env';
 import { Pool } from 'pg';
-import { config } from '../../../config/env.js';
 
 export const pool = new Pool({
     host: config.DB_HOST,

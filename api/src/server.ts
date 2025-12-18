@@ -1,7 +1,7 @@
-import app from './app.js';
-import logger from './utils/logger.js';
-import { config } from './config/env.js';
-import { prisma } from './infrastructure/prisma/prisma.js';
+import app from './app';
+import logger from './utils/logger';
+import { config } from './config/env';
+import { prisma } from './infrastructure/database/prisma/prisma';
 
 const API_PORT = config.API_PORT;
 
