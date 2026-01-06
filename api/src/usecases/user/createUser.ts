@@ -4,7 +4,6 @@ import { BadRequestError } from 'api/src/domain/errors/BadRequestError';
 import { EmailAlreadyExistsError } from 'api/src/domain/errors/EmailAlreadyExistsError';
 import { IUserRepository } from 'api/src/interfaces/repositories/IUserRepository';
 import { hashPassword } from 'api/src/utils/hashPassword';
-import { UserResponseDto } from '../dtos/UserResponseDto';
 
 export class CreateUser {
     constructor(private userRepository: IUserRepository) {}
@@ -16,7 +15,7 @@ export class CreateUser {
         firstname: string;
         lastname: string;
         role: string;
-    }): Promise<UserResponseDto> {
+    }): Promise<Omit<User, 'password'>> {
         if (
             !userData.email ||
             !userData.password ||
@@ -46,7 +45,7 @@ export class CreateUser {
                 [],
             ),
         );
-        const returnedUser: UserResponseDto = {
+        const returnedUser: Omit<User, 'password'> = {
             id: newUser.id,
             email: newUser.email,
             username: newUser.username,
@@ -55,6 +54,8 @@ export class CreateUser {
             role: newUser.role,
             createdAt: newUser.createdAt,
             updatedAt: newUser.updatedAt,
+            observations: newUser.observations,
+            comments: newUser.comments,
         };
         return returnedUser;
     }

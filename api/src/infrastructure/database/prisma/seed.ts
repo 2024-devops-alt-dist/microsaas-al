@@ -49,13 +49,11 @@ async function main() {
                 notes: observation.notes,
                 isPublic: observation.isPublic,
                 confidenceLevel:
-                    observation.confidenceLevel === 'CERTAIN'
-                        ? 'CERTAIN'
-                        : observation.confidenceLevel === 'PROBABLE'
-                          ? 'PROBABLE'
-                          : observation.confidenceLevel === 'POSSIBLE'
-                            ? 'POSSIBLE'
-                            : 'UNKNOWN',
+                    observation.confidenceLevel === 'HIGH'
+                        ? 'HIGH'
+                        : observation.confidenceLevel === 'MEDIUM'
+                          ? 'MEDIUM'
+                          : 'LOW',
                 userId: observation.userId,
                 mushroomId: observation.mushroomId,
             },

@@ -15,6 +15,6 @@ export class Mushroom {
         public createdAt: Date | null,
         public updatedAt: Date | null,
         public observations: Observation[],
-        public photos: Photo[]
+        public photos: Photo[],
     ) {}
 }

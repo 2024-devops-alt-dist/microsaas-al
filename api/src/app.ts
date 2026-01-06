@@ -13,6 +13,14 @@ import { FindUserById } from './usecases/user/findUserById';
 import { UpdateUser } from './usecases/user/updateUser';
 import { DeleteUser } from './usecases/user/deleteUser';
 import { FindUserByEmail } from './usecases/user/findUserByEmail';
+import { MushroomRepository } from './infrastructure/mushroom.repository';
+import { FindAllMushrooms } from './usecases/mushroom/findAllMushrooms';
+import { FindMushroomById } from './usecases/mushroom/findMushroomById';
+import { CreateMushroom } from './usecases/mushroom/createMushroom';
+import { DeleteMushroom } from './usecases/mushroom/deleteMushroom';
+import { MushroomController } from './interfaces/controllers/mushroom.controller';
+import { UpdateMushroom } from './usecases/mushroom/updateMushroom';
+import mushroomRoutes from './interfaces/routes/mushroom.routes';
 
 const app = express();
 
@@ -42,7 +50,22 @@ const userController = new UserController(
     deleteUserUseCase,
 );
 
+const mushroomRepository = new MushroomRepository();
+const findAllMushrooms = new FindAllMushrooms(mushroomRepository);
+const findMushroomById = new FindMushroomById(mushroomRepository);
+const createMushroom = new CreateMushroom(mushroomRepository);
+const updateMushroom = new UpdateMushroom(mushroomRepository);
+const deleteMushroom = new DeleteMushroom(mushroomRepository);
+const mushroomController = new MushroomController(
+    findAllMushrooms,
+    findMushroomById,
+    createMushroom,
+    updateMushroom,
+    deleteMushroom,
+);
+
 app.use('/users', userRoutes(userController));
+app.use('/mushrooms', mushroomRoutes(mushroomController));
 
 app.use(errorHandler);
 
