@@ -19,7 +19,6 @@ enum Role {
 }
 
 enum ConfidenceLevel {
-    UNKNOWN
     LOW
     MEDIUM
     HIGH

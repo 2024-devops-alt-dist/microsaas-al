@@ -7,10 +7,8 @@ export class Observation {
         public id: number | null,
         public title: string,
         public date: Date,
-        public location: {
-            latitude: number;
-            longitude: number;
-        },
+        public latitude: number,
+        public longitude: number,
         public quantity: number,
         public notes: string | null,
         public isPublic: boolean,
@@ -20,6 +18,6 @@ export class Observation {
         public userId: number,
         public mushroomId: number | null,
         public photos: Photo[],
-        public comments: Comment[]
+        public comments: Comment[],
     ) {}
 }

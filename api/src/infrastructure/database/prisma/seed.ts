@@ -7,6 +7,12 @@ import photosData from './fixtures/photos.json';
 import { prisma } from './prisma';
 
 async function main() {
+    await prisma.$executeRawUnsafe('TRUNCATE TABLE "Comment" RESTART IDENTITY CASCADE');
+    await prisma.$executeRawUnsafe('TRUNCATE TABLE "Photo" RESTART IDENTITY CASCADE');
+    await prisma.$executeRawUnsafe('TRUNCATE TABLE "Observation" RESTART IDENTITY CASCADE');
+    await prisma.$executeRawUnsafe('TRUNCATE TABLE "Mushroom" RESTART IDENTITY CASCADE');
+    await prisma.$executeRawUnsafe('TRUNCATE TABLE "User" RESTART IDENTITY CASCADE');
+
     for (const user of usersData) {
         await prisma.user.create({
             data: {

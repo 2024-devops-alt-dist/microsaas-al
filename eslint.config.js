@@ -10,7 +10,13 @@ import prettierPlugin from 'eslint-plugin-prettier';
 export default [
     // 1️⃣ Ignores globaux
     {
-        ignores: ['**/node_modules/**', '**/dist/**', '**/build/**', '**/.vite/**', '**/generated/**'],
+        ignores: [
+            '**/node_modules/**',
+            '**/dist/**',
+            '**/build/**',
+            '**/.vite/**',
+            '**/generated/**',
+        ],
     },
 
     // 2️⃣ Base JS + TS (API + Client)

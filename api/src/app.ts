@@ -21,6 +21,14 @@ import { DeleteMushroom } from './usecases/mushroom/deleteMushroom';
 import { MushroomController } from './interfaces/controllers/mushroom.controller';
 import { UpdateMushroom } from './usecases/mushroom/updateMushroom';
 import mushroomRoutes from './interfaces/routes/mushroom.routes';
+import { ObservationRepository } from './infrastructure/observation.repository';
+import { FindAllObservations } from './usecases/observation/findAllObservations';
+import { FindObservationById } from './usecases/observation/findObservationById';
+import { CreateObservation } from './usecases/observation/createObservation';
+import { UpdateObservation } from './usecases/observation/updateObservation';
+import { DeleteObservation } from './usecases/observation/deleteObservation';
+import { ObservationController } from './interfaces/controllers/observation.controller';
+import observationRoutes from './interfaces/routes/observation.routes';
 
 const app = express();
 
@@ -64,8 +72,23 @@ const mushroomController = new MushroomController(
     deleteMushroom,
 );
 
+const observationRepository = new ObservationRepository();
+const findAllObservations = new FindAllObservations(observationRepository);
+const findObservationById = new FindObservationById(observationRepository);
+const createObservation = new CreateObservation(observationRepository);
+const updateObservation = new UpdateObservation(observationRepository);
+const deleteObservation = new DeleteObservation(observationRepository);
+const observationController = new ObservationController(
+    findAllObservations,
+    findObservationById,
+    createObservation,
+    updateObservation,
+    deleteObservation,
+);
+
 app.use('/users', userRoutes(userController));
 app.use('/mushrooms', mushroomRoutes(mushroomController));
+app.use('/observations', observationRoutes(observationController));
 
 app.use(errorHandler);
 
