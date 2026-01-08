@@ -3,29 +3,28 @@
 /* 🌞 Thème scientifique clair */
 :root {
     /* LIGHT MODE */
-    --color-dark-brown: #1C1C1C;
-    --color-dark-gray: #242424;     
-    --color-light-brown: #E2DACF;   
-    --color-gray: #A3A3A3; 
-    --color-white: #FFFFFF;
+    --color-dark-brown: #1c1c1c;
+    --color-dark-gray: #242424;
+    --color-light-brown: #e2dacf;
+    --color-gray: #a3a3a3;
+    --color-white: #ffffff;
 
-    --color-accent-green: #2E4B3B;
+    --color-accent-green: #2e4b3b;
     --color-accent-purple: #a54ebf;
     --color-accent-orange: #f26d28;
 
     --color-success: #30a840;
-    --color-warning: #D9A441;
+    --color-warning: #d9a441;
     --color-error: #cf3030;
 
     /* --font-title: "Montserrat Alternates", sans-serif;
     --font-body: "Nunito Sans", sans-serif;
     --font-mono: "JetBrains Mono", monospace; */
 
-    --font-title: "Montserrat", sans-serif;
-    --font-body: "opensans", sans-serif;
-    --font-mono: "IBMPlexMono", monospace;
+    --font-title: 'Montserrat', sans-serif;
+    --font-body: 'opensans', sans-serif;
+    --font-mono: 'IBMPlexMono', monospace;
 }
-
 
 /* BACKGROUND */
 
@@ -53,7 +52,6 @@
     background-color: var(--color-accent-purple);
 }
 
-
 /* COLOR TEXT */
 
 .text-dark-brown {
@@ -73,7 +71,7 @@
 }
 
 .text-accent-purple {
-    color: var(--color-accent-purple)
+    color: var(--color-accent-purple);
 }
 
 .text-accent-orange {

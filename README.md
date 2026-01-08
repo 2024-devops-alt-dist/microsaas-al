@@ -3,9 +3,10 @@
 ![CI](https://github.com/2024-devops-alt-dist/microsaas-al/actions/workflows/ci.yml/badge.svg)
 
 Progressive web application — **Node.js (Express + TypeScript) API**, **React Client**, **PostgreSQL**  
-Structure monorepo :  
-- `api/` — Backend Express (TypeScript)  
-- `client/` — Frontend React  
+Structure monorepo :
+
+- `api/` — Backend Express (TypeScript)
+- `client/` — Frontend React
 - PostgreSQL — Base de données
 
 ---
@@ -75,16 +76,16 @@ npm run build    # Build de production
 
 ## 📜 Scripts utiles
 
-| Dossier  | Commande         | Description                  |
-|----------|------------------|------------------------------|
-| `api`    | `npm run dev`    | Démarrer l'API en dev        |
-| `api`    | `npm run lint`   | Linter le code API           |
-| `api`    | `npm run test`   | Tester l'API                 |
-| `api`    | `npm run build`  | Build TypeScript             |
-| `client` | `npm run dev`    | Démarrer le client en dev    |
-| `client` | `npm run lint`   | Linter le code client        |
-| `client` | `npm run test`   | Tester le client             |
-| `client` | `npm run build`  | Build de production          |
+| Dossier  | Commande        | Description               |
+| -------- | --------------- | ------------------------- |
+| `api`    | `npm run dev`   | Démarrer l'API en dev     |
+| `api`    | `npm run lint`  | Linter le code API        |
+| `api`    | `npm run test`  | Tester l'API              |
+| `api`    | `npm run build` | Build TypeScript          |
+| `client` | `npm run dev`   | Démarrer le client en dev |
+| `client` | `npm run lint`  | Linter le code client     |
+| `client` | `npm run test`  | Tester le client          |
+| `client` | `npm run build` | Build de production       |
 
 ---
 
@@ -95,13 +96,14 @@ microsaas-al/
 │
 ├── api/         # Backend Express (TypeScript)
 ├── client/      # Frontend React
+├── shared/      # Composants partagés (interfaces, enums)
 ├── db/          # Scripts init PostgreSQL (optionnel)
 ├── docker-compose.yml
 ├── .env.template
 └── README.md
 ```
 
----
+## L'API avec une architecture modulaire (feature-based).
 
 ## 🏁 CI/CD
 
