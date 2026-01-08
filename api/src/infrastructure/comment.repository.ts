@@ -1,7 +1,7 @@
-import { Status as DomainStatus } from '../domain/constant/status';
-import { Comment } from '../domain/entities/Comment';
-import { Prisma, Comment as CommentPrisma } from './database/prisma/generated/prisma/client';
-import { prisma } from './database/prisma/prisma';
+import { Status as DomainStatus } from '../domain/constant/status.js';
+import { Comment } from '../domain/entities/Comment.js';
+import { Prisma, Comment as CommentPrisma } from './database/prisma/generated/prisma/client.js';
+import { prisma } from './database/prisma/prisma.js';
 
 export class CommentRepository {
     async findAll(): Promise<Comment[]> {

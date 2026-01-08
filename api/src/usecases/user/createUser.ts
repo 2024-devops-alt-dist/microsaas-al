@@ -1,9 +1,9 @@
-import { Role } from 'api/src/domain/constant/role';
-import { User } from 'api/src/domain/entities/User';
-import { BadRequestError } from 'api/src/domain/errors/BadRequestError';
-import { EmailAlreadyExistsError } from 'api/src/domain/errors/EmailAlreadyExistsError';
-import { IUserRepository } from 'api/src/interfaces/repositories/IUserRepository';
-import { hashPassword } from 'api/src/utils/hashPassword';
+import { Role } from '../../domain/constant/role.js';
+import { User } from '../../domain/entities/User.js';
+import { BadRequestError } from '../../domain/errors/BadRequestError.js';
+import { EmailAlreadyExistsError } from '../../domain/errors/EmailAlreadyExistsError.js';
+import { IUserRepository } from '../../interfaces/repositories/IUserRepository.js';
+import { hashPassword } from '../../utils/hashPassword.js';
 
 export class CreateUser {
     constructor(private userRepository: IUserRepository) {}

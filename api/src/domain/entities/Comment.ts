@@ -1,4 +1,4 @@
-import { Status } from '../constant/status';
+import { Status } from '../constant/status.js';
 
 export class Comment {
     constructor(

@@ -1,5 +1,5 @@
-import { IMushroomRepository } from 'api/src/interfaces/repositories/IMushroomRepository';
-import { Mushroom } from 'api/src/domain/entities/Mushroom';
+import { Mushroom } from '../../domain/entities/Mushroom.js';
+import { IMushroomRepository } from '../../interfaces/repositories/IMushroomRepository.js';
 
 export class FindAllMushrooms {
     constructor(private mushroomRepository: IMushroomRepository) {}

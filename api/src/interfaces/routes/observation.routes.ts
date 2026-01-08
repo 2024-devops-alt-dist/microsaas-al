@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { ObservationController } from '../controllers/observation.controller';
+import { ObservationController } from '../controllers/observation.controller.js';
 
 export default function observationRoutes(observationController: ObservationController) {
     const router = Router();

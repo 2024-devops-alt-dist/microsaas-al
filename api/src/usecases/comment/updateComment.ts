@@ -1,6 +1,6 @@
-import { Comment } from 'api/src/domain/entities/Comment';
-import { NotFoundError } from 'api/src/domain/errors/NotFoundError';
-import { ICommentRepository } from 'api/src/interfaces/repositories/ICommentRepository';
+import { Comment } from '../../domain/entities/Comment.js';
+import { NotFoundError } from '../../domain/errors/NotFoundError.js';
+import { ICommentRepository } from '../../interfaces/repositories/ICommentRepository.js';
 
 export class UpdateComment {
     constructor(private commentRepository: ICommentRepository) {}

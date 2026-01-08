@@ -1,9 +1,9 @@
-import { CreateComment } from 'api/src/usecases/comment/createComment';
-import { DeleteComment } from 'api/src/usecases/comment/deleteComment';
-import { FindAllComments } from 'api/src/usecases/comment/findAllComments';
-import { FindCommentById } from 'api/src/usecases/comment/findCommentById';
-import { UpdateComment } from 'api/src/usecases/comment/updateComment';
 import { Request, Response, NextFunction } from 'express';
+import { FindAllComments } from '../../usecases/comment/findAllComments.js';
+import { FindCommentById } from '../../usecases/comment/findCommentById.js';
+import { CreateComment } from '../../usecases/comment/createComment.js';
+import { UpdateComment } from '../../usecases/comment/updateComment.js';
+import { DeleteComment } from '../../usecases/comment/deleteComment.js';
 
 export class CommentController {
     constructor(

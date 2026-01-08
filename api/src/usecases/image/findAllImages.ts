@@ -1,5 +1,5 @@
-import { Image } from 'api/src/domain/entities/Image';
-import { IImageRepository } from 'api/src/interfaces/repositories/IImageRepository';
+import { Image } from '../../domain/entities/Image.js';
+import { IImageRepository } from '../../interfaces/repositories/IImageRepository.js';
 
 export class FindAllImages {
     constructor(private imageRepository: IImageRepository) {}

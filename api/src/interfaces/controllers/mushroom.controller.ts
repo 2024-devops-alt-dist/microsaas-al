@@ -1,9 +1,9 @@
-import { CreateMushroom } from 'api/src/usecases/mushroom/createMushroom';
-import { DeleteMushroom } from 'api/src/usecases/mushroom/deleteMushroom';
-import { FindAllMushrooms } from 'api/src/usecases/mushroom/findAllMushrooms';
-import { FindMushroomById } from 'api/src/usecases/mushroom/findMushroomById';
-import { UpdateMushroom } from 'api/src/usecases/mushroom/updateMushroom';
 import { Request, Response, NextFunction } from 'express';
+import { FindAllMushrooms } from '../../usecases/mushroom/findAllMushrooms.js';
+import { FindMushroomById } from '../../usecases/mushroom/findMushroomById.js';
+import { CreateMushroom } from '../../usecases/mushroom/createMushroom.js';
+import { UpdateMushroom } from '../../usecases/mushroom/updateMushroom.js';
+import { DeleteMushroom } from '../../usecases/mushroom/deleteMushroom.js';
 
 export class MushroomController {
     constructor(

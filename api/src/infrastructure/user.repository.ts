@@ -1,10 +1,7 @@
-import { User } from 'api/src/domain/entities/User';
-import {
-    Prisma,
-    User as UserPrisma,
-} from 'api/src/infrastructure/database/prisma/generated/prisma/client';
-import { prisma } from './database/prisma/prisma';
-import { Role as DomainRole } from 'api/src/domain/constant/role';
+import { User } from '../domain/entities/User.js';
+import { Prisma, User as UserPrisma } from './database/prisma/generated/prisma/client.js';
+import { prisma } from './database/prisma/prisma.js';
+import { Role as DomainRole } from '../domain/constant/role.js';
 
 export class UserRepository {
     async findAll(): Promise<User[]> {

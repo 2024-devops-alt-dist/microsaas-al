@@ -1,56 +1,54 @@
+import { env } from './config/env.js';
 import express from 'express';
-import { config } from './config/env';
-import logger from './utils/logger';
-import { pool } from './infrastructure/database/pg/client';
 import cors from 'cors';
-import { errorHandler } from './middlewares/error.middleware';
-import { UserRepository } from './infrastructure/user.repository';
-import { CreateUser } from './usecases/user/createUser';
-import { UserController } from './interfaces/controllers/user.controller';
-import { FindAllUsers } from './usecases/user/findAllUsers';
-import userRoutes from './interfaces/routes/user.routes';
-import { FindUserById } from './usecases/user/findUserById';
-import { UpdateUser } from './usecases/user/updateUser';
-import { DeleteUser } from './usecases/user/deleteUser';
-import { FindUserByEmail } from './usecases/user/findUserByEmail';
-import { MushroomRepository } from './infrastructure/mushroom.repository';
-import { FindAllMushrooms } from './usecases/mushroom/findAllMushrooms';
-import { FindMushroomById } from './usecases/mushroom/findMushroomById';
-import { CreateMushroom } from './usecases/mushroom/createMushroom';
-import { DeleteMushroom } from './usecases/mushroom/deleteMushroom';
-import { MushroomController } from './interfaces/controllers/mushroom.controller';
-import { UpdateMushroom } from './usecases/mushroom/updateMushroom';
-import mushroomRoutes from './interfaces/routes/mushroom.routes';
-import { ObservationRepository } from './infrastructure/observation.repository';
-import { FindAllObservations } from './usecases/observation/findAllObservations';
-import { FindObservationById } from './usecases/observation/findObservationById';
-import { CreateObservation } from './usecases/observation/createObservation';
-import { UpdateObservation } from './usecases/observation/updateObservation';
-import { DeleteObservation } from './usecases/observation/deleteObservation';
-import { ObservationController } from './interfaces/controllers/observation.controller';
-import observationRoutes from './interfaces/routes/observation.routes';
-import { ImageRepository } from './infrastructure/image.repository';
-import { FindAllImages } from './usecases/image/findAllImages';
-import { FindImageById } from './usecases/image/findImageById';
-import { CreateImage } from './usecases/image/createImage';
-import { UpdateImage } from './usecases/image/updateImage';
-import { DeleteImage } from './usecases/image/deletImage';
-import { ImageController } from './interfaces/controllers/image.controller';
-import imageRoutes from './interfaces/routes/image.routes';
-import { CommentRepository } from './infrastructure/comment.repository';
-import { FindAllComments } from './usecases/comment/findAllComments';
-import { FindCommentById } from './usecases/comment/findCommentById';
-import { CreateComment } from './usecases/comment/createComment';
-import { UpdateComment } from './usecases/comment/updateComment';
-import { DeleteComment } from './usecases/comment/deleteComment';
-import { CommentController } from './interfaces/controllers/comment.controller';
-import commentRoutes from './interfaces/routes/comment.routes';
+import { errorHandler } from './middlewares/error.middleware.js';
+import { UserRepository } from './infrastructure/user.repository.js';
+import { CreateUser } from './usecases/user/createUser.js';
+import { UserController } from './interfaces/controllers/user.controller.js';
+import { FindAllUsers } from './usecases/user/findAllUsers.js';
+import userRoutes from './interfaces/routes/user.routes.js';
+import { FindUserById } from './usecases/user/findUserById.js';
+import { UpdateUser } from './usecases/user/updateUser.js';
+import { DeleteUser } from './usecases/user/deleteUser.js';
+import { FindUserByEmail } from './usecases/user/findUserByEmail.js';
+import { MushroomRepository } from './infrastructure/mushroom.repository.js';
+import { FindAllMushrooms } from './usecases/mushroom/findAllMushrooms.js';
+import { FindMushroomById } from './usecases/mushroom/findMushroomById.js';
+import { CreateMushroom } from './usecases/mushroom/createMushroom.js';
+import { UpdateMushroom } from './usecases/mushroom/updateMushroom.js';
+import { DeleteMushroom } from './usecases/mushroom/deleteMushroom.js';
+import { MushroomController } from './interfaces/controllers/mushroom.controller.js';
+import { ObservationRepository } from './infrastructure/observation.repository.js';
+import { FindAllObservations } from './usecases/observation/findAllObservations.js';
+import { FindObservationById } from './usecases/observation/findObservationById.js';
+import { CreateObservation } from './usecases/observation/createObservation.js';
+import { UpdateObservation } from './usecases/observation/updateObservation.js';
+import { DeleteObservation } from './usecases/observation/deleteObservation.js';
+import { ObservationController } from './interfaces/controllers/observation.controller.js';
+import { ImageRepository } from './infrastructure/image.repository.js';
+import { FindAllImages } from './usecases/image/findAllImages.js';
+import { FindImageById } from './usecases/image/findImageById.js';
+import { CreateImage } from './usecases/image/createImage.js';
+import { UpdateImage } from './usecases/image/updateImage.js';
+import { ImageController } from './interfaces/controllers/image.controller.js';
+import { DeleteImage } from './usecases/image/deletImage.js';
+import { CommentRepository } from './infrastructure/comment.repository.js';
+import { FindAllComments } from './usecases/comment/findAllComments.js';
+import { FindCommentById } from './usecases/comment/findCommentById.js';
+import { CreateComment } from './usecases/comment/createComment.js';
+import { UpdateComment } from './usecases/comment/updateComment.js';
+import { DeleteComment } from './usecases/comment/deleteComment.js';
+import { CommentController } from './interfaces/controllers/comment.controller.js';
+import mushroomRoutes from './interfaces/routes/mushroom.routes.js';
+import observationRoutes from './interfaces/routes/observation.routes.js';
+import imageRoutes from './interfaces/routes/image.routes.js';
+import commentRoutes from './interfaces/routes/comment.routes.js';
 
 const app = express();
 
 app.use(
     cors({
-        origin: config.FRONT_URL,
+        origin: env.FRONT_URL,
         methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
         credentials: true,
     }),
@@ -137,21 +135,5 @@ app.use('/images', imageRoutes(imageController));
 app.use('/comments', commentRoutes(commentController));
 
 app.use(errorHandler);
-
-app.get('/api/health', async (_req, res) => {
-    try {
-        await pool.query('SELECT 1');
-        res.send({
-            status: 'ok',
-            message: 'API connected to database!',
-        });
-    } catch (error) {
-        logger.error('Database query error:', error);
-        res.status(500).send({
-            status: 'error',
-            message: 'Database connection failed',
-        });
-    }
-});
 
 export default app;

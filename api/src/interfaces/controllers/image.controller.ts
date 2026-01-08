@@ -1,9 +1,9 @@
-import { CreateImage } from 'api/src/usecases/image/createImage';
-import { DeleteImage } from 'api/src/usecases/image/deletImage';
-import { FindAllImages } from 'api/src/usecases/image/findAllImages';
-import { FindImageById } from 'api/src/usecases/image/findImageById';
-import { UpdateImage } from 'api/src/usecases/image/updateImage';
 import { Request, Response, NextFunction } from 'express';
+import { FindAllImages } from '../../usecases/image/findAllImages.js';
+import { FindImageById } from '../../usecases/image/findImageById.js';
+import { CreateImage } from '../../usecases/image/createImage.js';
+import { UpdateImage } from '../../usecases/image/updateImage.js';
+import { DeleteImage } from '../../usecases/image/deletImage.js';
 
 export class ImageController {
     constructor(

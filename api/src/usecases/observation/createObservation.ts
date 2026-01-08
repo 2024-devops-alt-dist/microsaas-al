@@ -1,7 +1,7 @@
-import { ConfidenceLevel } from 'api/src/domain/constant/confidenceLevel';
-import { Observation } from 'api/src/domain/entities/Observation';
-import { BadRequestError } from 'api/src/domain/errors/BadRequestError';
-import { IObservationRepository } from 'api/src/interfaces/repositories/IObservationRepository';
+import { ConfidenceLevel } from '../../domain/constant/confidenceLevel.js';
+import { Observation } from '../../domain/entities/Observation.js';
+import { BadRequestError } from '../../domain/errors/BadRequestError.js';
+import { IObservationRepository } from '../../interfaces/repositories/IObservationRepository.js';
 
 export class CreateObservation {
     constructor(private observationRepository: IObservationRepository) {}

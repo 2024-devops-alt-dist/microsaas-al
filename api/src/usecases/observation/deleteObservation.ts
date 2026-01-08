@@ -1,5 +1,5 @@
-import { NotFoundError } from 'api/src/domain/errors/NotFoundError';
-import { IObservationRepository } from 'api/src/interfaces/repositories/IObservationRepository';
+import { NotFoundError } from '../../domain/errors/NotFoundError.js';
+import { IObservationRepository } from '../../interfaces/repositories/IObservationRepository.js';
 
 export class DeleteObservation {
     constructor(private observationRepository: IObservationRepository) {}

@@ -25,6 +25,13 @@ jobs:
             - name: Security audit
               run: npm audit --audit-level=high
 
+            - name: Generate Prisma Client
+              run: |
+                  cd api/
+                  npm run prisma:generate
+              env:
+                  DATABASE_URL: ${{ secrets.DATABASE_URL }}
+
             - name: Type check API
               run: |
                   cd api/
@@ -34,10 +41,10 @@ jobs:
               run: |
                   cd client/
                   npm run type-check
-                  
+
             - name: Build API
               run: npm run build -w api
-            
+
             - name: Build Client
               run: npm run build -w client
 
@@ -54,22 +61,22 @@ jobs:
             - name: Docker Login
               uses: docker/login-action@v3
               with:
-                  username: ${{ secrets.DOCKER_USERNAME }}
-                  password: ${{ secrets.DOCKER_PASSWORD }}
+                  username: ${{ secrets.DOCKERHUB_USERNAME }}
+                  password: ${{ secrets.DOCKERHUB_TOKEN }}
 
             - name: Docker Build and Push API
               uses: docker/build-push-action@v6
               with:
-                  context: ./packages/api
+                  context: ./api
                   push: true
-                  tags: ${{ secrets.DOCKER_USERNAME }}/microsass-api:latest
+                  tags: ${{ secrets.DOCKERHUB_USERNAME }}/chp-notes-api:latest
 
             - name: Docker Build and Push Client
               uses: docker/build-push-action@v6
               with:
-                  context: ./packages/client
+                  context: ./client
                   push: true
-                  tags: ${{ secrets.DOCKER_USERNAME }}/microsass-client:latest
+                  tags: ${{ secrets.DOCKERHUB_USERNAME }}/chp-notes-client:latest
 
     deploy:
         needs: docker

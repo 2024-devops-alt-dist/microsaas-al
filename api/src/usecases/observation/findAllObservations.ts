@@ -1,5 +1,5 @@
-import { Observation } from 'api/src/domain/entities/Observation';
-import { IObservationRepository } from 'api/src/interfaces/repositories/IObservationRepository';
+import { Observation } from '../../domain/entities/Observation.js';
+import { IObservationRepository } from '../../interfaces/repositories/IObservationRepository.js';
 
 export class FindAllObservations {
     constructor(private observationRepository: IObservationRepository) {}

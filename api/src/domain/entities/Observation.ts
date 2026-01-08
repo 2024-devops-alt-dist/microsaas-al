@@ -1,6 +1,6 @@
-import { ConfidenceLevel } from '../constant/confidenceLevel';
-import { Comment } from './Comment';
-import { Image } from './Image';
+import { ConfidenceLevel } from '../constant/confidenceLevel.js';
+import { Comment } from './Comment.js';
+import { Image } from './Image.js';
 
 export class Observation {
     constructor(

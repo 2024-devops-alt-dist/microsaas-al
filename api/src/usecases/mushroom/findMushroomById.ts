@@ -1,6 +1,6 @@
-import { Mushroom } from 'api/src/domain/entities/Mushroom';
-import { NotFoundError } from 'api/src/domain/errors/NotFoundError';
-import { IMushroomRepository } from 'api/src/interfaces/repositories/IMushroomRepository';
+import { Mushroom } from '../../domain/entities/Mushroom.js';
+import { NotFoundError } from '../../domain/errors/NotFoundError.js';
+import { IMushroomRepository } from '../../interfaces/repositories/IMushroomRepository.js';
 
 export class FindMushroomById {
     constructor(private mushroomRepository: IMushroomRepository) {}

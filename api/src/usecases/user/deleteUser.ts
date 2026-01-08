@@ -1,5 +1,5 @@
-import { NotFoundError } from 'api/src/domain/errors/NotFoundError';
-import { IUserRepository } from 'api/src/interfaces/repositories/IUserRepository';
+import { NotFoundError } from '../../domain/errors/NotFoundError.js';
+import { IUserRepository } from '../../interfaces/repositories/IUserRepository.js';
 
 export class DeleteUser {
     constructor(private userRepository: IUserRepository) {}

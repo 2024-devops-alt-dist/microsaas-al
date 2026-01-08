@@ -1,9 +1,26 @@
 {
-    "extends": "../tsconfig.base.json",
     "compilerOptions": {
         "outDir": "dist",
-        "noEmit": false,
-        "lib": ["ES2022"]
+        "rootDir": "src",
+        "removeComments": true,
+        "sourceMap": false,
+        "declaration": false,
+        "target": "ES2022",
+        "module": "NodeNext",
+        "lib": ["ES2022"],
+        "moduleResolution": "NodeNext",
+        "strict": true,
+        "noImplicitAny": true,
+        "strictNullChecks": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "forceConsistentCasingInFileNames": true,
+        "esModuleInterop": true,
+        "allowSyntheticDefaultImports": true,
+        "skipLibCheck": true,
+        "incremental": true,
+        "noFallthroughCasesInSwitch": true
     },
-    "include": ["src", "tests"]
+    "include": ["src/**/*.ts"],
+    "exclude": ["node_modules", "dist", "**/*.test.ts"]
 }

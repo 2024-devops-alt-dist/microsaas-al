@@ -1,5 +1,5 @@
-import { User } from 'api/src/domain/entities/User';
-import { IUserRepository } from 'api/src/interfaces/repositories/IUserRepository';
+import { User } from '../../domain/entities/User.js';
+import { IUserRepository } from '../../interfaces/repositories/IUserRepository.js';
 
 export class FindAllUsers {
     constructor(private userRepository: IUserRepository) {}

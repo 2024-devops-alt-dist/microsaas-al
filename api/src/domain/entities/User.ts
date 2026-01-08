@@ -1,6 +1,6 @@
-import { Role } from '../constant/role';
-import { Comment } from './Comment';
-import { Observation } from './Observation';
+import { Role } from '../constant/role.js';
+import { Comment } from './Comment.js';
+import { Observation } from './Observation.js';
 
 export class User {
     constructor(

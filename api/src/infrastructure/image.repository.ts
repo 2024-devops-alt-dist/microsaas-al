@@ -1,6 +1,6 @@
-import { Image } from '../domain/entities/Image';
-import { Prisma, Image as ImagePrisma } from './database/prisma/generated/prisma/client';
-import { prisma } from './database/prisma/prisma';
+import { Image } from '../domain/entities/Image.js';
+import { Prisma, Image as ImagePrisma } from './database/prisma/generated/prisma/client.js';
+import { prisma } from './database/prisma/prisma.js';
 
 export class ImageRepository {
     async findAll(): Promise<Image[]> {

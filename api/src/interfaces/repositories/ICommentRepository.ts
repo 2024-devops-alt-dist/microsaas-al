@@ -1,4 +1,4 @@
-import { Comment } from 'api/src/domain/entities/Comment';
+import { Comment } from '../../domain/entities/Comment.js';
 
 export interface ICommentRepository {
     findAll(): Promise<Comment[]>;

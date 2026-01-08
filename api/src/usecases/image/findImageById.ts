@@ -1,6 +1,6 @@
-import { Image } from 'api/src/domain/entities/Image';
-import { NotFoundError } from 'api/src/domain/errors/NotFoundError';
-import { IImageRepository } from 'api/src/interfaces/repositories/IImageRepository';
+import { Image } from '../../domain/entities/Image.js';
+import { NotFoundError } from '../../domain/errors/NotFoundError.js';
+import { IImageRepository } from '../../interfaces/repositories/IImageRepository.js';
 
 export class FindImageById {
     constructor(private imageRepository: IImageRepository) {}

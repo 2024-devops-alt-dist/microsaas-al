@@ -1,5 +1,5 @@
-import { NotFoundError } from 'api/src/domain/errors/NotFoundError';
-import { ICommentRepository } from 'api/src/interfaces/repositories/ICommentRepository';
+import { NotFoundError } from '../../domain/errors/NotFoundError.js';
+import { ICommentRepository } from '../../interfaces/repositories/ICommentRepository.js';
 
 export class DeleteComment {
     constructor(private commentRepository: ICommentRepository) {}

@@ -4,8 +4,11 @@ const config: Config = {
     preset: 'ts-jest',
     testEnvironment: 'node',
     rootDir: '.',
-    testMatch: ['<rootDir>/tests/**/*.test.ts'],
+    testMatch: ['**/*.test.ts'],
     clearMocks: true,
+    moduleNameMapper: {
+        '^(\\.{1,2}/.*)\\.js$': '$1',
+    },
 };
 
 export default config;

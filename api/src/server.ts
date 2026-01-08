@@ -1,9 +1,9 @@
-import app from './app';
-import logger from './utils/logger';
-import { config } from './config/env';
-import { prisma } from './infrastructure/database/prisma/prisma';
+import app from './app.js';
+import logger from './utils/logger.js';
+import { prisma } from './infrastructure/database/prisma/prisma.js';
+import { env } from './config/env.js';
 
-const API_PORT = config.API_PORT;
+const API_PORT = env.API_PORT;
 
 async function startServer() {
     try {
@@ -14,7 +14,7 @@ async function startServer() {
     }
 
     const server = app.listen(API_PORT, () => {
-        logger.info(`Server running on http://localhost:${API_PORT}`);
+        logger.info(`Server running on port ${API_PORT}`);
     });
 
     const shutdown = async () => {

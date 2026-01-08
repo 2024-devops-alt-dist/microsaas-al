@@ -1,10 +1,10 @@
-import { ConfidenceLevel as DomainConfidenceLevel } from '../domain/constant/confidenceLevel';
-import { Observation } from '../domain/entities/Observation';
+import { ConfidenceLevel as DomainConfidenceLevel } from '../domain/constant/confidenceLevel.js';
+import { Observation } from '../domain/entities/Observation.js';
 import {
     Prisma,
     Observation as ObservationPrisma,
-} from './database/prisma/generated/prisma/client';
-import { prisma } from './database/prisma/prisma';
+} from './database/prisma/generated/prisma/client.js';
+import { prisma } from './database/prisma/prisma.js';
 
 export class ObservationRepository {
     async findAll(): Promise<Observation[]> {

@@ -1,6 +1,6 @@
-import { Image } from 'api/src/domain/entities/Image';
-import { BadRequestError } from 'api/src/domain/errors/BadRequestError';
-import { IImageRepository } from 'api/src/interfaces/repositories/IImageRepository';
+import { Image } from '../../domain/entities/Image.js';
+import { BadRequestError } from '../../domain/errors/BadRequestError.js';
+import { IImageRepository } from '../../interfaces/repositories/IImageRepository.js';
 
 export class CreateImage {
     constructor(private imageRepository: IImageRepository) {}

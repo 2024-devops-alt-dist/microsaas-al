@@ -1,5 +1,5 @@
-import { NotFoundError } from 'api/src/domain/errors/NotFoundError';
-import { IImageRepository } from 'api/src/interfaces/repositories/IImageRepository';
+import { NotFoundError } from '../../domain/errors/NotFoundError.js';
+import { IImageRepository } from '../../interfaces/repositories/IImageRepository.js';
 
 export class DeleteImage {
     constructor(private imageRepository: IImageRepository) {}

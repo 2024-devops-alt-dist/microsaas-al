@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { MushroomController } from '../controllers/mushroom.controller';
+import { MushroomController } from '../controllers/mushroom.controller.js';
 
 export default function mushroomRoutes(mushroomController: MushroomController) {
     const router = Router();

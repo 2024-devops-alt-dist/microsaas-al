@@ -1,6 +1,6 @@
-import { Edibility } from '../constant/edibility';
-import { Observation } from './Observation';
-import { Image } from './Image';
+import { Edibility } from '../constant/edibility.js';
+import { Observation } from './Observation.js';
+import { Image } from './Image.js';
 
 export class Mushroom {
     constructor(

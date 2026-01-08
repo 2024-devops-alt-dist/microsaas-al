@@ -1,10 +1,10 @@
 import 'dotenv/config';
-import usersData from './fixtures/users.json';
-import mushroomsData from './fixtures/mushrooms.json';
-import observationsData from './fixtures/observations.json';
-import commentsData from './fixtures/comments.json';
-import imagesData from './fixtures/images.json';
-import { prisma } from './prisma';
+import { prisma } from './prisma.js';
+import { usersData } from './fixtures/users.js';
+import { mushroomsData } from './fixtures/mushrooms.js';
+import { observationsData } from './fixtures/observations.js';
+import { commentsData } from './fixtures/comments.js';
+import { imagesData } from './fixtures/images.js';
 
 async function main() {
     await prisma.$executeRawUnsafe('TRUNCATE TABLE "Comment" RESTART IDENTITY CASCADE');

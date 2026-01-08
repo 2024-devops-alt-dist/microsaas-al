@@ -1,6 +1,6 @@
-import { User } from 'api/src/domain/entities/User';
-import { NotFoundError } from 'api/src/domain/errors/NotFoundError';
-import { IUserRepository } from 'api/src/interfaces/repositories/IUserRepository';
+import { User } from '../../domain/entities/User.js';
+import { NotFoundError } from '../../domain/errors/NotFoundError.js';
+import { IUserRepository } from '../../interfaces/repositories/IUserRepository.js';
 
 export class UpdateUser {
     constructor(private userRepository: IUserRepository) {}

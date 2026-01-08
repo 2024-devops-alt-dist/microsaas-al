@@ -1,4 +1,4 @@
-import { Mushroom } from 'api/src/domain/entities/Mushroom';
+import { Mushroom } from '../../domain/entities/Mushroom.js';
 
 export interface IMushroomRepository {
     findAll(): Promise<Mushroom[]>;

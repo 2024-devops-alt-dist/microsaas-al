@@ -1,6 +1,6 @@
-import { Observation } from 'api/src/domain/entities/Observation';
-import { NotFoundError } from 'api/src/domain/errors/NotFoundError';
-import { IObservationRepository } from 'api/src/interfaces/repositories/IObservationRepository';
+import { Observation } from '../../domain/entities/Observation.js';
+import { NotFoundError } from '../../domain/errors/NotFoundError.js';
+import { IObservationRepository } from '../../interfaces/repositories/IObservationRepository.js';
 
 export class FindObservationById {
     constructor(private observationRepository: IObservationRepository) {}

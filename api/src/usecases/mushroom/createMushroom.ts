@@ -1,7 +1,7 @@
-import { IMushroomRepository } from 'api/src/interfaces/repositories/IMushroomRepository';
-import { Edibility } from 'api/src/domain/constant/edibility';
-import { Mushroom } from 'api/src/domain/entities/Mushroom';
-import { BadRequestError } from 'api/src/domain/errors/BadRequestError';
+import { Edibility } from '../../domain/constant/edibility.js';
+import { Mushroom } from '../../domain/entities/Mushroom.js';
+import { BadRequestError } from '../../domain/errors/BadRequestError.js';
+import { IMushroomRepository } from '../../interfaces/repositories/IMushroomRepository.js';
 
 export class CreateMushroom {
     constructor(private mushroomRepository: IMushroomRepository) {}

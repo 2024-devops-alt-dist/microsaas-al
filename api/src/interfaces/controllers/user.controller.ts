@@ -1,10 +1,10 @@
-import { CreateUser } from 'api/src/usecases/user/createUser';
-import { DeleteUser } from 'api/src/usecases/user/deleteUser';
-import { FindAllUsers } from 'api/src/usecases/user/findAllUsers';
-import { FindUserByEmail } from 'api/src/usecases/user/findUserByEmail';
-import { FindUserById } from 'api/src/usecases/user/findUserById';
-import { UpdateUser } from 'api/src/usecases/user/updateUser';
 import { Request, Response, NextFunction } from 'express';
+import { FindAllUsers } from '../../usecases/user/findAllUsers.js';
+import { FindUserById } from '../../usecases/user/findUserById.js';
+import { FindUserByEmail } from '../../usecases/user/findUserByEmail.js';
+import { CreateUser } from '../../usecases/user/createUser.js';
+import { UpdateUser } from '../../usecases/user/updateUser.js';
+import { DeleteUser } from '../../usecases/user/deleteUser.js';
 
 export class UserController {
     constructor(

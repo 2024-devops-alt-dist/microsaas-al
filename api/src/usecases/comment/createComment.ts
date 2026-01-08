@@ -1,7 +1,7 @@
-import { Status } from 'api/src/domain/constant/status';
-import { Comment } from 'api/src/domain/entities/Comment';
-import { BadRequestError } from 'api/src/domain/errors/BadRequestError';
-import { ICommentRepository } from 'api/src/interfaces/repositories/ICommentRepository';
+import { Status } from '../../domain/constant/status.js';
+import { Comment } from '../../domain/entities/Comment.js';
+import { BadRequestError } from '../../domain/errors/BadRequestError.js';
+import { ICommentRepository } from '../../interfaces/repositories/ICommentRepository.js';
 
 export class CreateComment {
     constructor(private commentRepository: ICommentRepository) {}

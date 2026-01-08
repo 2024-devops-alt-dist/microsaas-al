@@ -12,7 +12,7 @@
         "lint:fix": "eslint --fix .",
         "format": "prettier --write .",
         "format:check": "prettier --check .",
-        "test": "npx jest",
+        "test": "NODE_OPTIONS=--experimental-vm-modules jest",
         "prisma:generate": "prisma generate",
         "prisma:migrate:dev": "prisma migrate dev",
         "prisma:seed": "tsx src/infrastructure/database/prisma/seed.ts"
@@ -52,6 +52,8 @@
         "prisma": "^7.2.0",
         "ts-jest": "^29.4.6",
         "ts-node": "^10.9.2",
-        "tsx": "^4.20.5"
+        "tsx": "^4.20.5",
+        "typescript": "^5.9.3",
+        "typescript-eslint": "^8.52.0"
     }
 }

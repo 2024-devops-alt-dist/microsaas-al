@@ -1,4 +1,4 @@
-import { Image } from 'api/src/domain/entities/Image';
+import { Image } from '../../domain/entities/Image.js';
 
 export interface IImageRepository {
     findAll(): Promise<Image[]>;

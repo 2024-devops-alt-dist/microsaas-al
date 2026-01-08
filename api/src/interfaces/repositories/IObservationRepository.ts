@@ -1,4 +1,4 @@
-import { Observation } from 'api/src/domain/entities/Observation';
+import { Observation } from '../../domain/entities/Observation.js';
 
 export interface IObservationRepository {
     findAll(): Promise<Observation[]>;

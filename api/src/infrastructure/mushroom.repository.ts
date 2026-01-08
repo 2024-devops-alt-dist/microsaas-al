@@ -1,7 +1,7 @@
-import { Mushroom } from '../domain/entities/Mushroom';
-import { prisma } from './database/prisma/prisma';
-import { Prisma, Mushroom as MushroomPrisma } from './database/prisma/generated/prisma/client';
-import { Edibility as DomainEdibility } from '../domain/constant/edibility';
+import { Mushroom } from '../domain/entities/Mushroom.js';
+import { prisma } from './database/prisma/prisma.js';
+import { Prisma, Mushroom as MushroomPrisma } from './database/prisma/generated/prisma/client.js';
+import { Edibility as DomainEdibility } from '../domain/constant/edibility.js';
 
 export class MushroomRepository {
     async findAll(): Promise<Mushroom[]> {

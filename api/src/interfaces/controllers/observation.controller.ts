@@ -1,9 +1,9 @@
-import { CreateObservation } from 'api/src/usecases/observation/createObservation';
-import { DeleteObservation } from 'api/src/usecases/observation/deleteObservation';
-import { FindAllObservations } from 'api/src/usecases/observation/findAllObservations';
-import { FindObservationById } from 'api/src/usecases/observation/findObservationById';
-import { UpdateObservation } from 'api/src/usecases/observation/updateObservation';
 import { Request, Response, NextFunction } from 'express';
+import { FindAllObservations } from '../../usecases/observation/findAllObservations.js';
+import { FindObservationById } from '../../usecases/observation/findObservationById.js';
+import { CreateObservation } from '../../usecases/observation/createObservation.js';
+import { UpdateObservation } from '../../usecases/observation/updateObservation.js';
+import { DeleteObservation } from '../../usecases/observation/deleteObservation.js';
 
 export class ObservationController {
     constructor(

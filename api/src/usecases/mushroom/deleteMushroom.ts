@@ -1,5 +1,5 @@
-import { NotFoundError } from 'api/src/domain/errors/NotFoundError';
-import { IMushroomRepository } from 'api/src/interfaces/repositories/IMushroomRepository';
+import { NotFoundError } from '../../domain/errors/NotFoundError.js';
+import { IMushroomRepository } from '../../interfaces/repositories/IMushroomRepository.js';
 
 export class DeleteMushroom {
     constructor(private mushroomRepository: IMushroomRepository) {}
