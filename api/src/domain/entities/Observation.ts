@@ -1,6 +1,6 @@
 import { ConfidenceLevel } from '../constant/confidenceLevel';
 import { Comment } from './Comment';
-import { Photo } from './Photo';
+import { Image } from './Image';
 
 export class Observation {
     constructor(
@@ -17,7 +17,7 @@ export class Observation {
         public updatedAt: Date | null,
         public userId: number,
         public mushroomId: number | null,
-        public photos: Photo[],
+        public images: Image[],
         public comments: Comment[],
     ) {}
 }

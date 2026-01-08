@@ -67,10 +67,10 @@ model Mushroom {
     updatedAt   DateTime  @updatedAt
 
     observations Observation[]
-    photos       Photo[]
+    images       Image[]
 }
 
-model Photo {
+model Image {
     id            Int      @id @default(autoincrement())
     url           String
     filename      String
@@ -103,7 +103,7 @@ model Observation {
     user     User      @relation(fields: [userId], references: [id])
     mushroom Mushroom? @relation(fields: [mushroomId], references: [id])
 
-    photos   Photo[]
+    images   Image[]
     comments Comment[]
 }
 

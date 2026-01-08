@@ -2,7 +2,7 @@
 CREATE TYPE "Role" AS ENUM ('ADMIN', 'USER');
 
 -- CreateEnum
-CREATE TYPE "ConfidenceLevel" AS ENUM ('CERTAIN', 'PROBABLE', 'POSSIBLE', 'UNKNOWN');
+CREATE TYPE "ConfidenceLevel" AS ENUM ('LOW', 'MEDIUM', 'HIGH');
 
 -- CreateEnum
 CREATE TYPE "Edibility" AS ENUM ('EDIBLE', 'INEDIBLE', 'POISONOUS', 'DEADLY', 'UNKNOWN');
@@ -42,7 +42,7 @@ CREATE TABLE "Mushroom" (
 );
 
 -- CreateTable
-CREATE TABLE "Photo" (
+CREATE TABLE "Image" (
     "id" SERIAL NOT NULL,
     "url" TEXT NOT NULL,
     "filename" TEXT NOT NULL,
@@ -53,7 +53,7 @@ CREATE TABLE "Photo" (
     "observationId" INTEGER,
     "mushroomId" INTEGER,
 
-    CONSTRAINT "Photo_pkey" PRIMARY KEY ("id")
+    CONSTRAINT "Image_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
@@ -92,10 +92,10 @@ CREATE TABLE "Comment" (
 CREATE UNIQUE INDEX "User_email_key" ON "User"("email");
 
 -- AddForeignKey
-ALTER TABLE "Photo" ADD CONSTRAINT "Photo_observationId_fkey" FOREIGN KEY ("observationId") REFERENCES "Observation"("id") ON DELETE SET NULL ON UPDATE CASCADE;
+ALTER TABLE "Image" ADD CONSTRAINT "Image_observationId_fkey" FOREIGN KEY ("observationId") REFERENCES "Observation"("id") ON DELETE SET NULL ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "Photo" ADD CONSTRAINT "Photo_mushroomId_fkey" FOREIGN KEY ("mushroomId") REFERENCES "Mushroom"("id") ON DELETE SET NULL ON UPDATE CASCADE;
+ALTER TABLE "Image" ADD CONSTRAINT "Image_mushroomId_fkey" FOREIGN KEY ("mushroomId") REFERENCES "Mushroom"("id") ON DELETE SET NULL ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "Observation" ADD CONSTRAINT "Observation_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;

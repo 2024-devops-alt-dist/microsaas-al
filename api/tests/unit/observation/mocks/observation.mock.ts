@@ -14,7 +14,7 @@ export const mockObservation1 = {
     updatedAt: new Date(),
     userId: 1,
     mushroomId: 1,
-    photos: [],
+    images: [],
     comments: [],
 };
 
@@ -32,6 +32,6 @@ export const mockObservation2 = {
     updatedAt: new Date(),
     userId: 2,
     mushroomId: 2,
-    photos: [],
+    images: [],
     comments: [],
 };

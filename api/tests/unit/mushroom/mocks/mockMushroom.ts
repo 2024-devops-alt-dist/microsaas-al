@@ -12,7 +12,7 @@ export const mockMushroom1 = {
     createdAt: new Date('2023-01-01T00:00:00Z'),
     updatedAt: new Date('2023-01-01T00:00:00Z'),
     observations: [],
-    photos: [],
+    images: [],
 };
 
 export const mockMushroom2 = {
@@ -27,5 +27,5 @@ export const mockMushroom2 = {
     createdAt: new Date('2023-02-01T00:00:00Z'),
     updatedAt: new Date('2023-02-01T00:00:00Z'),
     observations: [],
-    photos: [],
+    images: [],
 };

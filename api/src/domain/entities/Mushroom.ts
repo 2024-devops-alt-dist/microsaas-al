@@ -1,6 +1,6 @@
 import { Edibility } from '../constant/edibility';
 import { Observation } from './Observation';
-import { Photo } from './Photo';
+import { Image } from './Image';
 
 export class Mushroom {
     constructor(
@@ -15,6 +15,6 @@ export class Mushroom {
         public createdAt: Date | null,
         public updatedAt: Date | null,
         public observations: Observation[],
-        public photos: Photo[],
+        public images: Image[],
     ) {}
 }

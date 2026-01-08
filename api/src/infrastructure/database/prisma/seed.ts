@@ -3,12 +3,12 @@ import usersData from './fixtures/users.json';
 import mushroomsData from './fixtures/mushrooms.json';
 import observationsData from './fixtures/observations.json';
 import commentsData from './fixtures/comments.json';
-import photosData from './fixtures/photos.json';
+import imagesData from './fixtures/images.json';
 import { prisma } from './prisma';
 
 async function main() {
     await prisma.$executeRawUnsafe('TRUNCATE TABLE "Comment" RESTART IDENTITY CASCADE');
-    await prisma.$executeRawUnsafe('TRUNCATE TABLE "Photo" RESTART IDENTITY CASCADE');
+    await prisma.$executeRawUnsafe('TRUNCATE TABLE "Image" RESTART IDENTITY CASCADE');
     await prisma.$executeRawUnsafe('TRUNCATE TABLE "Observation" RESTART IDENTITY CASCADE');
     await prisma.$executeRawUnsafe('TRUNCATE TABLE "Mushroom" RESTART IDENTITY CASCADE');
     await prisma.$executeRawUnsafe('TRUNCATE TABLE "User" RESTART IDENTITY CASCADE');
@@ -86,17 +86,17 @@ async function main() {
         });
     }
 
-    for (const photo of photosData) {
-        await prisma.photo.create({
+    for (const image of imagesData) {
+        await prisma.image.create({
             data: {
-                url: photo.url,
-                filename: photo.filename,
-                mimeType: photo.mimeType,
-                size: photo.size,
-                createdAt: new Date(photo.createdAt),
-                updatedAt: new Date(photo.updatedAt),
-                observationId: photo.observationId,
-                mushroomId: photo.mushroomId,
+                url: image.url,
+                filename: image.filename,
+                mimeType: image.mimeType,
+                size: image.size,
+                createdAt: new Date(image.createdAt),
+                updatedAt: new Date(image.updatedAt),
+                observationId: image.observationId,
+                mushroomId: image.mushroomId,
             },
         });
     }

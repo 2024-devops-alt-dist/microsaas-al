@@ -1,4 +1,4 @@
-export class Photo {
+export class Image {
     constructor(
         public id: number | null,
         public url: string,
@@ -8,6 +8,6 @@ export class Photo {
         public createdAt: Date | null,
         public updatedAt: Date | null,
         public observationId: number | null,
-        public mushroomId: string | null,
+        public mushroomId: number | null,
     ) {}
 }

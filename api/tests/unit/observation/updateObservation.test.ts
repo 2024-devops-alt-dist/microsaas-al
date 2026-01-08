@@ -23,7 +23,7 @@ describe('UpdateObservation Use Case', () => {
             updatedAt: new Date(),
             userId: 2,
             mushroomId: 3,
-            photos: [],
+            images: [],
             comments: [],
         });
 

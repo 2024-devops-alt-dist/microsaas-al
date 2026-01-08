@@ -29,6 +29,14 @@ import { UpdateObservation } from './usecases/observation/updateObservation';
 import { DeleteObservation } from './usecases/observation/deleteObservation';
 import { ObservationController } from './interfaces/controllers/observation.controller';
 import observationRoutes from './interfaces/routes/observation.routes';
+import { ImageRepository } from './infrastructure/image.repository';
+import { FindAllImages } from './usecases/image/findAllImages';
+import { FindImageById } from './usecases/image/findImageById';
+import { CreateImage } from './usecases/image/createImage';
+import { UpdateImage } from './usecases/image/updateImage';
+import { DeleteImage } from './usecases/image/deletImage';
+import { ImageController } from './interfaces/controllers/image.controller';
+import imageRoutes from './interfaces/routes/image.routes';
 
 const app = express();
 
@@ -86,9 +94,24 @@ const observationController = new ObservationController(
     deleteObservation,
 );
 
+const imageRepository = new ImageRepository();
+const findAllImages = new FindAllImages(imageRepository);
+const findImageById = new FindImageById(imageRepository);
+const createImage = new CreateImage(imageRepository);
+const updateImage = new UpdateImage(imageRepository);
+const deleteImage = new DeleteImage(imageRepository);
+const imageController = new ImageController(
+    findAllImages,
+    findImageById,
+    createImage,
+    updateImage,
+    deleteImage,
+);
+
 app.use('/users', userRoutes(userController));
 app.use('/mushrooms', mushroomRoutes(mushroomController));
 app.use('/observations', observationRoutes(observationController));
+app.use('/images', imageRoutes(imageController));
 
 app.use(errorHandler);
 
