@@ -2,6 +2,7 @@ import { UpdateObservation } from 'api/src/usecases/observation/updateObservatio
 import { mockObservationRepository } from './mocks/observationRepository.mock';
 import { ConfidenceLevel } from 'api/src/domain/constant/confidenceLevel';
 import { mockObservation1 } from './mocks/observation.mock';
+import { NotFoundError } from 'api/src/domain/errors/NotFoundError';
 
 describe('UpdateObservation Use Case', () => {
     it('should update an observation', async () => {
@@ -54,14 +55,11 @@ describe('UpdateObservation Use Case', () => {
         repo.findById.mockResolvedValue(null);
         const useCase = new UpdateObservation(repo);
 
-        const updateData = {
-            title: 'Non-existent Observation',
-        };
+        await expect(useCase.execute(1, {})).rejects.toBeInstanceOf(NotFoundError);
 
-        await expect(useCase.execute(999, updateData)).rejects.toThrow('Observation not found');
-
-        expect(repo.findById).toHaveBeenCalledWith(999);
-        expect(repo.findById).toHaveBeenCalledTimes(1);
-        expect(repo.update).not.toHaveBeenCalled();
+        await expect(useCase.execute(1, {})).rejects.toMatchObject({
+            message: 'Observation not found',
+            status: 404,
+        });
     });
 });

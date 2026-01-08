@@ -37,6 +37,14 @@ import { UpdateImage } from './usecases/image/updateImage';
 import { DeleteImage } from './usecases/image/deletImage';
 import { ImageController } from './interfaces/controllers/image.controller';
 import imageRoutes from './interfaces/routes/image.routes';
+import { CommentRepository } from './infrastructure/comment.repository';
+import { FindAllComments } from './usecases/comment/findAllComments';
+import { FindCommentById } from './usecases/comment/findCommentById';
+import { CreateComment } from './usecases/comment/createComment';
+import { UpdateComment } from './usecases/comment/updateComment';
+import { DeleteComment } from './usecases/comment/deleteComment';
+import { CommentController } from './interfaces/controllers/comment.controller';
+import commentRoutes from './interfaces/routes/comment.routes';
 
 const app = express();
 
@@ -108,10 +116,25 @@ const imageController = new ImageController(
     deleteImage,
 );
 
+const commentRepository = new CommentRepository();
+const finfAllComments = new FindAllComments(commentRepository);
+const findCommentById = new FindCommentById(commentRepository);
+const createCOmment = new CreateComment(commentRepository);
+const updateCOmment = new UpdateComment(commentRepository);
+const deleteComment = new DeleteComment(commentRepository);
+const commentController = new CommentController(
+    finfAllComments,
+    findCommentById,
+    createCOmment,
+    updateCOmment,
+    deleteComment,
+);
+
 app.use('/users', userRoutes(userController));
 app.use('/mushrooms', mushroomRoutes(mushroomController));
 app.use('/observations', observationRoutes(observationController));
 app.use('/images', imageRoutes(imageController));
+app.use('/comments', commentRoutes(commentController));
 
 app.use(errorHandler);
 

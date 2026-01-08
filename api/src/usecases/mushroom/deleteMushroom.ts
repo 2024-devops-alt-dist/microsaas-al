@@ -1,3 +1,4 @@
+import { NotFoundError } from 'api/src/domain/errors/NotFoundError';
 import { IMushroomRepository } from 'api/src/interfaces/repositories/IMushroomRepository';
 
 export class DeleteMushroom {
@@ -5,7 +6,7 @@ export class DeleteMushroom {
     async execute(id: number): Promise<void> {
         const mushroom = await this.mushroomRepository.findById(id);
         if (!mushroom) {
-            throw new Error('Mushroom not found');
+            throw new NotFoundError('Mushroom not found');
         }
         await this.mushroomRepository.delete(id);
     }

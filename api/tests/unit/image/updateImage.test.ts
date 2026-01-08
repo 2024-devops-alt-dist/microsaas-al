@@ -41,4 +41,16 @@ describe('UpdateImage Use Case', () => {
         });
         expect(repo.update).toHaveBeenCalledTimes(1);
     });
+    it('should throw an error if image not found', async () => {
+        const repo = mockImageRepository();
+
+        repo.findById.mockResolvedValue(null);
+        const useCase = new UpdateImage(repo);
+
+        await expect(useCase.execute(1, {})).rejects.toBeInstanceOf(Error);
+
+        await expect(useCase.execute(1, {})).rejects.toMatchObject({
+            message: 'Image not found',
+        });
+    });
 });

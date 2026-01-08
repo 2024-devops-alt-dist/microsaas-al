@@ -23,7 +23,6 @@ describe('FindUserById Use Case', () => {
 
         await expect(useCase.execute(1)).rejects.toBeInstanceOf(NotFoundError);
 
-        // ou vérifier le message / status
         await expect(useCase.execute(1)).rejects.toMatchObject({
             message: 'User not found',
             status: 404,

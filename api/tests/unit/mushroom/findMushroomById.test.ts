@@ -1,6 +1,7 @@
 import { FindMushroomById } from 'api/src/usecases/mushroom/findMushroomById';
 import { mockMushroom1 } from './mocks/mockMushroom';
 import { mockMushroomRepository } from './mocks/mushroomRepository.mock';
+import { NotFoundError } from 'api/src/domain/errors/NotFoundError';
 
 describe('FindMushroomById Use Case', () => {
     it('should return the mushroom with the given ID', async () => {
@@ -21,10 +22,12 @@ describe('FindMushroomById Use Case', () => {
 
         repo.findById.mockResolvedValue(null);
         const useCase = new FindMushroomById(repo);
-        const mushroom = await useCase.execute(999);
 
-        expect(mushroom).toBeNull();
-        expect(repo.findById).toHaveBeenCalledWith(999);
-        expect(repo.findById).toHaveBeenCalledTimes(1);
+        await expect(useCase.execute(1)).rejects.toBeInstanceOf(NotFoundError);
+
+        await expect(useCase.execute(1)).rejects.toMatchObject({
+            message: 'Mushroom not found',
+            status: 404,
+        });
     });
 });

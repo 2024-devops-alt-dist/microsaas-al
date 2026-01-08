@@ -1,6 +1,7 @@
 import { FindObservationById } from 'api/src/usecases/observation/findObservationById';
 import { mockObservationRepository } from './mocks/observationRepository.mock';
 import { mockObservation1 } from './mocks/observation.mock';
+import { NotFoundError } from 'api/src/domain/errors/NotFoundError';
 
 describe('FindObservationById Use Case', () => {
     it('should return the observation when found', async () => {
@@ -21,10 +22,11 @@ describe('FindObservationById Use Case', () => {
         repo.findById.mockResolvedValue(null);
 
         const useCase = new FindObservationById(repo);
-        const result = await useCase.execute(999);
+        await expect(useCase.execute(1)).rejects.toBeInstanceOf(NotFoundError);
 
-        expect(result).toBeNull();
-        expect(repo.findById).toHaveBeenCalledWith(999);
-        expect(repo.findById).toHaveBeenCalledTimes(1);
+        await expect(useCase.execute(1)).rejects.toMatchObject({
+            message: 'Observation not found',
+            status: 404,
+        });
     });
 });

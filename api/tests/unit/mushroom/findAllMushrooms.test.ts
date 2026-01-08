@@ -5,7 +5,6 @@ import { mockMushroomRepository } from './mocks/mushroomRepository.mock';
 describe('FindAllMushrooms Use Case', () => {
     it('should return all mushrooms', async () => {
         const repo = mockMushroomRepository();
-
         repo.findAll.mockResolvedValue([mockMushroom1, mockMushroom2]);
         const useCase = new FindAllMushrooms(repo);
         const mushrooms = await useCase.execute();
