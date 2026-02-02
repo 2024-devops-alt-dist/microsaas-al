@@ -37,7 +37,7 @@ export class UserController {
 
     findByEmail = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
         try {
-            const user = await this.findUserByEmailUseCase.execute(req.params.email);
+            const user = await this.findUserByEmailUseCase.execute(req.params.email as string);
             if (user) res.status(200).send(user);
             else res.status(404).send({ message: 'User not found' });
         } catch (error) {
