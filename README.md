@@ -15,7 +15,7 @@ Structure monorepo :
 
 - [Docker](https://www.docker.com/)
 - [Docker Compose](https://docs.docker.com/compose/)
-- Node.js ≥ 18 (pour usage local)
+- Node.js 24 (pour usage local)
 
 ---
 
@@ -94,13 +94,43 @@ npm run build    # Build de production
 ```
 microsaas-al/
 │
-├── api/         # Backend Express (TypeScript)
-├── client/      # Frontend React
-├── shared/      # Composants partagés (interfaces, enums)
-├── db/          # Scripts init PostgreSQL (optionnel)
-├── docker-compose.yml
-├── .env.template
-└── README.md
+├─ api/                         # Backend Express TypeScript
+│  ├─ src/
+│  │  ├─ domain/                # Entités et interfaces métier
+│  │  ├─ usecases/              # Logique applicative
+│  │  ├─ interfaces/            # Controllers HTTP
+│  │  ├─ infrastructure/        # Repositories, config BDD
+│  │  ├─ app.ts                 # Configuration Express
+│  │  └─ server.ts              # Lancement du serveur
+│  │
+│  ├─ tests/                    # Tests unitaires & intégration
+│  ├─ Dockerfile
+│  ├─ tsconfig.json
+│  └─ package.json
+│
+├─ front/                       # Front-end React TypeScript
+│  ├─ src/
+│  │  ├─ features/
+|  │  │  └─ feature1/
+|  |  │     ├─ components/       # Composants UI
+|  |  │     ├─ pages/            # Pages applicatives
+|  |  │     ├─ services/         # Appels API
+|  |  │     ├─ hooks/
+|  |  │     └─ types/
+│  │  ├─ shared/
+|  |  ├─ App.tsx
+|  |  └─ main.tsx
+│  │
+│  ├─ tests/
+│  ├─ Dockerfile
+│  ├─ vite.config.ts
+│  └─ package.json
+│
+├─ .env.template                 # Variables d’environnement
+├─ .gitignore
+├─ package.json
+├─ docker-compose.yml
+└─ README.md
 ```
 
 ## L'API avec une architecture modulaire (feature-based).
