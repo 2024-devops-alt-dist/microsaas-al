@@ -1,7 +1,7 @@
 import { env } from './config/env.js';
 import express from 'express';
 import cors from 'cors';
-import { errorHandler } from './middlewares/error.middleware.js';
+import { errorHandler } from './interfaces/middlewares/error.middleware.js';
 import { UserRepository } from './infrastructure/user.repository.js';
 import { CreateUser } from './usecases/user/createUser.js';
 import { UserController } from './interfaces/controllers/user.controller.js';
@@ -43,6 +43,10 @@ import mushroomRoutes from './interfaces/routes/mushroom.routes.js';
 import observationRoutes from './interfaces/routes/observation.routes.js';
 import imageRoutes from './interfaces/routes/image.routes.js';
 import commentRoutes from './interfaces/routes/comment.routes.js';
+import { AuthController } from './interfaces/controllers/auth.controller.js';
+import { LoginUser } from './usecases/auth/loginUser.js';
+import authRoutes from './interfaces/routes/auth.routes.js';
+import { AuthService } from './infrastructure/services/AuthService.js';
 
 const app = express();
 
@@ -71,6 +75,10 @@ const userController = new UserController(
     updateUserUseCase,
     deleteUserUseCase,
 );
+
+const authService = new AuthService();
+const loginUserUseCase = new LoginUser(userRepository, authService);
+const authController = new AuthController(loginUserUseCase);
 
 const mushroomRepository = new MushroomRepository();
 const findAllMushrooms = new FindAllMushrooms(mushroomRepository);
@@ -129,6 +137,7 @@ const commentController = new CommentController(
 );
 
 app.use('/users', userRoutes(userController));
+app.use('/auth', authRoutes(authController));
 app.use('/mushrooms', mushroomRoutes(mushroomController));
 app.use('/observations', observationRoutes(observationController));
 app.use('/images', imageRoutes(imageController));

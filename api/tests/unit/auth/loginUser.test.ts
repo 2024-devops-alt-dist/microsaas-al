@@ -1,0 +1,49 @@
+import { mockUser1 } from '../user/mocks/user.mock';
+import { mockUserRepository } from '../user/mocks/userRepository.mock';
+import { mockAuthService } from './mocks/mockAuthService';
+import { LoginUser } from '../../../src/usecases/auth/loginUser.js';
+
+describe('LoginUser Use Case', () => {
+    it('should jwt token if valid credentials are provided', async () => {
+        const repo = mockUserRepository();
+        const authService = mockAuthService();
+
+        repo.findByEmail.mockResolvedValue({ ...mockUser1, password: 'hashed-password' });
+        authService.comparePasswords.mockResolvedValue(true);
+        authService.generateToken.mockReturnValue('valid-jwt-token');
+
+        const useCase = new LoginUser(repo, authService);
+
+        const token = await useCase.execute('john@example.com', 'securepassword');
+
+        expect(token).toBeDefined();
+        expect(typeof token).toBe('string');
+    });
+
+    it('should throw NotFoundError if user does not exist', async () => {
+        const repo = mockUserRepository();
+        const authService = mockAuthService();
+
+        repo.findByEmail.mockResolvedValue(null);
+
+        const useCase = new LoginUser(repo, authService);
+
+        await expect(useCase.execute('john@example.com', 'securepassword')).rejects.toThrow(
+            'User not found',
+        );
+    });
+
+    it('should throw UnauthorizedError if password is incorrect', async () => {
+        const repo = mockUserRepository();
+        const authService = mockAuthService();
+
+        repo.findByEmail.mockResolvedValue({ ...mockUser1, password: 'hashed-password' });
+        authService.comparePasswords.mockResolvedValue(false);
+
+        const useCase = new LoginUser(repo, authService);
+
+        await expect(useCase.execute('john@example.com', 'wrongpassword')).rejects.toThrow(
+            'Invalid credentials',
+        );
+    });
+});

@@ -5,13 +5,10 @@ describe('CreateComment Use Case', () => {
     it('should create a comment', async () => {
         const repo = mockCommentRepository();
 
-        repo.create.mockResolvedValue({
+        repo.create.mockImplementation(async (comment) => ({
+            ...comment,
             id: 1,
-            content: 'Great observation!',
-            status: 'SUBMITTED',
-            userId: 2,
-            observationId: 3,
-        });
+        }));
 
         const useCase = new CreateComment(repo);
 
