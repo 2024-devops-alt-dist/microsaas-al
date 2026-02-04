@@ -1,5 +1,5 @@
-import { CreateImage } from 'api/src/usecases/image/createImage';
-import { mockImageRepository } from './mocks/imageRepository..mock';
+import { CreateImage } from '../../../src/usecases/image/createImage.js';
+import { mockImageRepository } from './mocks/imageRepository.mock.js';
 
 describe('CreateImage Use Case', () => {
     it('should create an image', async () => {

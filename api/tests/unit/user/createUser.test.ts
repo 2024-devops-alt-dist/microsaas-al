@@ -1,7 +1,7 @@
-import { CreateUser } from 'api/src/usecases/user/createUser';
 import { mockUser1 } from './mocks/user.mock';
 import { mockUserRepository } from './mocks/userRepository.mock';
-import { Role } from 'api/src/domain/constant/role';
+import { CreateUser } from '../../../src/usecases/user/createUser.js';
+import { Role } from '../../../src/domain/constant/role.js';
 
 describe('CreateUser Use Case', () => {
     it('should create a user with hashed password', async () => {

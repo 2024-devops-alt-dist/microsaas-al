@@ -1,10 +1,10 @@
-import { Comment } from 'api/src/domain/entities/Comment';
-import { ICommentRepository } from 'api/src/interfaces/repositories/ICommentRepository';
+import { jest } from '@jest/globals';
+import { ICommentRepository } from '../../../../src/interfaces/repositories/ICommentRepository.js';
 
 export const mockCommentRepository = (): jest.Mocked<ICommentRepository> => ({
-    findAll: jest.fn<Promise<Comment[]>, []>(),
-    findById: jest.fn<Promise<Comment | null>, [number]>(),
-    create: jest.fn<Promise<Comment>, [Comment]>(),
-    update: jest.fn<Promise<Comment>, [number, Partial<Comment>]>(),
-    delete: jest.fn<Promise<void>, [number]>(),
+    findAll: jest.fn(),
+    findById: jest.fn(),
+    create: jest.fn(),
+    update: jest.fn(),
+    delete: jest.fn(),
 });

@@ -1,4 +1,4 @@
-import { CreateMushroom } from 'api/src/usecases/mushroom/createMushroom';
+import { CreateMushroom } from '../../../src/usecases/mushroom/createMushroom.js';
 import { mockMushroomRepository } from './mocks/mushroomRepository.mock';
 
 describe('CreateMushroom Use Case', () => {

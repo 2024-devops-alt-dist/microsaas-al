@@ -19,7 +19,8 @@
         "allowSyntheticDefaultImports": true,
         "skipLibCheck": true,
         "incremental": true,
-        "noFallthroughCasesInSwitch": true
+        "noFallthroughCasesInSwitch": true,
+        "isolatedModules": true
     },
     "include": ["src/**/*.ts"],
     "exclude": ["node_modules", "dist", "**/*.test.ts"]

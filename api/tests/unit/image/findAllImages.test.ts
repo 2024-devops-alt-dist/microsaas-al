@@ -1,5 +1,5 @@
-import { FindAllImages } from 'api/src/usecases/image/findAllImages';
-import { mockImageRepository } from './mocks/imageRepository..mock';
+import { FindAllImages } from '../../../src/usecases/image/findAllImages.js';
+import { mockImageRepository } from './mocks/imageRepository.mock.js';
 import { mockImage1 } from './mocks/image.mock';
 
 describe('FindAllImages Use Case', () => {

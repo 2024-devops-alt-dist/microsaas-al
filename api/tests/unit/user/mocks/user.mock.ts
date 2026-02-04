@@ -1,4 +1,4 @@
-import { Role } from 'api/src/domain/constant/role';
+import { Role } from '../../../../src/domain/constant/role.js';
 
 export const mockUser1 = {
     id: 1,

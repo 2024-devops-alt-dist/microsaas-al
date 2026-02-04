@@ -1,6 +1,6 @@
-import { UpdateImage } from 'api/src/usecases/image/updateImage';
-import { mockImageRepository } from './mocks/imageRepository..mock';
-import { Image } from 'api/src/domain/entities/Image';
+import { UpdateImage } from '../../../src/usecases/image/updateImage.js';
+import { mockImageRepository } from './mocks/imageRepository.mock';
+import { Image } from '../../../src/domain/entities/Image.js';
 
 describe('UpdateImage Use Case', () => {
     it('should update and return the image', async () => {

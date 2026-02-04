@@ -13,6 +13,8 @@
         "format": "prettier --write .",
         "format:check": "prettier --check .",
         "test": "NODE_OPTIONS=--experimental-vm-modules jest",
+        "test:coverage": "NODE_OPTIONS=--experimental-vm-modules jest --coverage",
+        "test:watch": "NODE_OPTIONS=--experimental-vm-modules jest --watch",
         "prisma:generate": "prisma generate",
         "prisma:migrate:dev": "prisma migrate dev",
         "prisma:seed": "tsx src/infrastructure/database/prisma/seed.ts"
@@ -42,7 +44,7 @@
         "@types/express": "^5.0.3",
         "@types/jest": "^30.0.0",
         "@types/jsonwebtoken": "^9.0.10",
-        "@types/node": "^25.0.0",
+        "@types/node": "^24.0.0",
         "@types/pg": "^8.16.0",
         "@types/swagger-jsdoc": "^6.0.4",
         "@types/swagger-ui-express": "^4.1.8",

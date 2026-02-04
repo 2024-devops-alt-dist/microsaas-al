@@ -1,5 +1,5 @@
 import { mockCommentRepository } from './mocks/commentRepository.mock';
-import { FindAllComments } from 'api/src/usecases/comment/findAllComments';
+import { FindAllComments } from '../../../src/usecases/comment/findAllComments';
 import { mockComment1, mockComment2 } from './mocks/comment.mock';
 
 describe('FindAllComment Use Case', () => {

@@ -1,8 +1,8 @@
-import { UpdateUser } from 'api/src/usecases/user/updateUser';
 import { mockUser1 } from './mocks/user.mock';
 import { mockUserRepository } from './mocks/userRepository.mock';
-import { Role } from 'api/src/domain/constant/role';
-import { NotFoundError } from 'api/src/domain/errors/NotFoundError';
+import { UpdateUser } from '../../../src/usecases/user/updateUser.js';
+import { NotFoundError } from '../../../src/domain/errors/NotFoundError.js';
+import { Role } from '../../../src/domain/constant/role.js';
 
 describe('UpdateUser Use Case', () => {
     it('should update user if exists', async () => {

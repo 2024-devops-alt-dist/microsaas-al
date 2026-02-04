@@ -1,8 +1,8 @@
-import { UpdateObservation } from 'api/src/usecases/observation/updateObservation';
 import { mockObservationRepository } from './mocks/observationRepository.mock';
-import { ConfidenceLevel } from 'api/src/domain/constant/confidenceLevel';
 import { mockObservation1 } from './mocks/observation.mock';
-import { NotFoundError } from 'api/src/domain/errors/NotFoundError';
+import { UpdateObservation } from '../../../src/usecases/observation/updateObservation.js';
+import { ConfidenceLevel } from '../../../src/domain/constant/confidenceLevel.js';
+import { NotFoundError } from '../../../src/domain/errors/NotFoundError.js';
 
 describe('UpdateObservation Use Case', () => {
     it('should update an observation', async () => {

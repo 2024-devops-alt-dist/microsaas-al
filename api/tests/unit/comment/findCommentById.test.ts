@@ -1,7 +1,7 @@
-import { FindCommentById } from 'api/src/usecases/comment/findCommentById';
 import { mockCommentRepository } from './mocks/commentRepository.mock';
 import { mockComment1 } from './mocks/comment.mock';
-import { NotFoundError } from 'api/src/domain/errors/NotFoundError';
+import { FindCommentById } from '../../../src/usecases/comment/findCommentById.js';
+import { NotFoundError } from '../../../src/domain/errors/NotFoundError.js';
 
 describe('FindCommentById Use Case', () => {
     it('should return the comment when found', async () => {

@@ -1,4 +1,4 @@
-import { FindAllMushrooms } from 'api/src/usecases/mushroom/findAllMushrooms';
+import { FindAllMushrooms } from '../../../src/usecases/mushroom/findAllMushrooms.js';
 import { mockMushroom1, mockMushroom2 } from './mocks/mockMushroom';
 import { mockMushroomRepository } from './mocks/mushroomRepository.mock';
 

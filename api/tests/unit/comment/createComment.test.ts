@@ -1,14 +1,17 @@
-import { CreateComment } from 'api/src/usecases/comment/createComment';
-import { mockCommentRepository } from './mocks/commentRepository.mock';
+import { CreateComment } from '../../../src/usecases/comment/createComment.js';
+import { mockCommentRepository } from './mocks/commentRepository.mock.js';
 
 describe('CreateComment Use Case', () => {
     it('should create a comment', async () => {
         const repo = mockCommentRepository();
 
-        repo.create.mockImplementation(async (comment) => ({
-            ...comment,
+        repo.create.mockResolvedValue({
             id: 1,
-        }));
+            content: 'Great observation!',
+            status: 'SUBMITTED',
+            userId: 2,
+            observationId: 3,
+        });
 
         const useCase = new CreateComment(repo);
 

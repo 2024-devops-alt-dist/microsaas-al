@@ -1,5 +1,5 @@
-import { CreateObservation } from 'api/src/usecases/observation/createObservation';
 import { mockObservationRepository } from './mocks/observationRepository.mock';
+import { CreateObservation } from '../../../src/usecases/observation/createObservation.js';
 
 describe('CreateObservation Use Case', () => {
     it('should create an observation', async () => {

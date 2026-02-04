@@ -1,4 +1,4 @@
-import { ConfidenceLevel } from 'api/src/domain/constant/confidenceLevel';
+import { ConfidenceLevel } from '../../../../src/domain/constant/confidenceLevel';
 
 export const mockObservation1 = {
     id: 1,

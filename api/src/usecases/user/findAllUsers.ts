@@ -4,6 +4,7 @@ import { IUserRepository } from '../../interfaces/repositories/IUserRepository.j
 export class FindAllUsers {
     constructor(private userRepository: IUserRepository) {}
     async execute(): Promise<Omit<User, 'password'>[]> {
-        return await this.userRepository.findAll();
+        const users = await this.userRepository.findAll();
+        return users.map(({ password: _password, ...user }) => user);
     }
 }

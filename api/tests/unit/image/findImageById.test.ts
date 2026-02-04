@@ -1,7 +1,7 @@
-import { FindImageById } from 'api/src/usecases/image/findImageById';
-import { mockImageRepository } from './mocks/imageRepository..mock';
-import { NotFoundError } from 'api/src/domain/errors/NotFoundError';
-import { mockImage1 } from './mocks/image.mock';
+import { FindImageById } from '../../../src/usecases/image/findImageById.js';
+import { mockImageRepository } from './mocks/imageRepository.mock.js';
+import { mockImage1 } from './mocks/image.mock.js';
+import { NotFoundError } from '../../../src/domain/errors/NotFoundError.js';
 
 describe('FindImageById Use Case', () => {
     it('should return the image when found', async () => {
