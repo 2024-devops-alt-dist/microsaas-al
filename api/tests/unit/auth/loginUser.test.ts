@@ -1,12 +1,12 @@
 import { mockUser1 } from '../user/mocks/user.mock';
 import { mockUserRepository } from '../user/mocks/userRepository.mock';
-import { mockAuthService } from './mocks/mockAuthService';
+import { mockAuthService } from './mocks/authService.mock.js';
 import { LoginUser } from '../../../src/usecases/auth/loginUser.js';
 
 describe('LoginUser Use Case', () => {
     it('should jwt token if valid credentials are provided', async () => {
         const repo = mockUserRepository();
-        const authService = mockAuthService();
+        const authService = mockAuthService;
 
         repo.findByEmail.mockResolvedValue({ ...mockUser1, password: 'hashed-password' });
         authService.comparePasswords.mockResolvedValue(true);
@@ -22,7 +22,7 @@ describe('LoginUser Use Case', () => {
 
     it('should throw NotFoundError if user does not exist', async () => {
         const repo = mockUserRepository();
-        const authService = mockAuthService();
+        const authService = mockAuthService;
 
         repo.findByEmail.mockResolvedValue(null);
 
@@ -35,7 +35,7 @@ describe('LoginUser Use Case', () => {
 
     it('should throw UnauthorizedError if password is incorrect', async () => {
         const repo = mockUserRepository();
-        const authService = mockAuthService();
+        const authService = mockAuthService;
 
         repo.findByEmail.mockResolvedValue({ ...mockUser1, password: 'hashed-password' });
         authService.comparePasswords.mockResolvedValue(false);

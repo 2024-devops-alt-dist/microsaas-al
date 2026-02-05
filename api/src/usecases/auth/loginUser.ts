@@ -1,4 +1,4 @@
-import { UnauthorizedError } from '../../domain/errors/InvalidCredentialsError.js';
+import { UnauthorizedError } from '../../domain/errors/UnauthorizedError.js';
 import { NotFoundError } from '../../domain/errors/NotFoundError.js';
 import { IUserRepository } from '../../interfaces/repositories/IUserRepository.js';
 import { AuthService } from '../../infrastructure/services/AuthService.js';

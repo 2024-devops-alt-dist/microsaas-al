@@ -4,7 +4,7 @@ import { Observation } from './Observation.js';
 
 export class User {
     constructor(
-        public id: number | null,
+        public id: number,
         public email: string,
         public password: string,
         public username: string,

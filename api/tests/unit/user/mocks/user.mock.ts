@@ -27,3 +27,16 @@ export const mockUser2 = {
     observations: [],
     comments: [],
 };
+
+export const mockUserNoPassword = {
+    id: 1,
+    email: 'john@example.com',
+    username: 'john_doe',
+    firstname: 'John',
+    lastname: 'Doe',
+    role: Role.USER,
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    observations: [],
+    comments: [],
+};

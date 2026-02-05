@@ -47,8 +47,11 @@ import { AuthController } from './interfaces/controllers/auth.controller.js';
 import { LoginUser } from './usecases/auth/loginUser.js';
 import authRoutes from './interfaces/routes/auth.routes.js';
 import { AuthService } from './infrastructure/services/AuthService.js';
+import cookieParser from 'cookie-parser';
 
 const app = express();
+
+app.use(cookieParser());
 
 app.use(
     cors({
@@ -136,12 +139,15 @@ const commentController = new CommentController(
     deleteComment,
 );
 
-app.use('/users', userRoutes(userController));
+app.use('/users', userRoutes(userController, authService, findUserByIdUseCase));
 app.use('/auth', authRoutes(authController));
-app.use('/mushrooms', mushroomRoutes(mushroomController));
-app.use('/observations', observationRoutes(observationController));
-app.use('/images', imageRoutes(imageController));
-app.use('/comments', commentRoutes(commentController));
+app.use('/mushrooms', mushroomRoutes(mushroomController, authService, findUserByIdUseCase));
+app.use(
+    '/observations',
+    observationRoutes(observationController, authService, findUserByIdUseCase),
+);
+app.use('/images', imageRoutes(imageController, authService, findUserByIdUseCase));
+app.use('/comments', commentRoutes(commentController, authService, findUserByIdUseCase));
 
 app.use(errorHandler);
 

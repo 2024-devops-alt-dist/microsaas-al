@@ -30,21 +30,16 @@ export class CreateUser {
         if (existingUser) {
             throw new EmailAlreadyExistsError('Email already in use');
         }
-        const newUser = await this.userRepository.create(
-            new User(
-                null,
-                userData.email,
-                await hashPassword(userData.password),
-                userData.username,
-                userData.firstname,
-                userData.lastname,
-                userData.role as Role,
-                null,
-                null,
-                [],
-                [],
-            ),
-        );
+
+        const newUser = await this.userRepository.create({
+            email: userData.email,
+            password: await hashPassword(userData.password),
+            username: userData.username,
+            firstname: userData.firstname,
+            lastname: userData.lastname,
+            role: userData.role as Role,
+        });
+
         const returnedUser: Omit<User, 'password'> = {
             id: newUser.id,
             email: newUser.email,
