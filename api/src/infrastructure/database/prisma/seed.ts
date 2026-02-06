@@ -23,6 +23,7 @@ async function main() {
                 username: user.username,
                 firstname: user.firstname,
                 lastname: user.lastname,
+                role: user.role === 'ADMIN' ? 'ADMIN' : 'USER',
             },
         });
     }

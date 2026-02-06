@@ -5,6 +5,16 @@ import { Request, Response, NextFunction } from 'express';
 import { mockUser1, mockUserNoPassword } from '../user/mocks/user.mock.js';
 import { FindUserById } from '../../../src/usecases/user/findUserById.js';
 
+declare module 'express-serve-static-core' {
+    interface Request {
+        user?: {
+            id: string;
+            email: string;
+            role: string;
+        };
+    }
+}
+
 describe('Auth Middleware', () => {
     it('should call next() when token is valid and user is found', async () => {
         const req = {
