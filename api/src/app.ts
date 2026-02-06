@@ -49,6 +49,7 @@ import authRoutes from './interfaces/routes/auth.routes.js';
 import { AuthService } from './infrastructure/services/AuthService.js';
 import cookieParser from 'cookie-parser';
 import { RefreshAccessToken } from './usecases/auth/refreshAccessToken.js';
+import { ConnectedUserInformation } from './usecases/auth/connectedUserInformation.js';
 
 const app = express();
 
@@ -83,7 +84,12 @@ const userController = new UserController(
 const authService = new AuthService();
 const loginUserUseCase = new LoginUser(userRepository, authService);
 const refreshAccessToken = new RefreshAccessToken(userRepository, authService);
-const authController = new AuthController(loginUserUseCase, refreshAccessToken);
+const connectedUserInformation = new ConnectedUserInformation(authService);
+const authController = new AuthController(
+    loginUserUseCase,
+    refreshAccessToken,
+    connectedUserInformation,
+);
 
 const mushroomRepository = new MushroomRepository();
 const findAllMushrooms = new FindAllMushrooms(mushroomRepository);

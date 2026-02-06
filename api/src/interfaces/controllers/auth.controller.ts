@@ -1,11 +1,13 @@
 import { Request, Response, NextFunction } from 'express';
 import { LoginUser } from '../../usecases/auth/loginUser.js';
 import { RefreshAccessToken } from '../../usecases/auth/refreshAccessToken.js';
+import { ConnectedUserInformation } from '../../usecases/auth/connectedUserInformation.js';
 
 export class AuthController {
     constructor(
         private loginUserUseCase: LoginUser,
         private refreshAccessToken: RefreshAccessToken,
+        private connectedUserInfoUseCase: ConnectedUserInformation,
     ) {}
 
     loginUser = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
@@ -52,6 +54,16 @@ export class AuthController {
                     maxAge: 60 * 60 * 1000,
                 })
                 .json({ message: 'Authenticated' });
+        } catch (error) {
+            next(error);
+        }
+    };
+
+    me = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+        try {
+            const accessToken = req.cookies.access_token;
+            const userInfo = await this.connectedUserInfoUseCase.execute(accessToken);
+            res.status(200).json(userInfo);
         } catch (error) {
             next(error);
         }
