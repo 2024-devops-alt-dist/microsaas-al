@@ -3,6 +3,10 @@ import { AuthController } from '../controllers/auth.controller.js';
 
 export default function authRoutes(authController: AuthController) {
     const router = Router();
+
     router.post('/login', authController.loginUser);
+    router.post('/refresh', authController.refresh);
+    router.post('/logout', authController.logout);
+
     return router;
 }

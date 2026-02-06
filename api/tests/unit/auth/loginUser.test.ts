@@ -10,14 +10,17 @@ describe('LoginUser Use Case', () => {
 
         repo.findByEmail.mockResolvedValue({ ...mockUser1, password: 'hashed-password' });
         authService.comparePasswords.mockResolvedValue(true);
-        authService.generateToken.mockReturnValue('valid-jwt-token');
+        authService.generateAccessToken.mockReturnValue('valid-access-jwt-token');
+        authService.generateRefreshToken.mockReturnValue('valid-refresh-jwt-token');
 
         const useCase = new LoginUser(repo, authService);
 
-        const token = await useCase.execute('john@example.com', 'securepassword');
+        const tokens = await useCase.execute('john@example.com', 'securepassword');
 
-        expect(token).toBeDefined();
-        expect(typeof token).toBe('string');
+        expect(tokens.accessToken).toBeDefined();
+        expect(tokens.refreshToken).toBeDefined();
+        expect(typeof tokens.accessToken).toBe('string');
+        expect(typeof tokens.refreshToken).toBe('string');
     });
 
     it('should throw NotFoundError if user does not exist', async () => {

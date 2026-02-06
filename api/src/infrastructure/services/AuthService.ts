@@ -8,12 +8,19 @@ export class AuthService implements IAuthService {
         return bcrypt.compare(plainTextPassword, hashedPassword);
     }
 
-    generateToken(payload: object): string {
-        const token = jwt.sign(payload, env.JWT_SECRET, { expiresIn: '1h' });
-        return token;
+    generateAccessToken(payload: object): string {
+        return jwt.sign(payload, env.JWT_SECRET, { expiresIn: '1h' });
+    }
+
+    generateRefreshToken(payload: object): string {
+        return jwt.sign(payload, env.JWT_REFRESH_SECRET, { expiresIn: '7d' });
     }
 
     verifyAccessToken(accessToken: string): JwtPayload | string {
         return jwt.verify(accessToken, env.JWT_SECRET);
+    }
+
+    verifyRefreshToken(refreshToken: string): JwtPayload | string {
+        return jwt.verify(refreshToken, env.JWT_REFRESH_SECRET);
     }
 }
