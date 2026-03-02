@@ -1,7 +1,7 @@
 import { env } from './config/env.js';
 import express from 'express';
 import cors from 'cors';
-import { errorHandler } from './middlewares/error.middleware.js';
+import { errorHandler } from './interfaces/middlewares/error.middleware.js';
 import { UserRepository } from './infrastructure/user.repository.js';
 import { CreateUser } from './usecases/user/createUser.js';
 import { UserController } from './interfaces/controllers/user.controller.js';
@@ -43,8 +43,17 @@ import mushroomRoutes from './interfaces/routes/mushroom.routes.js';
 import observationRoutes from './interfaces/routes/observation.routes.js';
 import imageRoutes from './interfaces/routes/image.routes.js';
 import commentRoutes from './interfaces/routes/comment.routes.js';
+import { AuthController } from './interfaces/controllers/auth.controller.js';
+import { LoginUser } from './usecases/auth/loginUser.js';
+import authRoutes from './interfaces/routes/auth.routes.js';
+import { AuthService } from './infrastructure/services/AuthService.js';
+import cookieParser from 'cookie-parser';
+import { RefreshAccessToken } from './usecases/auth/refreshAccessToken.js';
+import { ConnectedUserInformation } from './usecases/auth/connectedUserInformation.js';
 
 const app = express();
+
+app.use(cookieParser());
 
 app.use(
     cors({
@@ -70,6 +79,16 @@ const userController = new UserController(
     createUserUseCase,
     updateUserUseCase,
     deleteUserUseCase,
+);
+
+const authService = new AuthService();
+const loginUserUseCase = new LoginUser(userRepository, authService);
+const refreshAccessToken = new RefreshAccessToken(userRepository, authService);
+const connectedUserInformation = new ConnectedUserInformation(authService);
+const authController = new AuthController(
+    loginUserUseCase,
+    refreshAccessToken,
+    connectedUserInformation,
 );
 
 const mushroomRepository = new MushroomRepository();
@@ -128,11 +147,15 @@ const commentController = new CommentController(
     deleteComment,
 );
 
-app.use('/users', userRoutes(userController));
-app.use('/mushrooms', mushroomRoutes(mushroomController));
-app.use('/observations', observationRoutes(observationController));
-app.use('/images', imageRoutes(imageController));
-app.use('/comments', commentRoutes(commentController));
+app.use('/users', userRoutes(userController, authService, findUserByIdUseCase));
+app.use('/auth', authRoutes(authController));
+app.use('/mushrooms', mushroomRoutes(mushroomController, authService, findUserByIdUseCase));
+app.use(
+    '/observations',
+    observationRoutes(observationController, authService, findUserByIdUseCase),
+);
+app.use('/images', imageRoutes(imageController, authService, findUserByIdUseCase));
+app.use('/comments', commentRoutes(commentController, authService, findUserByIdUseCase));
 
 app.use(errorHandler);
 

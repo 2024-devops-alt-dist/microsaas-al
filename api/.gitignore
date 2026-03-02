@@ -5,3 +5,4 @@ dist
 *.log
 **/generated
 tsconfig.tsbuildinfo
+/generated/prisma

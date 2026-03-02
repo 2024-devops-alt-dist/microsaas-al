@@ -1,7 +1,7 @@
-import { FindUserByEmail } from 'api/src/usecases/user/findUserByEmail';
 import { mockUser1 } from './mocks/user.mock';
 import { mockUserRepository } from './mocks/userRepository.mock';
-import { NotFoundError } from 'api/src/domain/errors/NotFoundError';
+import { FindUserByEmail } from '../../../src/usecases/user/findUserByEmail.js';
+import { NotFoundError } from '../../../src/domain/errors/NotFoundError.js';
 
 describe('FindUserByEmail Use Case', () => {
     it('should return user if found', async () => {

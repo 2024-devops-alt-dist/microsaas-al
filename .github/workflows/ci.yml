@@ -86,3 +86,6 @@ jobs:
             - name: Deploy API
               run: |
                   curl -X POST ${{ secrets.DEPLOY_API_URL }}
+            - name: Deploy Client
+              run: |
+                  curl -X POST ${{ secrets.DEPLOY_CLIENT_URL }}

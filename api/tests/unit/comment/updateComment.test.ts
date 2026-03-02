@@ -1,5 +1,5 @@
-import { NotFoundError } from 'api/src/domain/errors/NotFoundError';
-import { UpdateComment } from 'api/src/usecases/comment/updateComment';
+import { UpdateComment } from '../../../src/usecases/comment/updateComment.js';
+import { NotFoundError } from '../../../src/domain/errors/NotFoundError.js';
 import { mockCommentRepository } from './mocks/commentRepository.mock';
 import { mockComment1 } from './mocks/comment.mock';
 

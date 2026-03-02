@@ -1,4 +1,4 @@
-import { FindAllObservations } from 'api/src/usecases/observation/findAllObservations';
+import { FindAllObservations } from '../../../src/usecases/observation/findAllObservations.js';
 import { mockObservationRepository } from './mocks/observationRepository.mock';
 import { mockObservation1, mockObservation2 } from './mocks/observation.mock';
 

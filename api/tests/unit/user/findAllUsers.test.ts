@@ -1,6 +1,6 @@
 import { mockUserRepository } from './mocks/userRepository.mock';
 import { mockUser1, mockUser2 } from './mocks/user.mock';
-import { FindAllUsers } from 'api/src/usecases/user/findAllUsers';
+import { FindAllUsers } from '../../../src/usecases/user/findAllUsers.js';
 
 describe('FindAllUsers Use Case', () => {
     it('should return all users', async () => {

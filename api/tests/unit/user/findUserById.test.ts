@@ -1,7 +1,7 @@
-import { FindUserById } from 'api/src/usecases/user/findUserById';
 import { mockUser1 } from './mocks/user.mock';
 import { mockUserRepository } from './mocks/userRepository.mock';
-import { NotFoundError } from 'api/src/domain/errors/NotFoundError';
+import { FindUserById } from '../../../src/usecases/user/findUserById.js';
+import { NotFoundError } from '../../../src/domain/errors/NotFoundError.js';
 
 describe('FindUserById Use Case', () => {
     it('should return user if found', async () => {

@@ -5,6 +5,7 @@ import { mushroomsData } from './fixtures/mushrooms.js';
 import { observationsData } from './fixtures/observations.js';
 import { commentsData } from './fixtures/comments.js';
 import { imagesData } from './fixtures/images.js';
+import { hashPassword } from '../../../utils/hashPassword.js';
 
 async function main() {
     await prisma.$executeRawUnsafe('TRUNCATE TABLE "Comment" RESTART IDENTITY CASCADE');
@@ -14,13 +15,15 @@ async function main() {
     await prisma.$executeRawUnsafe('TRUNCATE TABLE "User" RESTART IDENTITY CASCADE');
 
     for (const user of usersData) {
+        const hashedpassword = await hashPassword(user.password);
         await prisma.user.create({
             data: {
                 email: user.email,
-                password: user.password,
+                password: hashedpassword,
                 username: user.username,
                 firstname: user.firstname,
                 lastname: user.lastname,
+                role: user.role === 'ADMIN' ? 'ADMIN' : 'USER',
             },
         });
     }

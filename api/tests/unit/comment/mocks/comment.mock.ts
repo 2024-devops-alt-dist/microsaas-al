@@ -1,4 +1,4 @@
-import { Status } from 'api/src/domain/constant/status';
+import { Status } from '../../../../src/domain/constant/status';
 
 export const mockComment1 = {
     id: 1,

@@ -1,4 +1,4 @@
-import { FindMushroomById } from 'api/src/usecases/mushroom/findMushroomById';
+import { FindMushroomById } from '../../../src/usecases/mushroom/findMushroomById.js';
 import { mockMushroom1 } from './mocks/mockMushroom';
 import { mockMushroomRepository } from './mocks/mushroomRepository.mock';
 import { NotFoundError } from 'api/src/domain/errors/NotFoundError';

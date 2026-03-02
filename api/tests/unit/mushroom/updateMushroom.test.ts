@@ -1,8 +1,8 @@
-import { NotFoundError } from 'api/src/domain/errors/NotFoundError';
+import { NotFoundError } from '../../../src/domain/errors/NotFoundError.js';
 import { mockMushroomRepository } from './mocks/mushroomRepository.mock';
 import { mockMushroom1 } from './mocks/mockMushroom';
-import { Edibility } from 'api/src/domain/constant/edibility';
-import { UpdateMushroom } from 'api/src/usecases/mushroom/updateMushroom';
+import { UpdateMushroom } from '../../../src/usecases/mushroom/updateMushroom.js';
+import { Edibility } from '../../../src/domain/constant/edibility.js';
 
 describe('UpdateUser Use Case', () => {
     it('should update user if exists', async () => {

@@ -1,7 +1,7 @@
-import { FindObservationById } from 'api/src/usecases/observation/findObservationById';
+import { FindObservationById } from '../../../src/usecases/observation/findObservationById.js';
 import { mockObservationRepository } from './mocks/observationRepository.mock';
 import { mockObservation1 } from './mocks/observation.mock';
-import { NotFoundError } from 'api/src/domain/errors/NotFoundError';
+import { NotFoundError } from '../../../src/domain/errors/NotFoundError.js';
 
 describe('FindObservationById Use Case', () => {
     it('should return the observation when found', async () => {

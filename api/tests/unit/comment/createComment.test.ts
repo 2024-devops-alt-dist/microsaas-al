@@ -1,5 +1,5 @@
-import { CreateComment } from 'api/src/usecases/comment/createComment';
-import { mockCommentRepository } from './mocks/commentRepository.mock';
+import { CreateComment } from '../../../src/usecases/comment/createComment.js';
+import { mockCommentRepository } from './mocks/commentRepository.mock.js';
 
 describe('CreateComment Use Case', () => {
     it('should create a comment', async () => {
