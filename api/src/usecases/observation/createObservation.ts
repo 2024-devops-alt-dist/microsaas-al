@@ -30,24 +30,18 @@ export class CreateObservation {
         ) {
             throw new BadRequestError('Invalid observation data');
         }
-        return await this.observationRepository.create(
-            new Observation(
-                null,
-                observationData.title,
-                observationData.date,
-                observationData.latitude,
-                observationData.longitude,
-                observationData.quantity,
-                observationData.notes,
-                observationData.isPublic,
-                observationData.confidenceLevel as ConfidenceLevel,
-                null,
-                null,
-                observationData.userId,
-                observationData.mushroomId,
-                [],
-                [],
-            ),
-        );
+        const newObservation = {
+            title: observationData.title,
+            date: observationData.date,
+            latitude: observationData.latitude,
+            longitude: observationData.longitude,
+            quantity: observationData.quantity,
+            notes: observationData.notes || null,
+            isPublic: observationData.isPublic,
+            confidenceLevel: observationData.confidenceLevel as ConfidenceLevel,
+            userId: observationData.userId,
+            mushroomId: observationData.mushroomId,
+        };
+        return await this.observationRepository.create(newObservation);
     }
 }

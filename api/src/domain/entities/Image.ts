@@ -1,6 +1,6 @@
 export class Image {
     constructor(
-        public id: number | null,
+        public id: number,
         public url: string,
         public filename: string,
         public mimeType: string,

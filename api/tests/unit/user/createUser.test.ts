@@ -11,6 +11,11 @@ describe('CreateUser Use Case', () => {
         repo.create.mockImplementation(async (user) => ({
             ...user,
             id: 1,
+            createdAt: new Date(),
+            updatedAt: new Date(),
+            observations: [],
+            comments: [],
+            role: user.role as Role,
         }));
 
         const useCase = new CreateUser(repo);

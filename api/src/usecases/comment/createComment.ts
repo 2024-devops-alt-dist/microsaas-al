@@ -15,16 +15,12 @@ export class CreateComment {
         if (!commentData.content || !commentData.userId || !commentData.observationId) {
             throw new BadRequestError('Invalid comment data');
         }
-        return await this.commentRepository.create(
-            new Comment(
-                null,
-                commentData.content,
-                commentData.status as Status,
-                null,
-                null,
-                commentData.userId,
-                commentData.observationId,
-            ),
-        );
+        const newComment = {
+            content: commentData.content,
+            status: commentData.status as Status,
+            userId: commentData.userId,
+            observationId: commentData.observationId,
+        };
+        return await this.commentRepository.create(newComment);
     }
 }

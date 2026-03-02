@@ -4,7 +4,7 @@ import { Image } from './Image.js';
 
 export class Mushroom {
     constructor(
-        public id: number | null,
+        public id: number,
         public commonName: string,
         public species: string,
         public genus: string,

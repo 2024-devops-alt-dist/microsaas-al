@@ -1,7 +1,8 @@
 import { Mushroom } from '../domain/entities/Mushroom.js';
 import { prisma } from './database/prisma/prisma.js';
 import { Prisma, Mushroom as MushroomPrisma } from './database/prisma/generated/prisma/client.js';
-import { Edibility as DomainEdibility } from '../domain/constant/edibility.js';
+import { Edibility as DomainEdibility, Edibility } from '../domain/constant/edibility.js';
+import { MushroomCreationType } from '../domain/types/mushroomCreationType.js';
 
 export class MushroomRepository {
     async findAll(): Promise<Mushroom[]> {
@@ -22,15 +23,15 @@ export class MushroomRepository {
         return mushroom ? this.mapPrismaMushroomToDomain(mushroom) : null;
     }
 
-    async create(mushroom: Mushroom): Promise<Mushroom> {
+    async create(mushroomCreationType: MushroomCreationType): Promise<Mushroom> {
         const mushroomPrisma: Prisma.MushroomCreateInput = {
-            commonName: mushroom.commonName,
-            species: mushroom.species,
-            genus: mushroom.genus,
-            family: mushroom.family,
-            edibility: mushroom.edibility,
-            habitat: mushroom.habitat,
-            description: mushroom.description,
+            commonName: mushroomCreationType.commonName,
+            species: mushroomCreationType.species,
+            genus: mushroomCreationType.genus,
+            family: mushroomCreationType.family,
+            edibility: mushroomCreationType.edibility as Edibility,
+            habitat: mushroomCreationType.habitat,
+            description: mushroomCreationType.description,
         };
         const createdMushroom = await prisma.mushroom.create({ data: mushroomPrisma });
         return this.mapPrismaMushroomToDomain(createdMushroom);

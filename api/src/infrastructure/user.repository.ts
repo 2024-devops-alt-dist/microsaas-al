@@ -2,6 +2,7 @@ import { User } from '../domain/entities/User.js';
 import { Prisma, User as UserPrisma } from './database/prisma/generated/prisma/client.js';
 import { prisma } from './database/prisma/prisma.js';
 import { Role as DomainRole, Role } from '../domain/constant/role.js';
+import { UserCreationType } from '../domain/types/UserCreationType.js';
 
 export class UserRepository {
     async findAll(): Promise<User[]> {
@@ -31,21 +32,14 @@ export class UserRepository {
         return user ? this.mapPrismaUserToDomain(user) : null;
     }
 
-    async create(userCreationPayload: {
-        email: string;
-        password: string;
-        username: string;
-        firstname: string;
-        lastname: string;
-        role: Role;
-    }): Promise<User> {
+    async create(userCreationType: UserCreationType): Promise<User> {
         const userPrisma: Prisma.UserCreateInput = {
-            email: userCreationPayload.email,
-            password: userCreationPayload.password,
-            username: userCreationPayload.username,
-            firstname: userCreationPayload.firstname,
-            lastname: userCreationPayload.lastname,
-            role: userCreationPayload.role,
+            email: userCreationType.email,
+            password: userCreationType.password,
+            username: userCreationType.username,
+            firstname: userCreationType.firstname,
+            lastname: userCreationType.lastname,
+            role: userCreationType.role as Role,
         };
         const createdUser = await prisma.user.create({ data: userPrisma });
         return this.mapPrismaUserToDomain(createdUser);

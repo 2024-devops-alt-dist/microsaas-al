@@ -1,5 +1,6 @@
-import { Status as DomainStatus } from '../domain/constant/status.js';
+import { Status as DomainStatus, Status } from '../domain/constant/status.js';
 import { Comment } from '../domain/entities/Comment.js';
+import { CommentCreationType } from '../domain/types/CommentCreationType.js';
 import { Prisma, Comment as CommentPrisma } from './database/prisma/generated/prisma/client.js';
 import { prisma } from './database/prisma/prisma.js';
 
@@ -22,12 +23,12 @@ export class CommentRepository {
         return comment ? this.mapPrismaCommentToDomain(comment) : null;
     }
 
-    async create(comment: Comment): Promise<Comment> {
+    async create(commentCreationType: CommentCreationType): Promise<Comment> {
         const commentPrisma = {
-            content: comment.content,
-            status: comment.status,
-            userId: comment.userId,
-            observationId: comment.observationId,
+            content: commentCreationType.content,
+            status: commentCreationType.status as Status,
+            userId: commentCreationType.userId,
+            observationId: commentCreationType.observationId,
         };
         const createdComment = await prisma.comment.create({ data: commentPrisma });
         return this.mapPrismaCommentToDomain(createdComment);

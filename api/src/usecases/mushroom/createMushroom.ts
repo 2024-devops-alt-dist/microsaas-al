@@ -23,21 +23,15 @@ export class CreateMushroom {
         ) {
             throw new BadRequestError('Invalid mushroom data');
         }
-        return await this.mushroomRepository.create(
-            new Mushroom(
-                null,
-                mushroomData.commonName,
-                mushroomData.species,
-                mushroomData.genus,
-                mushroomData.family,
-                mushroomData.edibility as Edibility,
-                mushroomData.habitat,
-                mushroomData.description,
-                null,
-                null,
-                [],
-                [],
-            ),
-        );
+        const newMushroom = {
+            commonName: mushroomData.commonName,
+            species: mushroomData.species,
+            genus: mushroomData.genus,
+            family: mushroomData.family,
+            edibility: mushroomData.edibility as Edibility,
+            habitat: mushroomData.habitat || null,
+            description: mushroomData.description || null,
+        };
+        return await this.mushroomRepository.create(newMushroom);
     }
 }

@@ -4,7 +4,7 @@ import { Image } from './Image.js';
 
 export class Observation {
     constructor(
-        public id: number | null,
+        public id: number,
         public title: string,
         public date: Date,
         public latitude: number,

@@ -1,3 +1,4 @@
+import { Status } from '../../../src/domain/constant/status.js';
 import { CreateComment } from '../../../src/usecases/comment/createComment.js';
 import { mockCommentRepository } from './mocks/commentRepository.mock.js';
 
@@ -8,6 +9,9 @@ describe('CreateComment Use Case', () => {
         repo.create.mockImplementation(async (comment) => ({
             ...comment,
             id: 1,
+            createdAt: new Date(),
+            updatedAt: new Date(),
+            status: comment.status as Status,
         }));
 
         const useCase = new CreateComment(repo);

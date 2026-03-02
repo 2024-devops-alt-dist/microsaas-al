@@ -1,5 +1,9 @@
-import { ConfidenceLevel as DomainConfidenceLevel } from '../domain/constant/confidenceLevel.js';
+import {
+    ConfidenceLevel,
+    ConfidenceLevel as DomainConfidenceLevel,
+} from '../domain/constant/confidenceLevel.js';
 import { Observation } from '../domain/entities/Observation.js';
+import { ObservationCreationType } from '../domain/types/ObservationCreationType.js';
 import {
     Prisma,
     Observation as ObservationPrisma,
@@ -25,18 +29,18 @@ export class ObservationRepository {
         return observation ? this.mapPrismaObservationToDomain(observation) : null;
     }
 
-    async create(observation: Observation): Promise<Observation> {
+    async create(observationCreationType: ObservationCreationType): Promise<Observation> {
         const observationPrisma = {
-            title: observation.title,
-            date: observation.date,
-            latitude: observation.latitude,
-            longitude: observation.longitude,
-            quantity: observation.quantity,
-            notes: observation.notes,
-            isPublic: observation.isPublic,
-            confidenceLevel: observation.confidenceLevel,
-            userId: observation.userId,
-            mushroomId: observation.mushroomId,
+            title: observationCreationType.title,
+            date: observationCreationType.date,
+            latitude: observationCreationType.latitude,
+            longitude: observationCreationType.longitude,
+            quantity: observationCreationType.quantity,
+            notes: observationCreationType.notes,
+            isPublic: observationCreationType.isPublic,
+            confidenceLevel: observationCreationType.confidenceLevel as ConfidenceLevel,
+            userId: observationCreationType.userId,
+            mushroomId: observationCreationType.mushroomId,
         };
         const createdObservation = await prisma.observation.create({ data: observationPrisma });
         return this.mapPrismaObservationToDomain(createdObservation);

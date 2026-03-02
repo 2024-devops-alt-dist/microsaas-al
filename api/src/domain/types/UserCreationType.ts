@@ -1,4 +1,4 @@
-export type UserCreationPayload = {
+export type UserCreationType = {
     email: string;
     password: string;
     username: string;

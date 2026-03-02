@@ -1,4 +1,5 @@
 import { Image } from '../domain/entities/Image.js';
+import { ImageCreationType } from '../domain/types/ImageCreationType.js';
 import { Prisma, Image as ImagePrisma } from './database/prisma/generated/prisma/client.js';
 import { prisma } from './database/prisma/prisma.js';
 
@@ -21,14 +22,14 @@ export class ImageRepository {
         return image ? this.mapPrismaImageToDomain(image) : null;
     }
 
-    async create(image: Image): Promise<Image> {
+    async create(imageCreationType: ImageCreationType): Promise<Image> {
         const imagePrisma = {
-            url: image.url,
-            filename: image.filename,
-            mimeType: image.mimeType,
-            size: image.size,
-            observationId: image.observationId,
-            mushroomId: image.mushroomId,
+            url: imageCreationType.url,
+            filename: imageCreationType.filename,
+            mimeType: imageCreationType.mimeType,
+            size: imageCreationType.size,
+            observationId: imageCreationType.observationId,
+            mushroomId: imageCreationType.mushroomId,
         };
         const createdImage = await prisma.image.create({ data: imagePrisma });
         return this.mapPrismaImageToDomain(createdImage);
