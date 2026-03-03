@@ -16,9 +16,8 @@ export default function userRoutes(
     const isAdmin = isAdminMiddleware;
     const isOwnerOrAdmin = isOwnerOrAdminMiddleware;
 
-    router.post('/register', userController.create);
-
     router.get('/', auth, isAdmin, userController.findAll);
+    router.post('/', auth, isAdmin, userController.create);
     router.get('/:id', auth, isOwnerOrAdmin, userController.findById);
     router.get('/email/:email', auth, isAdmin, userController.findByEmail);
     router.put('/:id', auth, isOwnerOrAdmin, userController.update);
