@@ -22,18 +22,14 @@ export class CreateImage {
         ) {
             throw new BadRequestError('Invalid image data');
         }
-        return await this.imageRepository.create(
-            new Image(
-                null,
-                imageData.url,
-                imageData.filename,
-                imageData.mimeType,
-                imageData.size,
-                null,
-                null,
-                imageData.observationId || null,
-                imageData.mushroomId || null,
-            ),
-        );
+        const newImage = {
+            url: imageData.url,
+            filename: imageData.filename,
+            mimeType: imageData.mimeType,
+            size: imageData.size,
+            observationId: imageData.observationId || null,
+            mushroomId: imageData.mushroomId || null,
+        };
+        return await this.imageRepository.create(newImage);
     }
 }

@@ -3,6 +3,6 @@ export type ImageCreationType = {
     filename: string;
     mimeType: string;
     size: number;
-    observationId: number;
-    mushroomId: number;
+    observationId: number | null;
+    mushroomId: number | null;
 };
