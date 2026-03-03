@@ -1,5 +1,5 @@
 export interface Mushroom {
-    id?: number;
+    id: number;
     imageUrl: string;
     commonName: string;
     genus: string;
@@ -9,3 +9,6 @@ export interface Mushroom {
     habitat: string;
     description?: string;
 }
+
+export type CreateMushroomDTO = Omit<Mushroom, 'id'>;
+export type UpdateMushroomDTO = Partial<CreateMushroomDTO>;

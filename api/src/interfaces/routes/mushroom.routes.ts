@@ -14,8 +14,8 @@ export default function mushroomRoutes(
     const auth = authMiddleware(authService, findUserById);
     const isAdmin = isAdminMiddleware;
 
-    router.get('/', auth, mushroomController.findAll);
-    router.get('/:id', auth, mushroomController.findById);
+    router.get('/', mushroomController.findAll);
+    router.get('/:id', mushroomController.findById);
     router.post('/', auth, isAdmin, mushroomController.create);
     router.put('/:id', auth, isAdmin, mushroomController.update);
     router.delete('/:id', auth, isAdmin, mushroomController.delete);
