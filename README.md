@@ -2,10 +2,11 @@
 
 ![CI](https://github.com/2024-devops-alt-dist/microsaas-al/actions/workflows/ci.yml/badge.svg)
 
-Fullstack Dockerized App — **Node.js (Express + TypeScript) API**, **React Client**, **PostgreSQL**  
-Structure monorepo :  
-- `api/` — Backend Express (TypeScript)  
-- `client/` — Frontend React  
+Progressive web application — **Node.js (Express + TypeScript) API**, **React Client**, **PostgreSQL**  
+Structure monorepo :
+
+- `api/` — Backend Express (TypeScript)
+- `client/` — Frontend React
 - PostgreSQL — Base de données
 
 ---
@@ -14,7 +15,7 @@ Structure monorepo :
 
 - [Docker](https://www.docker.com/)
 - [Docker Compose](https://docs.docker.com/compose/)
-- Node.js ≥ 18 (pour usage local)
+- Node.js 24 (pour usage local)
 
 ---
 
@@ -22,7 +23,7 @@ Structure monorepo :
 
 1. Créer un fichier `.env` à la racine du projet, basé sur `.env.template`.
 2. Créer un fichier `.env` dans le dossier api, basé sur `.env.template`.
-3. Créer un fichier `.env` et `.env.production` à dans le dossier client, basé sur `.env.template`.
+3. Créer un fichier `.env` et `.env.production` dans le dossier client, basé sur `.env.template`.
 
 ---
 
@@ -68,23 +69,23 @@ npm run build    # Build de production
 
 - Port interne : 5432
 - Utilisateur par défaut : `postgres`
-- Base de données : `mydb`
+- Base de données : `db`
 - Les variables sont définies dans `docker-compose.yml` et `.env`
 
 ---
 
 ## 📜 Scripts utiles
 
-| Dossier  | Commande         | Description                  |
-|----------|------------------|------------------------------|
-| `api`    | `npm run dev`    | Démarrer l'API en dev        |
-| `api`    | `npm run lint`   | Linter le code API           |
-| `api`    | `npm run test`   | Tester l'API                 |
-| `api`    | `npm run build`  | Build TypeScript             |
-| `client` | `npm run dev`    | Démarrer le client en dev    |
-| `client` | `npm run lint`   | Linter le code client        |
-| `client` | `npm run test`   | Tester le client             |
-| `client` | `npm run build`  | Build de production          |
+| Dossier  | Commande        | Description               |
+| -------- | --------------- | ------------------------- |
+| `api`    | `npm run dev`   | Démarrer l'API en dev     |
+| `api`    | `npm run lint`  | Linter le code API        |
+| `api`    | `npm run test`  | Tester l'API              |
+| `api`    | `npm run build` | Build TypeScript          |
+| `client` | `npm run dev`   | Démarrer le client en dev |
+| `client` | `npm run lint`  | Linter le code client     |
+| `client` | `npm run test`  | Tester le client          |
+| `client` | `npm run build` | Build de production       |
 
 ---
 
@@ -93,15 +94,46 @@ npm run build    # Build de production
 ```
 microsaas-al/
 │
-├── api/         # Backend Express (TypeScript)
-├── client/      # Frontend React
-├── db/          # Scripts init PostgreSQL (optionnel)
-├── docker-compose.yml
-├── .env.template
-└── README.md
+├─ api/                         # Backend Express TypeScript
+│  ├─ src/
+│  │  ├─ domain/                # Entités et interfaces métier
+│  │  ├─ usecases/              # Logique applicative
+│  │  ├─ interfaces/            # Controllers HTTP
+│  │  ├─ infrastructure/        # Repositories, config BDD
+│  │  ├─ app.ts                 # Configuration Express
+│  │  └─ server.ts              # Lancement du serveur
+│  │
+│  ├─ tests/                    # Tests unitaires & intégration
+│  ├─ Dockerfile
+│  ├─ tsconfig.json
+│  └─ package.json
+│
+├─ front/                       # Front-end React TypeScript
+│  ├─ src/
+│  │  ├─ features/
+|  │  │  └─ feature1/
+|  |  │     ├─ components/       # Composants UI
+|  |  │     ├─ pages/            # Pages applicatives
+|  |  │     ├─ services/         # Appels API
+|  |  │     ├─ hooks/
+|  |  │     └─ types/
+│  │  ├─ shared/
+|  |  ├─ App.tsx
+|  |  └─ main.tsx
+│  │
+│  ├─ tests/
+│  ├─ Dockerfile
+│  ├─ vite.config.ts
+│  └─ package.json
+│
+├─ .env.template                 # Variables d’environnement
+├─ .gitignore
+├─ package.json
+├─ docker-compose.yml
+└─ README.md
 ```
 
----
+## L'API avec une architecture modulaire (feature-based).
 
 ## 🏁 CI/CD
 

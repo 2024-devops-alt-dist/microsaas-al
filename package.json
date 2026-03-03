@@ -1,0 +1,37 @@
+{
+    "private": true,
+    "workspaces": [
+        "api",
+        "client"
+    ],
+    "type": "module",
+    "scripts": {
+        "build": "npm --workspace api run build && npm --workspace client run build",
+        "lint": "eslint . --ext .ts,.tsx,.js",
+        "format": "prettier --write .",
+        "prisma:generate": "npm --workspace api run prisma:generate",
+        "prisma:migrate:dev": "npm --workspace api run prisma:migrate:dev",
+        "prisma:migrate:deploy": "npm --workspace api run prisma:migrate:deploy",
+        "prisma:seed": "npm --workspace api run prisma:seed",
+        "test:api": "npm --workspace api run test"
+    },
+    "devDependencies": {
+        "@commitlint/cli": "^20.1.0",
+        "@commitlint/config-conventional": "^20.0.0",
+        "@types/jest": "^30.0.0",
+        "@typescript-eslint/eslint-plugin": "^8.52.0",
+        "@typescript-eslint/parser": "^8.52.0",
+        "eslint": "^9.35.0",
+        "eslint-config-prettier": "^10.1.8",
+        "eslint-plugin-prettier": "^5.5.4",
+        "eslint-plugin-react-hooks": "^5.2.0",
+        "eslint-plugin-react-refresh": "^0.4.20",
+        "globals": "^16.3.0",
+        "jest": "^30.2.0",
+        "lefthook": "^2.0.12",
+        "prettier": "^3.6.2",
+        "ts-jest": "^29.4.6",
+        "typescript": "^5.9.2",
+        "typescript-eslint": "^8.44.0"
+    }
+}
