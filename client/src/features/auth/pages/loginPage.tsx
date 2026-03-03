@@ -7,7 +7,7 @@ export default function LoginPage() {
 
     const handleLogin = async (credentials: { email: string; password: string }) => {
         await authService.login(credentials);
-        navigate('/home'); // Redirige vers la page d'accueil après une connexion réussie
+        navigate('/home');
     };
 
     return (
