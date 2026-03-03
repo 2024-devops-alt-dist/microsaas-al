@@ -50,6 +50,7 @@ import { AuthService } from './infrastructure/services/AuthService.js';
 import cookieParser from 'cookie-parser';
 import { RefreshAccessToken } from './usecases/auth/refreshAccessToken.js';
 import { ConnectedUserInformation } from './usecases/auth/connectedUserInformation.js';
+import { registerUser } from './usecases/auth/registerUser.js';
 
 const app = express();
 
@@ -83,10 +84,12 @@ const userController = new UserController(
 
 const authService = new AuthService();
 const loginUserUseCase = new LoginUser(userRepository, authService);
+const registerUserUseCase = new registerUser(userRepository);
 const refreshAccessToken = new RefreshAccessToken(userRepository, authService);
 const connectedUserInformation = new ConnectedUserInformation(authService);
 const authController = new AuthController(
     loginUserUseCase,
+    registerUserUseCase,
     refreshAccessToken,
     connectedUserInformation,
 );

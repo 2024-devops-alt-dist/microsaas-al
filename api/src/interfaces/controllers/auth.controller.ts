@@ -2,10 +2,12 @@ import { Request, Response, NextFunction } from 'express';
 import { LoginUser } from '../../usecases/auth/loginUser.js';
 import { RefreshAccessToken } from '../../usecases/auth/refreshAccessToken.js';
 import { ConnectedUserInformation } from '../../usecases/auth/connectedUserInformation.js';
+import { registerUser } from '../../usecases/auth/registerUser.js';
 
 export class AuthController {
     constructor(
         private loginUserUseCase: LoginUser,
+        private registerUserUseCase: registerUser,
         private refreshAccessToken: RefreshAccessToken,
         private connectedUserInfoUseCase: ConnectedUserInformation,
     ) {}
@@ -31,6 +33,22 @@ export class AuthController {
                     })
                     .json({ status: 200, message: 'Authenticated' });
             }
+        } catch (error) {
+            next(error);
+        }
+    };
+
+    registerUser = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+        try {
+            const { email, password, username, firstname, lastname } = req.body;
+            const newUser = await this.registerUserUseCase.execute({
+                email,
+                password,
+                username,
+                firstname,
+                lastname,
+            });
+            res.status(201).json(newUser);
         } catch (error) {
             next(error);
         }
