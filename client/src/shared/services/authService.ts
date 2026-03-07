@@ -15,12 +15,11 @@ export const authService = {
         return apiService.post<void>('/auth/register', userData);
     },
 
-    async getCurrentUser(): Promise<{ name: string; email: string } | null> {
-        return apiService.get<{ name: string; email: string }>('/auth/me');
+    async getCurrentUser(): Promise<{ id: number; name: string; email: string } | null> {
+        return apiService.get<{ id: number; name: string; email: string }>('/auth/me');
     },
 
     async logout(): Promise<void> {
-        localStorage.removeItem('token');
-        return Promise.resolve();
+        return apiService.post<void>('/auth/logout', {});
     },
 };
