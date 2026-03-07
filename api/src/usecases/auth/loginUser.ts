@@ -23,11 +23,15 @@ export class LoginUser {
         const accessToken = this.authService.generateAccessToken({
             id: user.id,
             email: user.email,
+            firstname: user.firstname,
+            lastname: user.lastname,
             role: user.role,
         });
         const refreshToken = this.authService.generateRefreshToken({
             id: user.id,
             email: user.email,
+            firstname: user.firstname,
+            lastname: user.lastname,
             role: user.role,
         });
 
