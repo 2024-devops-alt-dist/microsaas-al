@@ -5,7 +5,7 @@ import { FindUserById } from '../../usecases/user/findUserById.js';
 import { IAuthService } from '../../domain/services/IAuthService.js';
 
 export default function fileRoutes(
-    fileController: FileController, 
+    fileController: FileController,
     authService: IAuthService,
     findUserById: FindUserById,
 ) {

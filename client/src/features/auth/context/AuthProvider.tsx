@@ -1,34 +1,22 @@
-import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
+import { useState, useEffect, ReactNode } from 'react';
 import { authService } from '../../../shared/services/authService';
-
-interface User {
-    id: number;
-    name: string;
-    email: string;
-}
-
-interface AuthContextType {
-    user: User | null;
-    isAuthenticated: boolean;
-    loading: boolean;
-    login: (credentials: { email: string; password: string }) => Promise<void>;
-    logout: () => Promise<void>;
-    checkAuth: () => Promise<void>;
-}
-
-const AuthContext = createContext<AuthContextType | undefined>(undefined);
+import { AuthenticatedUser } from '../../../shared/types/user';
+import { AuthContext } from './AuthContext';
 
 export function AuthProvider({ children }: { children: ReactNode }) {
-    const [user, setUser] = useState<User | null>(null);
+    const [user, setUser] = useState<AuthenticatedUser | null>(null);
     const [loading, setLoading] = useState(true);
 
     const isAuthenticated = !!user;
+
+    console.log('AuthProvider - user:', user);
 
     useEffect(() => {
         checkAuth();
     }, []);
 
     async function checkAuth() {
+        console.log('checkAuth - checking authentication...');
         try {
             const currentUser = await authService.getCurrentUser();
             console.log('checkAuth - user:', currentUser);
@@ -60,12 +48,4 @@ export function AuthProvider({ children }: { children: ReactNode }) {
             {children}
         </AuthContext.Provider>
     );
-}
-
-export function useAuth() {
-    const context = useContext(AuthContext);
-    if (!context) {
-        throw new Error('useAuth must be used within AuthProvider');
-    }
-    return context;
 }

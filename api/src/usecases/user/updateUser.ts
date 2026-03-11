@@ -4,10 +4,17 @@ import { IUserRepository } from '../../interfaces/repositories/IUserRepository.j
 
 export class UpdateUser {
     constructor(private userRepository: IUserRepository) {}
-    async execute(id: number, data: Partial<User>): Promise<Omit<User, 'password'>> {
+    async execute(
+        id: number,
+        data: Partial<User>,
+        currentUser: { role: string },
+    ): Promise<Omit<User, 'password'>> {
         const user = await this.userRepository.findById(id);
         if (!user) {
             throw new NotFoundError('User not found');
+        }
+        if (currentUser.role !== 'ADMIN' && data.role) {
+            throw new Error('Only admins can change user roles');
         }
         const updatedUser = await this.userRepository.update(id, data);
         const returnedUser: Omit<User, 'password'> = {

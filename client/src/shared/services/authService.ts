@@ -15,8 +15,22 @@ export const authService = {
         return apiService.post<void>('/api/auth/register', userData);
     },
 
-    async getCurrentUser(): Promise<{ id: number; name: string; email: string } | null> {
-        return apiService.get<{ id: number; name: string; email: string }>('/api/auth/me');
+    async getCurrentUser(): Promise<{
+        id: number;
+        email: string;
+        username: string;
+        firstname: string;
+        lastname: string;
+        role: string;
+    } | null> {
+        return apiService.get<{
+            id: number;
+            email: string;
+            username: string;
+            firstname: string;
+            lastname: string;
+            role: string;
+        }>('/api/auth/me');
     },
 
     async logout(): Promise<void> {

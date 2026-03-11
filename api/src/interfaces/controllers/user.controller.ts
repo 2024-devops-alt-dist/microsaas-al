@@ -59,6 +59,7 @@ export class UserController {
             const updatedUser = await this.updateUserUseCase.execute(
                 Number(req.params.id),
                 req.body,
+                { role: req.user?.role || '' },
             );
             res.status(200).send(updatedUser);
         } catch (error) {
