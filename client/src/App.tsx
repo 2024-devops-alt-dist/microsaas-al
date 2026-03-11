@@ -8,6 +8,7 @@ import LoginPage from './features/auth/pages/loginPage';
 import RegisterPage from './features/auth/pages/registerPage';
 import HomePage from './features/home/pages/homePage';
 import CreateObservationPage from './features/observations/pages/CreateObservationPage';
+import ProtectedRoute from './features/auth/components/protecteRoute/ProtectedRoute';
 
 function App() {
     return (
@@ -20,7 +21,9 @@ function App() {
                 <Route path="/register" element={<RegisterPage />} />
                 <Route path="/observations/*" element={<ObservationsPage />} />
                 <Route path="/mushrooms/*" element={<MushroomRoutes />} />
-                <Route path="/observations/new" element={<CreateObservationPage />} />
+                <Route element={<ProtectedRoute />}>
+                    <Route path="/observations/new" element={<CreateObservationPage />} />
+                </Route>
             </Routes>
         </main>
     );

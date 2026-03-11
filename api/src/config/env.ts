@@ -11,15 +11,19 @@ interface Env {
 
 function getEnv(): Env {
     const API_PORT = process.env.API_PORT || '3000';
-    const DATABASE_URL =
-        process.env.DATABASE_URL ||
-        'postgresql://postgres:password@localhost:5432/microsaas_db?schema=public';
-    const FRONT_URL = process.env.FRONT_URL || 'http://localhost:5173';
+    const DATABASE_URL = process.env.DATABASE_URL;
+    if (!DATABASE_URL) {
+        throw new Error('DATABASE_URL is not defined in environment variables');
+    }
+    const FRONT_URL = process.env.FRONT_URL;
+    if (!FRONT_URL) {
+        throw new Error('FRONT_URL is not defined in environment variables');
+    }
     const JWT_SECRET = process.env.JWT_SECRET;
-    const JWT_REFRESH_SECRET = process.env.JWT_REFRESH_SECRET;
     if (!JWT_SECRET) {
         throw new Error('JWT_SECRET is not defined in environment variables');
     }
+    const JWT_REFRESH_SECRET = process.env.JWT_REFRESH_SECRET;
     if (!JWT_REFRESH_SECRET) {
         throw new Error('JWT_REFRESH_SECRET is not defined in environment variables');
     }

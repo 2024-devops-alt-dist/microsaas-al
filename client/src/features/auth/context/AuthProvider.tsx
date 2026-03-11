@@ -1,25 +1,10 @@
-import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
+import { useContext, useState, useEffect, ReactNode } from 'react';
 import { authService } from '../../../shared/services/authService';
-
-interface User {
-    id: number;
-    name: string;
-    email: string;
-}
-
-interface AuthContextType {
-    user: User | null;
-    isAuthenticated: boolean;
-    loading: boolean;
-    login: (credentials: { email: string; password: string }) => Promise<void>;
-    logout: () => Promise<void>;
-    checkAuth: () => Promise<void>;
-}
-
-const AuthContext = createContext<AuthContextType | undefined>(undefined);
+import { AuthenticatedUser } from '../../../shared/types/user';
+import { AuthContext } from './AuthContext';
 
 export function AuthProvider({ children }: { children: ReactNode }) {
-    const [user, setUser] = useState<User | null>(null);
+    const [user, setUser] = useState<AuthenticatedUser | null>(null);
     const [loading, setLoading] = useState(true);
 
     const isAuthenticated = !!user;

@@ -9,7 +9,7 @@ import {
     TbLogout,
 } from 'react-icons/tb';
 import { GiMushrooms } from 'react-icons/gi';
-import { useAuth } from '../../../features/auth/context/authContext';
+import { useAuth } from '../../../features/auth/context/AuthContext';
 
 export default function Navbar() {
     const { isAuthenticated, logout } = useAuth();

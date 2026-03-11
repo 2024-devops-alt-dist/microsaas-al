@@ -3,8 +3,11 @@ import { authService } from '../../../shared/services/authService';
 
 interface User {
     id: number;
-    name: string;
     email: string;
+    username: string;
+    firstname: string;
+    lastname: string;
+    role: string;
 }
 
 export function useAuth() {

@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from 'express';
 import { FindObservationById } from '../../usecases/observation/findObservationById.js';
 
-export const commentOwnerOrAdminMiddleware =
+export const observationOwnerOrAdminMiddleware =
     (findObservationById: FindObservationById) =>
     async (req: Request, res: Response, next: NextFunction) => {
         try {
@@ -11,13 +11,13 @@ export const commentOwnerOrAdminMiddleware =
 
             const ressourceId = Number(req.params.id);
 
-            const comment = await findObservationById.execute(ressourceId);
+            const observation = await findObservationById.execute(ressourceId);
 
-            if (!comment) {
-                return res.status(404).json({ message: 'Comment not found' });
+            if (!observation) {
+                return res.status(404).json({ message: 'Observation not found' });
             }
 
-            if (req.user.role !== 'ADMIN' && comment.userId !== req.user.id) {
+            if (req.user.role !== 'ADMIN' && observation.userId !== req.user.id) {
                 return res.status(403).json({ message: 'Forbidden access' });
             }
 

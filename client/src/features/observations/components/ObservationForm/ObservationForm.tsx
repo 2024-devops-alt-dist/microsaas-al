@@ -4,7 +4,6 @@ import {
     ObservationFormData,
 } from '../../../../shared/types/observations';
 import { useEffect, useRef, useState } from 'react';
-import { useAuth } from '../../../auth/context/authContext';
 import { ImageFormData } from '../../../../shared/types/images';
 import { Calendar, Camera, Locate, Text, Upload } from 'lucide-react';
 import { observationsService } from '../../../../shared/services/observationsService';
@@ -13,6 +12,7 @@ import { mushroomsService } from '../../../../shared/services/mushroomsService';
 import { useNavigate } from 'react-router-dom';
 import { fileService } from '../../../../shared/services/fileService';
 import { imagesService } from '../../../../shared/services/imagesService';
+import { useAuth } from '../../../auth/hooks/useAuth';
 
 const initialFormData: ObservationFormData = {
     title: '',
@@ -136,7 +136,6 @@ export default function ObservationForm() {
             mushroomId: null,
         };
         try {
-
             const createdObservation = await observationsService.create(newObservation);
             if (createdObservation) {
                 navigate('/observations');

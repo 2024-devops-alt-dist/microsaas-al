@@ -32,7 +32,7 @@ describe('LoginUser Use Case', () => {
         const useCase = new LoginUser(repo, authService);
 
         await expect(useCase.execute('john@example.com', 'securepassword')).rejects.toThrow(
-            'User not found',
+            'Invalid credentials',
         );
     });
 
