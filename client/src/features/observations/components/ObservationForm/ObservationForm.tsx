@@ -1,7 +1,6 @@
 import {
     ConfidenceLevel,
     CreateObservationDTO,
-    Observation,
     ObservationFormData,
 } from '../../../../shared/types/observations';
 import { useEffect, useRef, useState } from 'react';
@@ -12,6 +11,8 @@ import { observationsService } from '../../../../shared/services/observationsSer
 import { Mushroom } from '../../../../shared/types/mushrooms';
 import { mushroomsService } from '../../../../shared/services/mushroomsService';
 import { useNavigate } from 'react-router-dom';
+import { fileService } from '../../../../shared/services/fileService';
+import { imagesService } from '../../../../shared/services/imagesService';
 
 const initialFormData: ObservationFormData = {
     title: '',
@@ -73,6 +74,7 @@ export default function ObservationForm() {
             console.log(file);
 
             setFormImage({
+                file: file,
                 url: file.name,
                 filename: file.name,
                 mimeType: file.type,
@@ -134,9 +136,24 @@ export default function ObservationForm() {
             mushroomId: null,
         };
         try {
+
             const createdObservation = await observationsService.create(newObservation);
             if (createdObservation) {
                 navigate('/observations');
+            }
+            if (formImage?.file && createdObservation) {
+                const uploadedFile = await fileService.upload(formImage.file);
+                if (uploadedFile) {
+                    const newImage = await imagesService.create({
+                        url: uploadedFile.url,
+                        filename: formImage.filename,
+                        mimeType: formImage.mimeType,
+                        size: formImage.size,
+                        observationId: createdObservation.id,
+                        mushroomId: 0,
+                    });
+                    console.log('Image créée:', newImage);
+                }
             }
         } catch (error) {
             console.error('Erreur:', error);
