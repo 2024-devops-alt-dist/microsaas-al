@@ -51,6 +51,11 @@ import cookieParser from 'cookie-parser';
 import { RefreshAccessToken } from './usecases/auth/refreshAccessToken.js';
 import { ConnectedUserInformation } from './usecases/auth/connectedUserInformation.js';
 import { registerUser } from './usecases/auth/registerUser.js';
+import fileRoutes from './interfaces/routes/file.routes.js';
+import { LocalFileStorageService } from './infrastructure/services/LocalFileStorageService.js';
+import { UploadFileUseCase } from './usecases/upload/UploadFileUseCase.js';
+import { FileController } from './interfaces/controllers/file.controller.js';
+import path from 'path';
 
 const app = express();
 
@@ -150,15 +155,25 @@ const commentController = new CommentController(
     deleteComment,
 );
 
-app.use('/users', userRoutes(userController, authService, findUserByIdUseCase));
-app.use('/auth', authRoutes(authController));
-app.use('/mushrooms', mushroomRoutes(mushroomController, authService, findUserByIdUseCase));
+const localFileStorageService = new LocalFileStorageService();
+const uploadFileUseCase = new UploadFileUseCase(localFileStorageService);
+const fileController = new FileController(
+    uploadFileUseCase
+);
+
+app.use('/api/users', userRoutes(userController, authService, findUserByIdUseCase));
+app.use('/api/auth', authRoutes(authController));
+app.use('/api/mushrooms', mushroomRoutes(mushroomController, authService, findUserByIdUseCase));
 app.use(
-    '/observations',
+    '/api/observations',
     observationRoutes(observationController, authService, findUserByIdUseCase),
 );
-app.use('/images', imageRoutes(imageController, authService, findUserByIdUseCase));
-app.use('/comments', commentRoutes(commentController, authService, findUserByIdUseCase));
+app.use('/api/images', imageRoutes(imageController, authService, findUserByIdUseCase));
+app.use('/api/comments', commentRoutes(commentController, authService, findUserByIdUseCase));
+app.use("/uploads", express.static(path.resolve("uploads")));
+app.use("/api/files", fileRoutes(fileController, authService, findUserByIdUseCase));
+
+
 
 app.use(errorHandler);
 

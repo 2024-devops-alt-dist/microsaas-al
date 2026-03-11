@@ -12,7 +12,7 @@ import { GiMushrooms } from 'react-icons/gi';
 import { useAuth } from '../../../features/auth/context/authContext';
 
 export default function Navbar() {
-    const { user, isAuthenticated, logout } = useAuth();
+    const { isAuthenticated, logout } = useAuth();
 
     const handleLogout = async () => {
         await logout();
