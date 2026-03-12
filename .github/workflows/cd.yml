@@ -1,10 +1,10 @@
-name: CI Pipeline
+name: CD Pipeline
 
 on:
     push:
-        branches: [develop]
+        branches: [main]
     pull_request:
-        branches: [develop]
+        branches: [main]
 
 jobs:
     build-test:
@@ -69,13 +69,25 @@ jobs:
               with:
                   context: ./api
                   push: true
-                  tags: ${{ secrets.DOCKERHUB_USERNAME }}/chp-notes-api-dev:latest
+                  tags: ${{ secrets.DOCKERHUB_USERNAME }}/chp-notes-api:latest
 
             - name: Docker Build and Push Client
               uses: docker/build-push-action@v6
               with:
                   context: ./client
                   push: true
-                  tags: ${{ secrets.DOCKERHUB_USERNAME }}/chp-notes-client-dev:latest
+                  tags: ${{ secrets.DOCKERHUB_USERNAME }}/chp-notes-client:latest
                   build-args: |
                       VITE_API_URL=${{ secrets.VITE_API_URL }}
+
+    deploy:
+        needs: docker
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Deploy API
+              run: |
+                  curl -X POST ${{ secrets.DEPLOY_API_URL }}
+            - name: Deploy Client
+              run: |
+                  curl -X POST ${{ secrets.DEPLOY_CLIENT_URL }}
