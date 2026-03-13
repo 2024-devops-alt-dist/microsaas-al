@@ -3,6 +3,7 @@ import { PrismaPg } from '@prisma/adapter-pg';
 import { PrismaClient } from './generated/prisma/client.js';
 import pg from 'pg';
 
+
 const { Pool } = pg;
 
 const pool = new Pool({
@@ -11,9 +12,11 @@ const pool = new Pool({
 
 const adapter = new PrismaPg(pool);
 
+const envDev = env.NODE_ENV === 'development';
+
 const prisma = new PrismaClient({
     adapter,
-    log: ['query', 'info', 'warn', 'error'],
+    log: envDev ? ['query', 'info', 'warn', 'error'] : ['warn', 'error'],
 });
 
 export { prisma };

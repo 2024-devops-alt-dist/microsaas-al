@@ -48,8 +48,11 @@ jobs:
             - name: Build Client
               run: npm run build -w client
 
-            - name: Run Tests
-              run: npm run test -ws
+            - name: Run API Tests
+              run: npm run test -w api
+            
+            - name: Run Client Tests
+              run: npm run test -w client     
 
     docker:
         needs: build-test

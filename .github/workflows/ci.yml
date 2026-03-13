@@ -48,8 +48,11 @@ jobs:
             - name: Build Client
               run: npm run build -w client
 
-            - name: Run Tests
-              run: npm run test -ws
+            - name: Run API Tests
+              run: npm run test -w api
+            
+            - name: Run Client Tests
+              run: npm run test -w client     
 
     docker:
         needs: build-test
@@ -62,17 +65,7 @@ jobs:
               uses: docker/setup-buildx-action@v3
 
             - name: Build API image
-              uses: docker/build-push-action@v6
-              with:
-                  context: ./api
-                  push: true
-                  tags: ${{ secrets.DOCKERHUB_USERNAME }}/chp-notes-api-dev:latest
+              run: docker build -t chp-notes-api-dev:latest -f api/Dockerfile .         
 
             - name: Build Client image
-              uses: docker/build-push-action@v6
-              with:
-                  context: ./client
-                  push: true
-                  tags: ${{ secrets.DOCKERHUB_USERNAME }}/chp-notes-client-dev:latest
-                  build-args: |
-                      VITE_API_URL=${{ secrets.VITE_API_URL }}
+              run: docker build -t chp-notes-client-dev:latest -f client/Dockerfile .         
