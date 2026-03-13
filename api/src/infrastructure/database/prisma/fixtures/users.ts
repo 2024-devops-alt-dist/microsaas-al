@@ -2,7 +2,7 @@ export const usersData = [
     {
         id: 1,
         email: 'admin@admin.com',
-        password: 'admin123',
+        password: 'Azerty123456!',
         username: 'admin',
         firstname: 'Admin',
         lastname: 'User',
@@ -13,7 +13,7 @@ export const usersData = [
     {
         id: 2,
         email: 'bob@example.com',
-        password: 'password123',
+        password: 'Azerty123456!',
         username: 'bob02',
         firstname: 'Bob',
         lastname: 'Martin',
@@ -24,7 +24,7 @@ export const usersData = [
     {
         id: 3,
         email: 'carol@example.com',
-        password: 'password123',
+        password: 'Azerty123456!',
         username: 'carol03',
         firstname: 'Carol',
         lastname: 'Bernard',
@@ -35,7 +35,7 @@ export const usersData = [
     {
         id: 4,
         email: 'david@example.com',
-        password: 'password123',
+        password: 'Azerty123456!',
         username: 'david04',
         firstname: 'David',
         lastname: 'Leroy',
@@ -46,7 +46,7 @@ export const usersData = [
     {
         id: 5,
         email: 'emma@example.com',
-        password: 'password123',
+        password: 'Azerty123456!',
         username: 'emma05',
         firstname: 'Emma',
         lastname: 'Moreau',
@@ -57,7 +57,7 @@ export const usersData = [
     {
         id: 6,
         email: 'frank@example.com',
-        password: 'password123',
+        password: 'Azerty123456!',
         username: 'frank06',
         firstname: 'Frank',
         lastname: 'Petit',
@@ -68,7 +68,7 @@ export const usersData = [
     {
         id: 7,
         email: 'grace@example.com',
-        password: 'password123',
+        password: 'Azerty123456!',
         username: 'grace07',
         firstname: 'Grace',
         lastname: 'Roux',
@@ -79,7 +79,7 @@ export const usersData = [
     {
         id: 8,
         email: 'henry@example.com',
-        password: 'password123',
+        password: 'Azerty123456!',
         username: 'henry08',
         firstname: 'Henry',
         lastname: 'Fabre',
@@ -90,7 +90,7 @@ export const usersData = [
     {
         id: 9,
         email: 'irene@example.com',
-        password: 'password123',
+        password: 'Azerty123456!',
         username: 'irene09',
         firstname: 'Irene',
         lastname: 'Gautier',
@@ -101,7 +101,7 @@ export const usersData = [
     {
         id: 10,
         email: 'alice@example.com',
-        password: 'password123',
+        password: 'Azerty123456!',
         username: 'alice01',
         firstname: 'Alice',
         lastname: 'Dupont',
