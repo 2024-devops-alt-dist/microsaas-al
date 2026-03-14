@@ -56,7 +56,7 @@ export class CommentController {
     delete = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
         try {
             await this.deleteComment.execute(Number(req.params.id));
-            res.status(200).json({ message: 'Comment deleted successfully' });
+            res.status(204).json({ message: 'Comment deleted successfully' });
         } catch (error) {
             next(error);
         }

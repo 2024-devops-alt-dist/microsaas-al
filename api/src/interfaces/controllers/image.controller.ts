@@ -56,7 +56,7 @@ export class ImageController {
     delete = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
         try {
             await this.deleteImageUseCase.execute(Number(req.params.id));
-            res.status(200).json({ message: 'Image deleted successfully' });
+            res.status(204).json({ message: 'Image deleted successfully' });
         } catch (error) {
             next(error);
         }

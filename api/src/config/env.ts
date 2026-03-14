@@ -7,6 +7,7 @@ interface Env {
     FRONT_URL: string;
     JWT_SECRET: string;
     JWT_REFRESH_SECRET: string;
+    NODE_ENV: string;
 }
 
 function getEnv(): Env {
@@ -27,6 +28,7 @@ function getEnv(): Env {
     if (!JWT_REFRESH_SECRET) {
         throw new Error('JWT_REFRESH_SECRET is not defined in environment variables');
     }
+    const NODE_ENV = process.env.NODE_ENV || 'development';
 
     return {
         API_PORT: Number(API_PORT),
@@ -34,6 +36,7 @@ function getEnv(): Env {
         FRONT_URL: FRONT_URL,
         JWT_SECRET,
         JWT_REFRESH_SECRET,
+        NODE_ENV,
     };
 }
 
