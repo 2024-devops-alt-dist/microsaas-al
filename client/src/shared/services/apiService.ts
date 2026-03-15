@@ -1,5 +1,9 @@
 const API_BASE_URL = import.meta.env.VITE_API_URL;
 
+if (!API_BASE_URL) {
+    console.error('VITE_API_URL is not defined!');
+}
+
 async function handleResponse<T>(response: Response): Promise<T> {
     if (!response.ok) {
         const error = await response.json().catch(() => ({}));

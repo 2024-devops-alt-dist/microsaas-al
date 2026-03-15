@@ -59,7 +59,7 @@ export class ObservationController {
     delete = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
         try {
             await this.deleteObservationUseCase.execute(Number(req.params.id));
-            res.status(200).send({ message: 'Observation deleted successfully' });
+            res.status(204).send({ message: 'Observation deleted successfully' });
         } catch (error) {
             next(error);
         }

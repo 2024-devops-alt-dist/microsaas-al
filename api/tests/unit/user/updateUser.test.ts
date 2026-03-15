@@ -24,7 +24,7 @@ describe('UpdateUser Use Case', () => {
         });
 
         const useCase = new UpdateUser(repo);
-        const result = await useCase.execute(1, { firstname: 'Jane' });
+        const result = await useCase.execute(1, { firstname: 'Jane' }, { role: Role.USER });
 
         expect(result.firstname).toBe('Jane');
     });
@@ -35,9 +35,11 @@ describe('UpdateUser Use Case', () => {
 
         const useCase = new UpdateUser(repo);
 
-        await expect(useCase.execute(1, {})).rejects.toBeInstanceOf(NotFoundError);
+        await expect(useCase.execute(1, {}, { role: Role.USER })).rejects.toBeInstanceOf(
+            NotFoundError,
+        );
 
-        await expect(useCase.execute(1, {})).rejects.toMatchObject({
+        await expect(useCase.execute(1, {}, { role: Role.USER })).rejects.toMatchObject({
             message: 'User not found',
             status: 404,
         });

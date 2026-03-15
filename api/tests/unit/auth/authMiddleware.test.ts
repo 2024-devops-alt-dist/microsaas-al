@@ -8,8 +8,11 @@ import { FindUserById } from '../../../src/usecases/user/findUserById.js';
 declare module 'express-serve-static-core' {
     interface Request {
         user?: {
-            id: string;
+            id: number;
             email: string;
+            username: string;
+            firstname: string;
+            lastname: string;
             role: string;
         };
     }
@@ -33,8 +36,11 @@ describe('Auth Middleware', () => {
         const authService = mockAuthService;
         authService.verifyAccessToken.mockReturnValue({
             id: '1',
-            email: 'user@example.com',
-            role: 'user',
+            email: 'test@example.com',
+            username: 'testuser',
+            firstname: 'Test',
+            lastname: 'User',
+            role: 'USER',
         });
 
         const findUserById = {
@@ -49,6 +55,9 @@ describe('Auth Middleware', () => {
         expect(req.user).toEqual({
             id: mockUser1.id,
             email: mockUser1.email,
+            username: mockUser1.username,
+            firstname: mockUser1.firstname,
+            lastname: mockUser1.lastname,
             role: mockUser1.role,
         });
         expect(next).toHaveBeenCalled();

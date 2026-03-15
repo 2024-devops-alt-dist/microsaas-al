@@ -1,7 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 import { LoginUser } from '../../usecases/auth/loginUser.js';
 import { RefreshAccessToken } from '../../usecases/auth/refreshAccessToken.js';
-import { ConnectedUserInformation } from '../../usecases/auth/connectedUserInformation.js';
 import { registerUser } from '../../usecases/auth/registerUser.js';
 
 export class AuthController {
@@ -9,7 +8,6 @@ export class AuthController {
         private loginUserUseCase: LoginUser,
         private registerUserUseCase: registerUser,
         private refreshAccessToken: RefreshAccessToken,
-        private connectedUserInfoUseCase: ConnectedUserInformation,
     ) {}
 
     loginUser = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
@@ -22,13 +20,13 @@ export class AuthController {
                     .cookie('access_token', tokens.accessToken, {
                         httpOnly: true,
                         secure: true,
-                        sameSite: 'none',
+                        sameSite: 'strict',
                         maxAge: 60 * 60 * 1000,
                     })
                     .cookie('refresh_token', tokens.refreshToken, {
                         httpOnly: true,
                         secure: true,
-                        sameSite: 'none',
+                        sameSite: 'strict',
                         maxAge: 7 * 24 * 60 * 60 * 1000,
                     })
                     .json({ status: 200, message: 'Authenticated' });
@@ -68,7 +66,7 @@ export class AuthController {
                 .cookie('access_token', accessToken, {
                     httpOnly: true,
                     secure: true,
-                    sameSite: 'none',
+                    sameSite: 'strict',
                     maxAge: 60 * 60 * 1000,
                 })
                 .json({ message: 'Authenticated' });
@@ -79,8 +77,7 @@ export class AuthController {
 
     me = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
         try {
-            const accessToken = req.cookies.access_token;
-            const userInfo = await this.connectedUserInfoUseCase.execute(accessToken);
+            const userInfo = req.user;
             res.status(200).json(userInfo);
         } catch (error) {
             next(error);
@@ -88,8 +85,16 @@ export class AuthController {
     };
 
     logout = async (_req: Request, res: Response): Promise<void> => {
-        res.clearCookie('access_token');
-        res.clearCookie('refresh_token');
+        res.clearCookie('access_token', {
+            httpOnly: true,
+            secure: true,
+            sameSite: 'strict',
+        });
+        res.clearCookie('refresh_token', {
+            httpOnly: true,
+            secure: true,
+            sameSite: 'strict',
+        });
         res.status(200).json({ message: 'Logout successful' });
     };
 }

@@ -3,22 +3,22 @@ import type { CreateMushroomDTO, Mushroom, UpdateMushroomDTO } from '../types/mu
 
 export const mushroomsService = {
     async getAll(): Promise<Mushroom[]> {
-        return apiService.get<Mushroom[]>('/mushrooms');
+        return apiService.get<Mushroom[]>('/api/mushrooms');
     },
 
     async getById(id: number): Promise<Mushroom> {
-        return apiService.get<Mushroom>(`/mushrooms/${id}`);
+        return apiService.get<Mushroom>(`/api/mushrooms/${id}`);
     },
 
     async create(mushroom: CreateMushroomDTO): Promise<Mushroom> {
-        return apiService.post<Mushroom>('/mushrooms', mushroom);
+        return apiService.post<Mushroom>('/api/mushrooms', mushroom);
     },
 
     async update(id: number, mushroom: UpdateMushroomDTO): Promise<Mushroom> {
-        return apiService.put<Mushroom>(`/mushrooms/${id}`, mushroom);
+        return apiService.put<Mushroom>(`/apimushrooms/${id}`, mushroom);
     },
 
     async delete(id: number): Promise<void> {
-        return apiService.delete<void>(`/mushrooms/${id}`);
+        return apiService.delete<void>(`/api/mushrooms/${id}`);
     },
 };

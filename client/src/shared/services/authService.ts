@@ -1,8 +1,8 @@
 import { apiService } from './apiService';
 
 export const authService = {
-    async login(credentials: { email: string; password: string }): Promise<{ token: string }> {
-        return apiService.post<{ token: string }>('/auth/login', credentials);
+    async login(credentials: { email: string; password: string }): Promise<void> {
+        return apiService.post<void>('/api/auth/login', credentials);
     },
 
     async register(userData: {
@@ -12,15 +12,28 @@ export const authService = {
         firstname: string;
         lastname: string;
     }): Promise<void> {
-        return apiService.post<void>('/auth/register', userData);
+        return apiService.post<void>('/api/auth/register', userData);
     },
 
-    async getCurrentUser(): Promise<{ name: string; email: string } | null> {
-        return apiService.get<{ name: string; email: string }>('/auth/me');
+    async getCurrentUser(): Promise<{
+        id: number;
+        email: string;
+        username: string;
+        firstname: string;
+        lastname: string;
+        role: string;
+    } | null> {
+        return apiService.get<{
+            id: number;
+            email: string;
+            username: string;
+            firstname: string;
+            lastname: string;
+            role: string;
+        }>('/api/auth/me');
     },
 
     async logout(): Promise<void> {
-        localStorage.removeItem('token');
-        return Promise.resolve();
+        return apiService.post<void>('/api/auth/logout', {});
     },
 };

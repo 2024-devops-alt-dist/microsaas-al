@@ -59,6 +59,7 @@ export class UserController {
             const updatedUser = await this.updateUserUseCase.execute(
                 Number(req.params.id),
                 req.body,
+                { role: req.user?.role || '' },
             );
             res.status(200).send(updatedUser);
         } catch (error) {
@@ -69,7 +70,7 @@ export class UserController {
     delete = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
         try {
             await this.deleteUserUseCase.execute(Number(req.params.id));
-            res.status(200).send({ message: 'User deleted successfully' });
+            res.status(204).send({ message: 'User deleted successfully' });
         } catch (error) {
             next(error);
         }
