@@ -59,7 +59,7 @@ export default function RegisterForm({ onSubmit, onLoginClick }: RegisterFormPro
             <form onSubmit={handleSubmit} className="flex flex-col">
                 {/* Nom d'utilisateur */}
                 <div className="p-4 bg-gray-50">
-                    <label className="text-sm font-semibold text-gray-500 uppercase mb-2 block">
+                    <label htmlFor="register-username" className="text-sm font-semibold text-gray-500 uppercase mb-2 block">
                         Nom d'utilisateur
                     </label>
                     <div className="relative">
@@ -68,6 +68,7 @@ export default function RegisterForm({ onSubmit, onLoginClick }: RegisterFormPro
                             size={18}
                         />
                         <input
+                            id="register-username"
                             type="text"
                             value={username}
                             onChange={(e) => setUsername(e.target.value)}
@@ -81,7 +82,7 @@ export default function RegisterForm({ onSubmit, onLoginClick }: RegisterFormPro
                 {/* Prénom et Nom */}
                 <div className="p-4 border-b border-gray-100 grid grid-cols-2 gap-3">
                     <div>
-                        <label className="text-sm font-semibold text-gray-500 uppercase mb-2 block">
+                        <label htmlFor="register-firstname" className="text-sm font-semibold text-gray-500 uppercase mb-2 block">
                             Prénom
                         </label>
                         <div className="relative">
@@ -90,6 +91,7 @@ export default function RegisterForm({ onSubmit, onLoginClick }: RegisterFormPro
                                 size={18}
                             />
                             <input
+                                id="register-firstname"
                                 type="text"
                                 value={firstname}
                                 onChange={(e) => setFirstname(e.target.value)}
@@ -100,10 +102,11 @@ export default function RegisterForm({ onSubmit, onLoginClick }: RegisterFormPro
                         </div>
                     </div>
                     <div>
-                        <label className="text-sm font-semibold text-gray-500 uppercase mb-2 block">
+                        <label htmlFor="register-lastname" className="text-sm font-semibold text-gray-500 uppercase mb-2 block">
                             Nom
                         </label>
                         <input
+                            id="register-lastname"
                             type="text"
                             value={lastname}
                             onChange={(e) => setLastname(e.target.value)}
@@ -116,7 +119,7 @@ export default function RegisterForm({ onSubmit, onLoginClick }: RegisterFormPro
 
                 {/* Email */}
                 <div className="p-4 bg-gray-50">
-                    <label className="text-sm font-semibold text-gray-500 uppercase mb-2 block">
+                    <label htmlFor="register-email" className="text-sm font-semibold text-gray-500 uppercase mb-2 block">
                         Email
                     </label>
                     <div className="relative">
@@ -125,6 +128,7 @@ export default function RegisterForm({ onSubmit, onLoginClick }: RegisterFormPro
                             size={18}
                         />
                         <input
+                            id="register-email"
                             type="email"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
@@ -137,7 +141,7 @@ export default function RegisterForm({ onSubmit, onLoginClick }: RegisterFormPro
 
                 {/* Mot de passe */}
                 <div className="p-4 border-b border-gray-100">
-                    <label className="text-sm font-semibold text-gray-500 uppercase mb-2 block">
+                    <label htmlFor="register-password" className="text-sm font-semibold text-gray-500 uppercase mb-2 block">
                         Mot de passe
                     </label>
                     <div className="relative">
@@ -146,6 +150,7 @@ export default function RegisterForm({ onSubmit, onLoginClick }: RegisterFormPro
                             size={18}
                         />
                         <input
+                            id="register-password"
                             type={showPassword ? 'text' : 'password'}
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
@@ -165,7 +170,7 @@ export default function RegisterForm({ onSubmit, onLoginClick }: RegisterFormPro
 
                 {/* Confirmation mot de passe */}
                 <div className="p-4 border-b border-gray-100">
-                    <label className="text-sm font-semibold text-gray-500 uppercase mb-2 block">
+                    <label htmlFor="register-confirm-password" className="text-sm font-semibold text-gray-500 uppercase mb-2 block">
                         Confirmer le mot de passe
                     </label>
                     <div className="relative">
@@ -174,6 +179,7 @@ export default function RegisterForm({ onSubmit, onLoginClick }: RegisterFormPro
                             size={18}
                         />
                         <input
+                            id="register-confirm-password"
                             type={showConfirmPassword ? 'text' : 'password'}
                             value={confirmPassword}
                             onChange={(e) => setConfirmPassword(e.target.value)}
