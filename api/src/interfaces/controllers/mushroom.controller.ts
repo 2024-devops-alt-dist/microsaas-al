@@ -57,7 +57,7 @@ export class MushroomController {
     delete = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
         try {
             await this.deleteMushroomUseCase.execute(Number(req.params.id));
-            res.status(200).send({ message: 'Mushroom deleted successfully' });
+            res.status(204).send({ message: 'Mushroom deleted successfully' });
         } catch (error) {
             next(error);
         }
