@@ -6,3 +6,5 @@ dist
 **/generated
 tsconfig.tsbuildinfo
 /generated/prisma
+uploads
+coverage

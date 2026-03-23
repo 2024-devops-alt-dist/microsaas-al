@@ -24,3 +24,12 @@ export enum Role {
     USER = 'USER',
     ADMIN = 'ADMIN',
 }
+
+export interface AuthenticatedUser {
+    id: number;
+    email: string;
+    username: string;
+    firstname: string;
+    lastname: string;
+    role: string;
+}

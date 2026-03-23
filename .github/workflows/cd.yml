@@ -1,0 +1,96 @@
+name: CD Pipeline
+
+on:
+    push:
+        branches: [main]
+    pull_request:
+        branches: [main]
+
+jobs:
+    build-test:
+        runs-on: ubuntu-latest
+
+        steps:
+            - uses: actions/checkout@v5
+
+            - name: Use Node.js
+              uses: actions/setup-node@v5
+              with:
+                  node-version: '24'
+                  cache: 'npm'
+
+            - name: Install dependencies
+              run: npm ci
+
+            # - name: Security audit
+            #   run: npm audit --audit-level=high
+
+            - name: Generate Prisma Client
+              run: |
+                  cd api/
+                  npm run prisma:generate
+              env:
+                  DATABASE_URL: ${{ secrets.DATABASE_URL }}
+
+            - name: Type check API
+              run: |
+                  cd api/
+                  npm run type-check
+
+            - name: Type check Client
+              run: |
+                  cd client/
+                  npm run type-check
+
+            - name: Build API
+              run: npm run build -w api
+
+            - name: Build Client
+              run: npm run build -w client
+
+            - name: Run API Tests
+              run: npm run test -w api
+
+            # - name: Run Client Tests
+            #   run: npm run test -w client
+
+    docker:
+        needs: build-test
+        runs-on: ubuntu-latest
+
+        steps:
+            - uses: actions/checkout@v4
+
+            - name: Docker Login
+              uses: docker/login-action@v3
+              with:
+                  username: ${{ secrets.DOCKERHUB_USERNAME }}
+                  password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+            - name: Docker Build and Push API
+              uses: docker/build-push-action@v6
+              with:
+                  context: ./api
+                  push: true
+                  tags: ${{ secrets.DOCKERHUB_USERNAME }}/chp-notes-api:latest
+
+            - name: Docker Build and Push Client
+              uses: docker/build-push-action@v6
+              with:
+                  context: ./client
+                  push: true
+                  tags: ${{ secrets.DOCKERHUB_USERNAME }}/chp-notes-client:latest
+                  build-args: |
+                      VITE_API_URL=${{ secrets.VITE_API_URL }}
+
+    deploy:
+        needs: docker
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Deploy API
+              run: |
+                  curl -X POST ${{ secrets.DEPLOY_API_URL }}
+            - name: Deploy Client
+              run: |
+                  curl -X POST ${{ secrets.DEPLOY_CLIENT_URL }}

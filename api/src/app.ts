@@ -49,10 +49,17 @@ import authRoutes from './interfaces/routes/auth.routes.js';
 import { AuthService } from './infrastructure/services/AuthService.js';
 import cookieParser from 'cookie-parser';
 import { RefreshAccessToken } from './usecases/auth/refreshAccessToken.js';
-import { ConnectedUserInformation } from './usecases/auth/connectedUserInformation.js';
 import { registerUser } from './usecases/auth/registerUser.js';
+import fileRoutes from './interfaces/routes/file.routes.js';
+import { LocalFileStorageService } from './infrastructure/services/LocalFileStorageService.js';
+import { UploadFileUseCase } from './usecases/upload/UploadFileUseCase.js';
+import { FileController } from './interfaces/controllers/file.controller.js';
+import path from 'path';
+import helmet from 'helmet';
 
 const app = express();
+
+app.use(helmet());
 
 app.use(cookieParser());
 
@@ -64,7 +71,7 @@ app.use(
     }),
 );
 
-app.use(express.json());
+app.use(express.json({ limit: '10kb' }));
 
 const userRepository = new UserRepository();
 const createUserUseCase = new CreateUser(userRepository);
@@ -86,12 +93,10 @@ const authService = new AuthService();
 const loginUserUseCase = new LoginUser(userRepository, authService);
 const registerUserUseCase = new registerUser(userRepository);
 const refreshAccessToken = new RefreshAccessToken(userRepository, authService);
-const connectedUserInformation = new ConnectedUserInformation(authService);
 const authController = new AuthController(
     loginUserUseCase,
     registerUserUseCase,
     refreshAccessToken,
-    connectedUserInformation,
 );
 
 const mushroomRepository = new MushroomRepository();
@@ -150,15 +155,33 @@ const commentController = new CommentController(
     deleteComment,
 );
 
-app.use('/users', userRoutes(userController, authService, findUserByIdUseCase));
-app.use('/auth', authRoutes(authController));
-app.use('/mushrooms', mushroomRoutes(mushroomController, authService, findUserByIdUseCase));
+const localFileStorageService = new LocalFileStorageService();
+const uploadFileUseCase = new UploadFileUseCase(localFileStorageService);
+const fileController = new FileController(uploadFileUseCase);
+
+app.use('/api/users', userRoutes(userController, authService, findUserByIdUseCase));
+app.use('/api/auth', authRoutes(authController, authService, findUserByIdUseCase));
+app.use('/api/mushrooms', mushroomRoutes(mushroomController, authService, findUserByIdUseCase));
 app.use(
-    '/observations',
-    observationRoutes(observationController, authService, findUserByIdUseCase),
+    '/api/observations',
+    observationRoutes(observationController, authService, findUserByIdUseCase, findObservationById),
 );
-app.use('/images', imageRoutes(imageController, authService, findUserByIdUseCase));
-app.use('/comments', commentRoutes(commentController, authService, findUserByIdUseCase));
+app.use(
+    '/api/images',
+    imageRoutes(
+        imageController,
+        authService,
+        findUserByIdUseCase,
+        findImageById,
+        findObservationById,
+    ),
+);
+app.use(
+    '/api/comments',
+    commentRoutes(commentController, authService, findUserByIdUseCase, findCommentById),
+);
+app.use('/uploads', express.static(path.resolve('uploads')));
+app.use('/api/files', fileRoutes(fileController, authService, findUserByIdUseCase));
 
 app.use(errorHandler);
 

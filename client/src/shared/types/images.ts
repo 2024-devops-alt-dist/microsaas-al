@@ -12,3 +12,11 @@ export interface Image {
 
 export type CreateImageDTO = Omit<Image, 'id' | 'createdAt' | 'updatedAt'>;
 export type UpdateImageDTO = Partial<CreateImageDTO>;
+
+export interface ImageFormData {
+    file: File | null;
+    url: string;
+    filename: string;
+    mimeType: string;
+    size: number;
+}

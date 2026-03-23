@@ -14,8 +14,8 @@ export interface Observation {
     updatedAt: Date | null;
     userId: number;
     mushroomId: number | null;
-    images: Image[];
-    comments: Comment[];
+    images?: Image[];
+    comments?: Comment[];
 }
 
 export type CreateObservationDTO = Omit<Observation, 'id' | 'createdAt' | 'updatedAt'>;
@@ -25,4 +25,17 @@ export enum ConfidenceLevel {
     LOW = 'LOW',
     MEDIUM = 'MEDIUM',
     HIGH = 'HIGH',
+}
+
+export interface ObservationFormData {
+    title: string;
+    date: Date;
+    latitude: number;
+    longitude: number;
+    quantity: number;
+    notes: string;
+    isPublic: boolean;
+    confidenceLevel: ConfidenceLevel;
+    userId: number;
+    mushroomId: number | null;
 }

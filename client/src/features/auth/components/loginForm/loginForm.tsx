@@ -42,7 +42,7 @@ export default function LoginForm({ onSubmit, onRegisterClick }: LoginFormProps)
             <form onSubmit={handleSubmit} className="flex flex-col">
                 {/* Email */}
                 <div className="p-4 bg-gray-50">
-                    <label className="text-sm font-semibold text-gray-500 uppercase mb-2 block">
+                    <label htmlFor="login-email" className="text-sm font-semibold text-gray-500 uppercase mb-2 block">
                         Email
                     </label>
                     <div className="relative">
@@ -51,6 +51,7 @@ export default function LoginForm({ onSubmit, onRegisterClick }: LoginFormProps)
                             size={18}
                         />
                         <input
+                            id="login-email"
                             type="email"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
@@ -63,7 +64,7 @@ export default function LoginForm({ onSubmit, onRegisterClick }: LoginFormProps)
 
                 {/* Mot de passe */}
                 <div className="p-4 border-b border-gray-100">
-                    <label className="text-sm font-semibold text-gray-500 uppercase mb-2 block">
+                    <label htmlFor="login-password" className="text-sm font-semibold text-gray-500 uppercase mb-2 block">
                         Mot de passe
                     </label>
                     <div className="relative">
@@ -72,6 +73,7 @@ export default function LoginForm({ onSubmit, onRegisterClick }: LoginFormProps)
                             size={18}
                         />
                         <input
+                            id="login-password"
                             type={showPassword ? 'text' : 'password'}
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
