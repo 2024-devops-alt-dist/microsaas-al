@@ -226,7 +226,7 @@ export default function ObservationForm() {
 
                 {/* Titre */}
                 <div className="p-4 bg-gray-50">
-                    <label className="text-sm font-semibold text-gray-500 uppercase mb-2 block">
+                    <label htmlFor="observation-title" className="text-sm font-semibold text-gray-500 uppercase mb-2 block">
                         Titre
                     </label>
                     <div className="relative">
@@ -235,6 +235,7 @@ export default function ObservationForm() {
                             size={18}
                         />
                         <input
+                            id="observation-title"
                             type="text"
                             placeholder="Titre"
                             onChange={(e) => updateFormData({ title: e.target.value })}
@@ -245,7 +246,7 @@ export default function ObservationForm() {
                 </div>
 
                 <div className="p-4 border-b border-gray-100 gap-3">
-                    <label className="text-sm font-semibold text-gray-500 uppercase mb-2 block">
+                    <label htmlFor="observation-date" className="text-sm font-semibold text-gray-500 uppercase mb-2 block">
                         Date
                     </label>
                     <div className="relative">
@@ -254,6 +255,7 @@ export default function ObservationForm() {
                             size={18}
                         />
                         <input
+                            id="observation-date"
                             type="date"
                             value={formData.date?.toISOString().split('T')[0]}
                             onChange={(e) => updateFormData({ date: new Date(e.target.value) })}
@@ -292,11 +294,12 @@ export default function ObservationForm() {
                 </div>
 
                 <div className="p-4 border-b border-gray-100 gap-3">
-                    <label className="text-sm font-semibold text-gray-500 uppercase mb-2 block">
+                    <label htmlFor="observation-notes" className="text-sm font-semibold text-gray-500 uppercase mb-2 block">
                         Notes
                     </label>
                     <div className="relative">
                         <textarea
+                            id="observation-notes"
                             value={formData.notes}
                             onChange={(e) => updateFormData({ notes: e.target.value })}
                             required
@@ -306,10 +309,11 @@ export default function ObservationForm() {
                 </div>
 
                 <div className="p-4 bg-gray-50 gap-3">
-                    <label className="text-sm font-semibold text-gray-500 uppercase mb-2 block">
+                    <label htmlFor="observation-quantity" className="text-sm font-semibold text-gray-500 uppercase mb-2 block">
                         Quantité
                     </label>
                     <input
+                        id="observation-quantity"
                         type="number"
                         min={1}
                         value={formData.quantity}
@@ -320,10 +324,11 @@ export default function ObservationForm() {
                 </div>
 
                 <div className="p-4 border-b border-gray-100 gap-3">
-                    <label className="text-sm font-semibold text-gray-500 uppercase mb-2 block">
+                    <label htmlFor="observation-confidence" className="text-sm font-semibold text-gray-500 uppercase mb-2 block">
                         Niveau de confiance
                     </label>
                     <select
+                        id="observation-confidence"
                         value={formData.confidenceLevel}
                         onChange={(e) =>
                             updateFormData({ confidenceLevel: e.target.value as ConfidenceLevel })
@@ -338,10 +343,11 @@ export default function ObservationForm() {
                 </div>
 
                 <div className="p-4 bg-gray-50 gap-3">
-                    <label className="text-sm font-semibold text-gray-500 uppercase mb-2 block">
+                    <label htmlFor="observation-public" className="text-sm font-semibold text-gray-500 uppercase mb-2 block">
                         Rendre l'observation publique
                     </label>
                     <input
+                        id="observation-public"
                         type="checkbox"
                         checked={formData.isPublic}
                         onChange={(e) => updateFormData({ isPublic: e.target.checked })}
@@ -350,10 +356,11 @@ export default function ObservationForm() {
                 </div>
 
                 <div className="p-4 border-b border-gray-100 gap-3">
-                    <label className="text-sm font-semibold text-gray-500 uppercase mb-2 block">
+                    <label htmlFor="observation-mushroom" className="text-sm font-semibold text-gray-500 uppercase mb-2 block">
                         Identification de l'espèce (optionnel)
                     </label>
                     <select
+                        id="observation-mushroom"
                         value={formData.mushroomId || ''}
                         onChange={(e) =>
                             updateFormData({
