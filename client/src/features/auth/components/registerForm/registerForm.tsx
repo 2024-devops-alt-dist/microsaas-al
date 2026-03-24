@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { UserPlus, Mail, Lock, Eye, EyeOff, User, IdCard } from 'lucide-react';
+import { Mail, Lock, Eye, EyeOff, User, IdCard } from 'lucide-react';
 
 interface RegisterFormProps {
     onSubmit: (userData: {
@@ -46,15 +46,6 @@ export default function RegisterForm({ onSubmit, onLoginClick }: RegisterFormPro
 
     return (
         <div className="flex flex-col bg-white text-dark-brown rounded-xl shadow-md overflow-hidden max-w-sm w-full">
-            {/* En-tête */}
-            <div className="flex items-center gap-3 p-4 border-b border-gray-100 bg-emerald-50">
-                <UserPlus className="text-emerald-700" size={28} />
-                <div>
-                    <h2 className="font-title text-2xl font-bold">Inscription</h2>
-                    <p className="font-mono text-gray-600 text-sm">Créez votre compte</p>
-                </div>
-            </div>
-
             {/* Formulaire */}
             <form onSubmit={handleSubmit} className="flex flex-col">
                 {/* Nom d'utilisateur */}
@@ -95,7 +86,7 @@ export default function RegisterForm({ onSubmit, onLoginClick }: RegisterFormPro
                                 type="text"
                                 value={firstname}
                                 onChange={(e) => setFirstname(e.target.value)}
-                                placeholder="John"
+                                placeholder="Prénom"
                                 required
                                 className="w-full pl-10 pr-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
                             />
@@ -110,7 +101,7 @@ export default function RegisterForm({ onSubmit, onLoginClick }: RegisterFormPro
                             type="text"
                             value={lastname}
                             onChange={(e) => setLastname(e.target.value)}
-                            placeholder="Doe"
+                            placeholder="Nom"
                             required
                             className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
                         />
@@ -132,7 +123,7 @@ export default function RegisterForm({ onSubmit, onLoginClick }: RegisterFormPro
                             type="email"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
-                            placeholder="votre@email.com"
+                            placeholder="Email"
                             required
                             className="w-full pl-10 pr-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
                         />
@@ -205,7 +196,7 @@ export default function RegisterForm({ onSubmit, onLoginClick }: RegisterFormPro
                     <button
                         type="submit"
                         disabled={loading}
-                        className="w-full py-2 px-4 bg-emerald-700 text-white font-semibold rounded-lg hover:bg-green-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                        className="w-full py-2 px-4 bg-lime-700 text-white font-semibold rounded-lg hover:bg-lime-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                         {loading ? 'Inscription...' : "S'inscrire"}
                     </button>
@@ -216,7 +207,7 @@ export default function RegisterForm({ onSubmit, onLoginClick }: RegisterFormPro
                             <button
                                 type="button"
                                 onClick={onLoginClick}
-                                className="text-emerald-700 hover:underline font-semibold"
+                                className="text-lime-700 hover:underline font-semibold"
                             >
                                 Se connecter
                             </button>

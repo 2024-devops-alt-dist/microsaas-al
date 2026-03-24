@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { LogIn, Mail, Lock, Eye, EyeOff } from 'lucide-react';
+import { Mail, Lock, Eye, EyeOff } from 'lucide-react';
 
 interface LoginFormProps {
     onSubmit: (credentials: { email: string; password: string }) => Promise<void>;
@@ -29,15 +29,6 @@ export default function LoginForm({ onSubmit, onRegisterClick }: LoginFormProps)
 
     return (
         <div className="flex flex-col bg-white text-dark-brown rounded-xl shadow-md overflow-hidden max-w-sm w-full">
-            {/* En-tête */}
-            <div className="flex items-center gap-3 p-4 border-b border-gray-100 bg-emerald-50">
-                <LogIn className="text-emerald-700" size={28} />
-                <div>
-                    <h2 className="font-title text-2xl font-bold">Connexion</h2>
-                    <p className="font-mono text-gray-600 text-sm">Accédez à votre compte</p>
-                </div>
-            </div>
-
             {/* Formulaire */}
             <form onSubmit={handleSubmit} className="flex flex-col">
                 {/* Email */}
@@ -99,7 +90,7 @@ export default function LoginForm({ onSubmit, onRegisterClick }: LoginFormProps)
                     <button
                         type="submit"
                         disabled={loading}
-                        className="w-full py-2 px-4 bg-emerald-700 text-white font-semibold rounded-lg hover:bg-green-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                        className="w-full py-2 px-4 bg-lime-700 text-white font-semibold rounded-lg hover:bg-lime-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                         {loading ? 'Connexion...' : 'Se connecter'}
                     </button>
@@ -110,7 +101,7 @@ export default function LoginForm({ onSubmit, onRegisterClick }: LoginFormProps)
                             <button
                                 type="button"
                                 onClick={onRegisterClick}
-                                className="text-emerald-700 hover:underline font-semibold"
+                                className="text-lime-700 hover:underline font-semibold"
                             >
                                 S'inscrire
                             </button>

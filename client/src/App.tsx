@@ -15,6 +15,7 @@ function App() {
         <main className="pb-20 pt-0 md:pt-20 md:pb-0">
             <Navbar />
             <Routes>
+                <Route path="/" element={<HomePage />} />
                 <Route path="/home" element={<HomePage />} />
                 <Route path="/health" element={<HealthPage />} />
                 <Route path="/login" element={<LoginPage />} />
