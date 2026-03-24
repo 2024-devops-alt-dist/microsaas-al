@@ -1,6 +1,6 @@
 services:
     db:
-        image: postgres:latest
+        image: postgres:17
         volumes:
             - db-data:/var/lib/postgresql/data
         ports:
@@ -20,6 +20,8 @@ services:
             API_PORT: ${API_PORT}
             DATABASE_URL: ${DATABASE_URL}
             FRONT_URL: ${FRONT_URL}
+            JWT_SECRET: ${JWT_SECRET}
+            JWT_REFRESH_SECRET: ${JWT_REFRESH_SECRET}
         networks:
             - backend_network
             - frontend_network

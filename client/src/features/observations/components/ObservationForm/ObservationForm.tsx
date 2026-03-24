@@ -379,10 +379,9 @@ export default function ObservationForm() {
                 </div>
 
                 <button
-                    type="button"
+                    type="submit"
                     onClick={handleSubmit}
-                    disabled={loading}
-                    className="px-6 py-2 bg-lime-700 text-white rounded-full font-semibold hover:bg-full-800 disabled:opacity-50"
+                    className="px-6 py-2 bg-lime-700 text-white rounded-full font-semibold hover:bg-lime-600 disabled:opacity-50"
                 >
                     {loading ? 'Envoi...' : 'Créer la fiche'}
                 </button>
